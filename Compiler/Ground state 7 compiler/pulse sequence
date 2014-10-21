@@ -1,0 +1,178 @@
+%%% Main Programe for Pulse Compiling;
+
+% Author: Jun Li
+% Date: 2013.06.21
+% References: 
+%   (1) C. A. Ryan, et al, Phys. Rev. A 78, 012328, (2008).
+%   (2) Codes by Ryan at IQC NMR lab.
+
+clear;
+
+load parameter.mat
+
+% Write target U_ideal and uncompiled pulse pulse;
+
+% U_90_123456
+% U_ideal{1}=R(gop(1,Y),90)*R(gop(2,Y),90)*R(gop(3,Y),90)*R(gop(4,Y),90)*R(gop(5,Y),90)*R(gop(6,Y),90);
+
+% U_Encoding
+% U_ideal{1}=R(gop(7,Y),270);
+% U_ideal{2}=expm(-i*H_int*1/4/abs(J(5,7)))*...
+%     R(gop(7,X),180)*R(gop(5,X),180)*expm(-i*H_int*(1/4/abs(J(5,7))-1/4/abs(J(4,7))))*...
+%     R(gop(4,X),180)*expm(-i*H_int*(1/4/abs(J(4,7))-1/4/abs(J(6,7))))*...
+%     R(gop(6,X),180)*expm(-i*H_int*(1/4/abs(J(6,7))-1/4/abs(J(2,7))))*...
+%     R(gop(2,X),180)*expm(-i*H_int*1/4/abs(J(2,7)));
+% U_ideal{3}=R(gop(7,Y),270);
+% U_ideal{4}=R(gop(2,Y),270);
+% U_ideal{5}=expm(-i*H_int*1/4/abs(J(2,3)))*...
+%     R(gop(3,X),180)*R(gop(2,X),180)*expm(-i*H_int*(1/4/abs(J(2,3))-1/4/abs(J(1,2))))*...
+%     R(gop(1,X),180)*expm(-i*H_int*1/4/abs(J(1,2)));
+% U_ideal{6}=R(gop(2,Y),270);
+
+% U_90_1234567
+% U_ideal{1}=R(gop(1,Y),90)*R(gop(2,Y),90)*R(gop(3,Y),90)*R(gop(4,Y),90)*R(gop(5,Y),90)*R(gop(6,Y),90)*R(gop(7,Y),90);
+
+% U_Decoding
+U_ideal{1}=R(gop(1,X),90)*R(gop(3,X),90)*R(gop(4,X),90)*R(gop(6,X),90);
+U_ideal{2}=expm(-i*H_int*1/4/abs(J(2,3)))*...
+    R(gop(2,X),180)*R(gop(3,X),180)*R(gop(4,X),180)*R(gop(5,X),180)*R(gop(6,X),180)*expm(-i*H_int*(1/4/abs(J(2,3))-1/4/abs(J(1,2))))*...
+    R(gop(1,X),180)*expm(-i*H_int*1/4/abs(J(1,2)));
+U_ideal{3}=R(gop(1,-Y),90)*R(gop(3,-Y),90)*R(gop(4,-Y),90)*R(gop(6,-Y),90);
+U_ideal{4}=R(gop(2,X),90)*R(gop(5,X),90);
+U_ideal{5}=expm(-i*H_int*(1/4/abs(J(5,7))-1/4/abs(J(2,7))))*...
+    R(gop(1,X),180)*R(gop(3,X),180)*expm(-i*H_int*1/4/abs(J(2,7)))*...
+    R(gop(5,X),180)*R(gop(7,X),180)*expm(-i*H_int*(1/4/abs(J(5,7))-1/4/abs(J(2,7))))*...
+    R(gop(2,X),180)*expm(-i*H_int*1/4/abs(J(2,7)));
+U_ideal{6}=R(gop(2,-Y),90)*R(gop(5,-Y),90);
+
+
+% uncompiled_pulse={[total_time, time_interval], [pulse_qubit, pulse_center, pulse_width, pulse_phase, pulse_angle, pulse_variance], compile option};
+% suggested pulse_variance: Gaussian: (90 degree: 60; 180 degree: 120; 270 degree: 150;)
+% compile option= 
+%   I: eliminate nontrivial post_errors; 
+%  II: eliminate nontrivial pre_errors and post_erros; 
+% III: eliminate nontrivial pre_errors;
+
+% U_90_123456
+% uncompiled_pulse{1}={[1e-3, 5e-6], [1, 0.5e-3, 1e-3, 0, 90, 80; 2, 0.5e-3, 1e-3, 0, 90, 70; 3, 0.5e-3, 1e-3, 0, 90, 80; 4, 0.5e-3, 1e-3, 0, 90, 70; 5, 0.5e-3, 1e-3, 0, 90, 80; 6, 0.5e-3, 1e-3, 0, 90, 90], {'I','I','I','I','I','I'}}; 
+
+% U_Encoding
+% uncompiled_pulse{1}={[3e-3, 5e-6], [7, 1.5e-3, 3e-3, 0, 270, 150], {'I'}};
+% uncompiled_pulse{2}={[1/(2*abs(J(5,7))), 5e-6], [2, 1/4/abs(J(2,7)), 2e-3, 0, 180, 80; 4, 1/4/abs(J(4,7)), 2e-3, 0, 180, 80; 5, 1/4/abs(J(5,7)), 2e-3, 0, 180, 80; 6, 1/4/abs(J(6,7)), 2e-3, 0, 180, 80; 7, 1/4/abs(J(5,7)), 2e-3, 0, 180, 80], {'II','II','II','II','II'}};
+% uncompiled_pulse{3}={[3e-3, 5e-6], [7, 1.5e-3, 3e-3, 0, 270, 150], {'III'}};
+% uncompiled_pulse{4}={[3e-3, 5e-6], [2, 1.5e-3, 3e-3, 0, 270, 150], {'I'}};
+% uncompiled_pulse{5}={[1/(2*abs(J(2,3))), 5e-6], [1, 1/4/abs(J(1,2)), 2e-3, 0, 180, 80; 2, 1/4/abs(J(2,3)), 2e-3, 0, 180, 80; 3, 1/4/abs(J(2,3)), 2e-3, 0, 180, 80], {'II','II','II'}};
+% uncompiled_pulse{6}={[3e-3, 5e-6], [2, 1.5e-3, 3e-3, 0, 270, 150], {'III'}};
+
+% U_90_1234567
+% uncompiled_pulse{1}={[1e-3, 5e-6], [1, 0.5e-3, 1e-3, 0, 90, 80; 2, 0.5e-3, 1e-3, 0, 90, 80; 3, 0.5e-3, 1e-3, 0, 90, 80; 4, 0.5e-3, 1e-3, 0, 90, 80; 5, 0.5e-3, 1e-3, 0, 90, 80; 6, 0.5e-3, 1e-3, 0, 90, 80; 7, 0.5e-3, 1e-3, 0, 90, 80], {'I','I','I','I','I','I','I'}}; 
+
+% U_Decoding
+uncompiled_pulse{1}={[1e-3, 5e-6], [1, 0.5e-3, 1e-3, 0, 90, 60; 3, 0.5e-3, 1e-3, 0, 90, 60; 4, 0.5e-3, 1e-3, 0, 90, 60; 6, 0.5e-3, 1e-3, 0, 90, 60], {'I','I','I','I'}}; 
+uncompiled_pulse{2}={[1/(2*abs(J(2,3))), 5e-6], [1, 1/4/abs(J(1,2)), 2e-3, 0, 180, 100; 2, 1/4/abs(J(2,3)), 2e-3, 0, 180, 100; 3, 1/4/abs(J(2,3)), 2e-3, 0, 180, 100; 4, 1/4/abs(J(2,3)), 2e-3, 0, 180, 100; 5, 1/4/abs(J(2,3)), 2e-3, 0, 180, 100; 6, 1/4/abs(J(2,3)), 2e-3, 0, 180, 100], {'II','II','II','II','II','II'}};
+uncompiled_pulse{3}={[1e-3, 5e-6], [1, 0.5e-3, 1e-3, 0, 90, 60; 3, 0.5e-3, 1e-3, 0, 90, 60; 4, 0.5e-3, 1e-3, 0, 90, 60; 6, 0.5e-3, 1e-3, 0, 90, 60], {'III','III','III','III'}};
+uncompiled_pulse{4}={[1e-3, 5e-6], [2, 0.5e-3, 1e-3, 0, 90, 60; 5, 0.5e-3, 1e-3, 0, 90, 60], {'I','I'}};
+uncompiled_pulse{5}={[1/(2*abs(J(5,7))), 5e-6], [1, 1/4/abs(J(2,7))+1/4/abs(J(5,7)), 2e-3, 0, 180, 100; 2, 1/4/abs(J(2,7)), 2e-3, 0, 180, 100; 3, 1/4/abs(J(2,7))+1/4/abs(J(5,7)), 2e-3, 0, 180, 100; 5, 1/4/abs(J(5,7)), 2e-3, 0, 180, 100; 7, 1/4/abs(J(5,7)), 2e-3, 0, 180, 100], {'II','II','II','II','II'}};
+uncompiled_pulse{6}={[1e-3, 5e-6], [2, 0.5e-3, 1e-3, 0, 90, 60; 5, 0.5e-3, 1e-3, 0, 90, 60], {'III','III'}};
+
+
+[compiled_pulse, U_sim, pre_error, post_error, phase_correction, fidelity]=compile(U_ideal, uncompiled_pulse);
+
+
+
+% U_90_123456:
+% rho1=(gop(1,Z)+gop(2,Z)+gop(3,Z)+gop(4,Z)+gop(5,Z)+gop(6,Z)+gop(7,Z))/sqrt(7);
+% rho2=(gop(1,X)+gop(2,X)+gop(3,X)+gop(4,X)+gop(5,X)+gop(6,X)+gop(7,Z))/sqrt(7);
+% ideal=eye(2^nqubits); sim=ideal;
+% for k=1:length(U_ideal)
+%     ideal=U_ideal{k}*ideal;
+%     sim=U_sim{k}*sim;
+% end
+% trace(ideal*rho1*ideal'*rho2)/128=1;
+% trace(sim*rho1*sim'*rho2)/128=0.9954;
+
+% U_Encoding:
+% rho1=gop(7,Z);
+% rho2=gop(2,Z)*gop(4,Z)*gop(5,Z)*gop(6,Z)*gop(7,Z);
+% rho3=gop(1,Z)*gop(2,Z)*gop(3,Z)*gop(4,Z)*gop(5,Z)*gop(6,Z)*gop(7,Z);
+% ideal=eye(2^nqubits); sim=ideal;
+% for k=1:length(U_ideal)
+%     ideal=U_ideal{k}*ideal;
+%     sim=U_sim{k}*sim;
+% end
+% trace(ideal*rho1*ideal'*rho2)/128=1;
+% trace(sim*rho1*sim'*rho2)/128=0.9311;
+
+% U_90_1234567:
+% rho1=gop(1,Z)*gop(2,Z)*gop(3,Z)*gop(4,Z)*gop(5,Z)*gop(6,Z)*gop(7,Z);
+% rho2=gop(1,X)*gop(2,X)*gop(3,X)*gop(4,X)*gop(5,X)*gop(6,X)*gop(7,X);
+% ideal=eye(2^nqubits); sim=ideal;
+% for k=1:length(U_ideal)
+%     ideal=U_ideal{k}*ideal;
+%     sim=U_sim{k}*sim;
+% end
+% trace(ideal*rho1*ideal'*rho2)/128=1;
+% trace(sim*rho1*sim'*rho2)/128=0.9809;
+
+
+% U_Decoding
+% rho1=gop(1,(X+i*Y)/sqrt(2))*gop(2,(X+i*Y)/sqrt(2))*gop(3,(X+i*Y)/sqrt(2))*gop(4,(X+i*Y)/sqrt(2))*gop(5,(X+i*Y)/sqrt(2))*gop(6,(X+i*Y)/sqrt(2))*gop(7,(X+i*Y)/sqrt(2));
+% rho2=gop(1,(Z-I)/sqrt(2))*gop(2,(X-i*Y)/sqrt(2))*gop(3,(Z+I)/sqrt(2))*gop(4,(Z+I)/sqrt(2))*gop(5,(X-i*Y)/sqrt(2))*gop(6,(Z+I)/sqrt(2))*gop(7,(X+i*Y)/sqrt(2));
+% rho3=gop(1,(Z+I)/sqrt(2))*gop(2,(Z-I)/sqrt(2))*gop(3,(Z-I)/sqrt(2))*gop(4,(Z+I)/sqrt(2))*gop(5,(Z+I)/sqrt(2))*gop(6,(Z+I)/sqrt(2))*gop(7,(X-i*Y)/sqrt(2));
+% ideal=eye(2^nqubits); sim=ideal;
+% for k=1:length(U_ideal)
+%     ideal=U_ideal{k}*ideal;
+%     sim=U_sim{k}*sim;
+% end
+% trace(ideal*rho1*ideal'*rho2')/128=-0.8285 - 0.4230i;
+% trace(ideal*rho1*ideal'*rho3')/128=-0.8237 - 0.4215i;
+% trace(sim*rho1*sim'*rho2')/128=-0.1624 - 0.8541i;  0.8694;
+% trace(sim*rho1*sim'*rho3')/128=0.5585 - 0.5826i;  0.8070;
+
+
+
+
+
+
+%%% shapefile
+Bx=[]; By=[]; 
+for n=1:length(compiled_pulse)
+    [x,y]=selpulse(compiled_pulse{n});
+    Bx=[Bx,x]; By=[By,y];
+end
+    
+total_time=length(Bx)*5e-6; ref_power=2500; 
+Amp=abs(Bx+i*By)*100/ref_power; Phase=angle(Bx+i*By)*180/pi;
+fid=fopen('12spin_7PPS_U_Encoding.txt','w');
+fprintf(fid, '##TITLE= %s\n','Gaussian');
+fprintf(fid, '##JCAPM-DX= 5.00 Bruker JCAMP library\n');
+fprintf(fid, '##DATA TYPE= Shape Pulses \n');
+fprintf(fid, '##ORIGIN= Colm Fixed Pulses \n');
+fprintf(fid, '##OWNER= %s\n', 'Jun Li');
+fprintf(fid, '##DATE= \n');
+fprintf(fid, '##TIME= \n');
+fprintf(fid, '##MINX= %7.6e\n',min(Amp));
+fprintf(fid, '##MAXX= %7.6e\n',min(max(Amp),100));
+fprintf(fid, '##MINY= %7.6e\n',min(Phase));
+fprintf(fid, '##MAXY= %7.6e\n',max(Phase));
+fprintf(fid, '##$SHAPE_EXMODE= None\n');
+fprintf(fid, '##$SHAPE_TOTROT= %7.6e\n',90);
+fprintf(fid, '##$SHAPE_BWFAC= %7.6e\n',1);
+fprintf(fid, '##$SHAPE_INTEGFAC= %7.6e\n',1);
+fprintf(fid, '##$SHAPE_MODE= 1\n');
+fprintf(fid, '##PULSE_WIDTH= %d\n',total_time);
+fprintf(fid, '##NPOINTS= %d\n',length(Amp));
+fprintf(fid, '##XYPOINTS= (XY..XY)\n');
+for j=1:length(Amp)
+    fprintf(fid,'%f', Amp(j));
+    fprintf(fid,'%s','e+000, ');
+    fprintf(fid,'%f', Phase(j));
+    fprintf(fid,'%s\n','e+000 ');
+end
+fprintf(fid, '##END=');
+fclose(fid);
+
+
+% Notes:
+%   1. For a new experiment, values of the following parameters may be modified to improve performance:  
+%      (1) selective pulse shape;

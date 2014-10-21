@@ -1,0 +1,78 @@
+%%% Main Programe for Pulse Compiling;
+
+% Author: Jun Li
+% Date: 2013.06.21
+% References: 
+%   (1) C. A. Ryan, et al, Phys. Rev. A 78, 012328, (2008).
+%   (2) Codes by Ryan at IQC NMR lab.
+
+clear;
+
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(7);
+
+load parameter.mat
+
+% rho_ini = zeros(64);
+% rho_ini(1,1) = 1;
+% rho_ini = kron(rho_ini,Iz);
+
+% Write target U_ideal and uncompiled pulse pulse;
+% U_ideal{1}=rot(KIx{2}+KIx{3}+KIx{6},pi)*rot(-KIy{7},pi/2);
+U_ideal{1}=rot(KIx{1},pi/2);
+% rho_final = U_ideal{1}*rho_ini*U_ideal{1}';
+% uncompiled_pulse={[total_time, time_interval], [pulse_qubit, pulse_center, pulse_width, pulse_phase, pulse_angle, pulse_variance], compile option};
+% suggested pulse_variance: Gaussian: (90 degree: 60; 180 degree: 120; 270 degree: 150;)
+% compile option= 
+%   I: eliminate nontrivial post_errors; effective when Initial state is on Z-direction
+%  II: eliminate nontrivial pre_errors and post_erros; 
+% III: eliminate nontrivial pre_errors;  effective when Final state is on Z-direction
+%uncompiled_pulse{1}={[5e-3, 5e-6], [1, 2.5e-3, 5e-3, 0, 180, 300;6, 2.5e-3, 5e-3, 0, 180, 300], {'I','I'}};
+%uncompiled_pulse{1}={[2e-3, 2e-6], [2, 1e-3, 2e-3, 0, 180, 300;3, 1e-3, 2e-3, 0, 180, 300;6, 1e-3, 2e-3, 0, 180, 300;7, 1e-3, 2e-3, 0, 90, 300], {'I','I','I','III'}};
+uncompiled_pulse{1}={[1e-3, 1e-6], [1, 2.5e-3, 5e-3, 0, 180, 300;6, 2.5e-3, 5e-3, 0, 180, 300], {'I'}};
+[compiled_pulse, U_sim, pre_error, post_error, phase_correction, fidelity]=compile(U_ideal, uncompiled_pulse);
+
+
+
+
+%%% shapefile
+Bx=[]; By=[]; 
+for n=1:length(compiled_pulse)
+    [x,y]=selpulse(compiled_pulse{n});
+    Bx=[Bx,x]; By=[By,y];
+end
+    
+total_time=length(Bx)*1e-6; ref_power=2500; 
+Amp=abs(Bx+i*By)*100/ref_power; Phase=angle(Bx+i*By)*180/pi;
+fid=fopen('12spin_16_180.txt','w');
+fprintf(fid, '##TITLE= %s\n','Gaussian');
+fprintf(fid, '##JCAPM-DX= 5.00 Bruker JCAMP library\n');
+fprintf(fid, '##DATA TYPE= Shape Pulses \n');
+fprintf(fid, '##ORIGIN= Colm Fixed Pulses \n');
+fprintf(fid, '##OWNER= %s\n', 'Jun Li');
+fprintf(fid, '##DATE= \n');
+fprintf(fid, '##TIME= \n');
+fprintf(fid, '##MINX= %7.6e\n',min(Amp));
+fprintf(fid, '##MAXX= %7.6e\n',min(max(Amp),100));
+fprintf(fid, '##MINY= %7.6e\n',min(Phase));
+fprintf(fid, '##MAXY= %7.6e\n',max(Phase));
+fprintf(fid, '##$SHAPE_EXMODE= None\n');
+fprintf(fid, '##$SHAPE_TOTROT= %7.6e\n',90);
+fprintf(fid, '##$SHAPE_BWFAC= %7.6e\n',1);
+fprintf(fid, '##$SHAPE_INTEGFAC= %7.6e\n',1);
+fprintf(fid, '##$SHAPE_MODE= 1\n');
+fprintf(fid, '##PULSE_WIDTH= %d\n',total_time);
+fprintf(fid, '##NPOINTS= %d\n',length(Amp));
+fprintf(fid, '##XYPOINTS= (XY..XY)\n');
+for j=1:length(Amp)
+    fprintf(fid,'%f', Amp(j));
+    fprintf(fid,'%s','e+000, ');
+    fprintf(fid,'%f', Phase(j));
+    fprintf(fid,'%s\n','e+000 ');
+end
+fprintf(fid, '##END=');
+fclose(fid);
+
+
+% Notes:
+%   1. For a new experiment, values of the following parameters may be modified to improve performance:  
+%      (1) selective pulse shape;

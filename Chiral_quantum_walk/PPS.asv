@@ -1,0 +1,21 @@
+clear;
+
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(3);
+[Para,H] = hamiltonian_TCE;
+%% initial state |000>
+
+input = KIz{1}+KIz{2}+4*KIz{3};
+
+U_pps1 = rot(KIy{3},pi/3)*rot(KIy{1},pi/3);
+part1 = Gz(U_pps1*input*U_pps1');
+
+U_pps2 = rot(-KIy{3},pi/2)*rot(KIz{3}*KIz{2},pi)*rot(KIx{3},pi/2);
+
+
+U_pps = rot(-KIy{3},pi/4)*rot(KIz{3}*KIz{2},pi)*rot(KIx{3},pi/4);
+pps = Gz(U_pps*input*U_pps')/4;
+save U_pps.mat U_pps
+rho_ini = rot(KIy{3},2*theta)*rot(KIy{2},pi/2)*pps*(rot(KIy{3},2*theta)*rot(KIy{2},pi/2))';
+ttt = rot(KIy{2},pi/2)*pps*(rot(KIy{2},pi/2))';
+% system qubit
+psi_i = cos(theta)*[1;0]+sin(theta)*[0;1];
