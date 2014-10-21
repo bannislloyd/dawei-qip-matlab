@@ -1,0 +1,325 @@
+#include <Avance.incl>
+#include <Grad.incl>
+
+;;Declarations:start
+define delay gon
+"gon = 2u"
+define delay goff
+"goff = 2u"
+define delay gwait
+"gwait = 0.2m"
+define delay grad1
+"grad1 = 2m"
+define delay grad2
+"grad2 = 3m"
+define pulse Hh90
+"Hh90 = 0.01m"
+define pulse Ch90
+"Ch90 = 0.02m"
+define pulse Hh180
+"Hh180 = 0.02m"
+define pulse Ch180
+"Ch180 = 0.04m"
+define pulse H190
+"H190 = 0.128m"
+define pulse H1180
+"H1180 = 0.128m"
+define pulse C190
+"C190 = 0.128m"
+define pulse C1180
+"C1180 = 0.128m"
+
+;;Declarations:stop
+
+;;basic set-up:
+
+
+1 ze
+
+
+
+
+ 2 30m
+  d1
+  1u reset:f1
+  1u reset:f2
+  1u reset:f3
+  1m
+
+  50u UNBLKGRAD
+
+
+;;Pulses:start
+
+; Initial virtual 180s: (0,0,0,0)
+
+; ZZs:	
+; State:RH:I;H1:I;RC:I;C1:I
+
+ ;Terminal virtual 180s: 
+; (0,0,0,0)
+
+; Final phases (in reference frame): 
+; 0.000000, 0.000000, 0.000000, 0.000000
+
+; Final channel phases (in reference frame): 
+; 0.500000, 0.000000, 0.000000, 0.000000
+
+ ;Final State: 
+; I, I, I, I
+
+
+
+ ;----------------------------------
+; Total Time: 0.000000 seconds.
+ ;----------------------------------
+
+
+; Initial virtual 180s: (0,0,0,0)
+; State:RH:Z;H1:Z;RC:Z;C1:Z
+; ZZs:	
+
+
+; noop
+
+
+; State:RH:Z;H1:Z;RC:Z;C1:Z
+; ZZs:	H1&C1=0.003;		C1&H1=0.003;		
+
+
+0.013m
+0.01m pl21:f2
+( Hh90 ph1 ):f2 
+6u
+0.01m pl2:f2
+3u ipp1
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	
+
+
+0.013m
+0.01m pl21:f2
+( Hh180 ph2 ):f2 
+6u
+0.01m pl2:f2
+3u ipp2
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	RH&H1=0.000:0.000--; 	H1&RH=0.000:0.000--; 	H1&RC=0.000:0.000--; 	H1&C1=0.000:0.000+-; 	RC&H1=0.000:0.000--; 	C1&H1=0.000:0.000+-; 	
+
+
+0.013m
+0.01m pl21:f2
+( Hh90 ph3 ):f2 
+6u
+0.01m pl2:f2
+3u ipp3
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	
+
+
+0.013m
+0.01m pl21:f2
+( Hh180 ph4 ):f2 
+6u
+0.01m pl2:f2
+3u ipp4
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	
+
+
+
+gon:ngrad
+grad1
+goff:ngrad
+gwait
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	RH&H1=0.000:0.000--; 	H1&RH=0.000:0.000--; 	H1&RC=0.000:0.000--; 	H1&C1=0.000:0.000+-; 	RC&H1=0.000:0.000--; 	C1&H1=0.000:0.000+-; 	
+
+
+0.013m
+0.01m pl21:f2
+( Hh90 ph1 ):f2 
+6u
+0.01m pl2:f2
+3u ipp1
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	
+
+
+0.013m
+0.01m pl21:f2
+( Hh180 ph2 ):f2 
+6u
+0.01m pl2:f2
+3u ipp2
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	RH&H1=0.000:0.000--; 	H1&RH=0.000:0.000--; 	H1&RC=0.000:0.000--; 	H1&C1=0.000:0.000+-; 	RC&H1=0.000:0.000--; 	C1&H1=0.000:0.000+-; 	
+
+
+0.013m
+0.01m pl21:f2
+( Hh90 ph3 ):f2 
+6u
+0.01m pl2:f2
+3u ipp3
+
+
+2.27418m
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	RH&H1=0.000:0.000-+; 	H1&RH=0.000:0.000-+; 	H1&RC=0.000:0.000-+; 	H1&C1=0.250:0.250++; 	RC&H1=0.000:0.000-+; 	C1&H1=0.250:0.250++; 	
+
+
+0.013m
+0.01m pl21:f2
+( Hh90 ph4 ):f2 
+6u
+0.01m pl2:f2
+3u ipp4
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	
+
+
+0.013m
+0.01m pl21:f2
+( Hh180 ph1 ):f2 
+6u
+0.01m pl2:f2
+3u ipp1
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	RH&H1=0.000:0.000--; 	H1&RH=0.000:0.000--; 	H1&RC=0.000:0.000--; 	H1&C1=0.000:0.000+-; 	RC&H1=0.000:0.000--; 	C1&H1=0.000:0.000+-; 	
+
+
+0.013m
+0.01m pl21:f2
+( Hh90 ph2 ):f2 
+6u
+0.01m pl2:f2
+3u ipp2
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	
+
+
+
+gon:ngrad
+grad2
+goff:ngrad
+gwait
+
+
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; ZZs:	H1&C1=0.005;		C1&H1=0.005;		
+
+
+0.013m
+0.01m pl22:f3
+( Ch180 ph10 ):f3 
+6u
+0.01m pl3:f3
+3u ipp10
+
+
+
+; ZZs:	RH&RC=0.164;		H1&C1=0.002:0.000++; 	RC&RH=0.164;		C1&H1=0.002:0.000++; 	
+; State:RH:Z;H1:X;RC:Z;C1:Z
+; Net ZZ error: 0.002044, cos=0.999918
+
+ ;Terminal virtual 180s: 
+; (0,0,0,0)
+
+; Final phases (in reference frame): 
+; 0.488590, 0.666670, 0.637420, 0.000000
+
+; Final channel phases (in reference frame): 
+; 0.208924, 0.000000, 0.000000, 0.000000
+
+ ;Final State: 
+; Z, X, Z, Z
+
+
+
+ ;----------------------------------
+; Total ZZ error: 0.002044, cos=0.999918
+; Total Time: 0.008324 seconds.
+ ;----------------------------------
+
+
+; Initial virtual 180s: (0,0,0,0)
+; State:RH:;H1:;RC:;C1:
+; ZZs:	RH&C1=0.000:0.000-+; 	H1&C1=0.004:0.000++; 	RC&C1=0.000:0.000-+; 	C1&RH=0.000:0.000-+; 	C1&H1=0.004:0.000++; 	C1&RC=0.000:0.000-+; 	
+; Net ZZ error: 0.003575, cos=0.999748
+
+
+0.013m
+0.01m pl22:f3
+( Ch90 ph11 ):f3 
+6u
+0.01m pl3:f3
+3u ipp11
+
+
+
+; ZZs:	RH&H1=0.000:0.000-+; 	RH&RC=0.003:0.000++; 	RH&C1=0.000:0.000-+; 	H1&RH=0.000:0.000-+; 	H1&RC=0.000:0.000-+; 	H1&C1=0.003:0.000++; 	RC&RH=0.003:0.000++; 	RC&H1=0.000:0.000-+; 	RC&C1=0.000:0.000-+; 	C1&RH=0.000:0.000-+; 	C1&H1=0.003:0.000++; 	C1&RC=0.000:0.000-+; 	
+; State:RH:;H1:;RC:;C1:X
+; Net ZZ error: 0.004029, cos=0.999680
+
+ ;Terminal virtual 180s: 
+; (0,0,0,0)
+
+; Final phases (in reference frame): 
+; 0.121132, 0.000000, 0.683550, 0.000000
+
+; Final channel phases (in reference frame): 
+; 0.407857, 0.000000, 0.000000, 0.000000
+
+ ;Final State: 
+; , , , X
+
+
+
+ ;----------------------------------
+; Total ZZ error: 0.005386, cos=0.999427
+; Total Time: 0.008386 seconds.
+ ;----------------------------------
+
+
+;;Pulses:stop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
+;;New set-up
+  50u BLKGRAD
+  ;;go=2 ph31:r ;; commented by JZ Dec08, 10
+  go=2 ph30 ph31:r ;; by JZ Dec08, 10
+  100m
+  wr #0
+  exit
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ph30 = (65536) 0

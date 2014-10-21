@@ -1,0 +1,83 @@
+clear;
+
+%% Initial State
+Ini_coh2(1) = 0.9611; %Z1Z2
+Ini_coh2(2) = 1.0081; %Z6
+Ini_coh2(3) = 0.9542; %Z5
+Ini_coh2(4) = 0.9362; %Z4
+Ini_coh2(5) = 1.0002; %Z3
+
+Ini_coh2 = Ini_coh2/max(Ini_coh2);
+mean(Ini_coh2)
+std(Ini_coh2)
+%% Final State
+%Decoherence = 0.6978;
+Decoherence = 0.76;
+
+% Z1Z2
+Fin_coh2(1) = 0.9527; 
+Fin_coh2(2) = 0.8596;
+Fin_coh2(3) = 0.9445;
+Fin_coh2(4) = 0.8982; 
+Fin_coh2(5) = 0.9306;
+Fin_coh2(6) = 0.9671;
+Fin_coh2(7) = 0.9822; 
+
+% Z2Z3
+Fin_coh2(8) = 0.9977; 
+Fin_coh2(9) = 0.9829;
+Fin_coh2(10) = 0.9919;
+Fin_coh2(11) = 0.8373; 
+Fin_coh2(12) = 0.8678;
+Fin_coh2(13) = 0.7865;
+Fin_coh2(14) = 0.9104;
+
+% Z2Z7
+Fin_coh2(15) = 0.6375; 
+Fin_coh2(16) = 0.4315;
+Fin_coh2(17) = 0.5913;
+Fin_coh2(18) = 0.5670; 
+Fin_coh2(19) = 0.6922;
+Fin_coh2(20) = 0.5254;
+Fin_coh2(21) = 0.6119;
+Fin_coh2(22) = 0.6116;
+
+% Z4Z7
+Fin_coh2(23) = 0.5978; 
+Fin_coh2(24) = 0.6022;
+Fin_coh2(25) = 0.5643;
+Fin_coh2(26) = 0.6426; 
+Fin_coh2(27) = 0.6196;
+Fin_coh2(28) = 0.5702;
+Fin_coh2(29) = 0.5748;
+Fin_coh2(30) = 0.6321;
+
+% Z6Z7
+Fin_coh2(31) = 0.6261; 
+Fin_coh2(32) = 0.7113;
+Fin_coh2(33) = 0.6037;
+Fin_coh2(34) = 0.6472; 
+Fin_coh2(35) = 0.6289;
+Fin_coh2(36) = 0.6378;
+Fin_coh2(37) = 0.6724;
+Fin_coh2(38) = 0.6189;
+
+% Z4Z5
+Fin_coh2(39) = 0.9498;
+
+for ii = 15:38
+    Fin_coh2(ii) =  Fin_coh2(ii)/Decoherence;
+end
+
+jj = 1;
+for ii = 1:length(Fin_coh2)
+    if Fin_coh2(ii)>0.8
+        Exp_coh2(jj) = Fin_coh2(ii);
+        jj = jj+1;
+    end
+end
+
+lamda_2 = mean(Exp_coh2)
+delta_2 = std(Exp_coh2)
+
+%Pr_1 = 2*exp(-0.05^2*1600/2)

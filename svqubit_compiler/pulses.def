@@ -1,0 +1,183 @@
+############################
+# Constant Defs :          # 
+############################
+ShapeRes        1e-6
+minPrePulse     3e-6
+minPostPulse    3e-6
+
+############################
+# Basic pulses Definitions:# 
+############################
+# type name hard? shape targets angles duration  frequency [pulse_power][ ignore_list] 
+#
+#90s:
+#basic   Hh90   hard    none  M;H1;H2  .25;.25;.25   10e-6    -3000    RH;RC
+#basic   Ch90   hard    none  C1;C2;C3;C4  .25;.25;.25;.25   20e-6    -16000     RH;RC
+#basic   M90    soft    isech   M          .25              900e-6        M             RH;RC
+
+#basic H190_H    soft   Z7_H1_90_Hfix6  H1  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H190_C    soft   Z7_H1_90_Cfix7  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6      -16000  923.99   RH;RC
+
+#basic H190h    soft   H190H3fix9  H1  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H190c    soft   H190C3fix4  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6      -16000  785.40   RH;RC
+#basic H1180h    soft   H1180H2fix5b  H1  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H1180c    soft   H1180C2fix4  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+#basic H190h    soft   H190H3  H1  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H190c    soft   H190C3  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6      -16000  785.40   RH;RC
+#basic H1180h    soft   H1180H2  H1  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H1180c    soft   H1180C2  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+
+#basic H190h    soft   H190H5fix2  H1  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H190c    soft   H190C5fix4  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6      -16000  785.40   RH;RC
+#basic H1180h    soft   H1180H4fix5  H1  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H1180c    soft   H1180C4fix5  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+
+#Rf selection
+#basic   Hrfsel    soft    rfsel4  M  0   6250e-6 M 1570.8 RH;RC
+#basic   Hrfsel    soft    rfsel4fix9  M  0   6250e-6 M 1570.8 RH;RC
+
+
+#basic H290h    soft    H290H2fix6a  H2  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H290c    soft    H290C2fix2b  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6  -16000  785.40   RH;RC
+#basic H2180h    soft   H2180H1fix6a  H2  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H2180c    soft   H2180C1fix6  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+#basic H290h    soft    H290H2  H2  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H290c    soft    H290C2  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6  -16000  785.40   RH;RC
+#basic H2180h    soft   H2180H1  H2  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H2180c    soft   H2180C1  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+#basic H290h    soft    H290H5fix4  H2  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H290c    soft    H290C5fix2  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6  -16000  785.40   RH;RC
+#basic H2180h    soft   H2180H3fix4  H2  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H2180c    soft   H2180C3fix2  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+#basic H290h    soft    H290H5  H2  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H290c    soft    H290C5  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6  -16000  785.40   RH;RC
+#basic H2180h    soft   H2180H3  H2  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H2180c    soft   H2180C3  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6      -16000  785.40   RH;RC
+
+
+
+#basic H290_H    soft    Z7_H2_90_H  H2  0.25    600e-6  -3000 1570.8   RH;RC
+#basic H290_C    soft    Z7_H2_90_C  C1;C2;C3;C4  0.0;0.0;0.0;0.0    600e-6  -16000  923.99   RH;RC
+
+#basic C190_H    soft    Z7_C1_90H  M;H1;H2  0.0;0.0;0.0    300e-6  -3000 1570.8   RH;RC
+#basic C190_C    soft    Z7_C1_90C  C1           0.25    300e-6  -16000  923.99   RH;RC
+
+#basic C290_H    soft    Z7_C2_90H  M;H1;H2  0.0;0.0;0.0    300e-6  -3000 1570.8   RH;RC
+#basic C290_C    soft    Z7_C2_90C  C2           0.25    300e-6  -16000  923.99   RH;RC
+
+#basic C390_H    soft    Z7_C3_90H  M;H1;H2  0.0;0.0;0.0    300e-6  -3000 1570.8   RH;RC
+#basic C390_C    soft    Z7_C3_90C  C3           0.25    300e-6  -16000  923.99   RH;RC
+
+
+#basic C190_H    soft    Z7_C1_90H_1fix7  M;H1;H2  0.0;0.0;0.0    300e-6  -3000 1570.8   RH;RC
+#basic C190_C    soft    Z7_C1_90C_1fix7  C1           0.25    300e-6  -16000  923.99   RH;RC
+
+#basic C290_H    soft    Z7_C2_90H_2fix7  M;H1;H2  0.0;0.0;0.0    300e-6  -3000 1570.8   RH;RC
+#basic C290_C    soft    Z7_C2_90C_2fix7  C2           0.25    300e-6  -16000  923.99   RH;RC
+
+
+
+
+#180s:
+#basic H1180_H    soft    Z7_H1_180_Hfix6  H1  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H1180_C    soft    Z7_H1_180_Cfix6  C1;C2;C3;C4  0.0;0.0;0.0;0.0  1000e-6      -16000  923.99   RH;RC
+
+#basic H1180_H    soft    Z7_H1_180_H  H1  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H1180_C    soft    Z7_H1_180_C  C1;C2;C3;C4  0.0;0.0;0.0;0.0  1000e-6      -16000  923.99   RH;RC
+
+
+#basic H2180_H    soft    Z7_H2_180_Hfix6  H2  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H2180_C    soft    Z7_H2_180_Cfix5  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6  -16000  923.99   RH;RC
+
+#basic H2180_H    soft    Z7_H2_180_H  H2  0.5    1000e-6  -3000 1570.8   RH;RC
+#basic H2180_C    soft    Z7_H2_180_C  C1;C2;C3;C4  0.0;0.0;0.0;0.0    1000e-6  -16000  923.99   RH;RC
+
+
+#basic   Hh180   hard    none    M;H1;H2     .5;.5;.5        20e-6        -3000          RH;RC
+#basic   Hhc180  soft    rob180  M;H1;H2     .5;.5;.5       120e-6        -3000  1570.8  RH;RC
+#basic   M180    soft    isech    M           .5             900e-6         M          RH;RC
+#basic   M180H    soft   M180_Herm    M           .5             1800e-6         M   94.96     RH;RC
+
+basic   C190   soft    isech   C1          .25             500e-6         C1            
+#basic   C290   soft    isech   C2          .25             700e-6         C2            RH;RC
+#basic   C2180H   soft    C180_Herm   C2          .5             1400e-6         C2   122.1         RH;RC
+#basic   C390   soft    isech   C3          .25             700e-6         C3           RH;RC
+#basic   C3180H   soft    C180_Herm   C3          .5             1400e-6         C3  122.1           RH;RC
+#basic   C490   soft    isech   C4          .25             700e-6         C4            RH;RC
+#
+#basic   C1180   soft    isech   C1          .5             170e-6         C1            RH;RC
+#basic   C2180   soft    isech   C2          .5             700e-6         C2            RH;RC
+#basic   C2180H   soft    C180_Herm   C2          .5             1400e-6         C2   122.1         RH;RC
+#basic   C3180   soft    isech   C3          .5             700e-6         C3           RH;RC
+#basic   C3180H   soft    C180_Herm   C3          .5             1400e-6         C3  122.1           RH;RC
+#basic   C4180   soft    isech   C4          .5             700e-6         C4            RH;RC
+
+
+
+
+
+#Calibration
+#basic   RH_rf    soft    rfsel4fix9  RH  0   6250e-6 RH 1570.8  M;H1;H2;C1;C2;C3;C4
+#basic   RH_rf    soft    rfsel4  RH  0   6250e-6 RH 1570.8  M;H1;H2;C1;C2;C3;C4
+
+#basic   RC_C190 soft    isech   RC  0.25    128e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RCC1180 soft    isech   RC  0.5    170e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RC_C290 soft    isech   RC  0.25    700e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RCC2180 soft    isech   RC  0.5    700e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RCC218H soft    C180_Herm   RC  0.5    1400e-6  RC  122.1     M;H1;H2;C1;C2;C3;C4
+#
+#for C7H5
+#basic   RC_C190g soft    isech   RC  0.25    150e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RCC1180g soft    isech   RC  0.5    150e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RC_C290g soft    isech   RC  0.25    1100e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RCC2180g soft    isech   RC  0.5    1100e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RC_C390g soft    isech   RC  0.25    1200e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RCC3180g soft    isech   RC  0.5    1200e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RH_H190g soft    isech   RH  0.25    6000e-6  RH     M;H1;H2;C1;C2;C3;C4
+#basic   RH_H1180g soft    isech   RH  0.5    6000e-6  RH     M;H1;H2;C1;C2;C3;C4
+#basic   RH_H590g soft    isech   RH  0.25    6500e-6  RH     M;H1;H2;C1;C2;C3;C4
+#basic   RH_H5180g soft    isech   RH  0.5    6500e-6  RH     M;H1;H2;C1;C2;C3;C4
+
+
+
+#basic   RC_C145 soft    isech   RC  0.125    128e-6  RC     M;H1;H2;C1;C2;C3;C4
+#basic   RC_C245 soft    isech   RC  0.125    700e-6  RC     M;H1;H2;C1;C2;C3;C4
+
+
+#basic   RH_M90 soft    isech   RH  0.25    900e-6  RH     M;H1;H2;C1;C2;C3;C4
+#basic   RH_M180 soft    isech   RH  0.5    900e-6  RH     M;H1;H2;C1;C2;C3;C4
+#basic   RHM180H soft    M180_Herm   RH  0.5    1800e-6  RH 94.96     M;H1;H2;C1;C2;C3;C4
+
+
+
+#basic   cHh90   hard    none    RH     .25      10e-6   RH M;H1;H2;C1;C2;C3;C4
+#basic   cCh90   hard    none    RC     .25      20e-6   RC M;H1;H2;C1;C2;C3;C4
+      
+
+#Depolarization:
+#basic   MCd0_H    soft   MCd0   M            .0                      10e-6     -3000  1570.8     RH;RC
+#basic   MCd1_H    soft   MCd1_H   M            .0620                      100e-6     -3000  1570.8     RH;RC
+#basic   MCd2_H    soft   MCd2_H   M            .0883                      100e-6     -3000  1570.8     RH;RC
+#basic   MCd3_H    soft   MCd3_H   M            .1089                      120e-6     -3000  1570.8     RH;RC
+#basic   MCd4_H    soft   MCd4_H   M            .1266                      120e-6     -3000  1570.8     RH;RC
+#basic   MCd5_H    soft   MCd5_H   M            .1425                      140e-6     -3000  1570.8     RH;RC
+#basic   MCd6_H    soft   MCd6_H   M            .1573                      140e-6     -3000  1570.8     RH;RC
+
+#basic   MCd0_C    soft   MCd0   C1;C2;C3;C4  .0;.0;.0;.0    10e-6    -16000  1049.29    RH;RC
+#basic   MCd1_C    soft   MCd1_C   C1;C2;C3;C4  .0620;.0620;.0620;.0620    100e-6    -16000  1049.29    RH;RC
+#basic   MCd2_C    soft   MCd2_C   C1;C2;C3;C4  .0883;.0883;.0883;.0883    100e-6    -16000  1049.29    RH;RC
+#basic   MCd3_C    soft   MCd3_C   C1;C2;C3;C4  .1089;.1089;.1089;.1089    120e-6    -16000  1049.29    RH;RC
+#basic   MCd4_C    soft   MCd4_C   C1;C2;C3;C4  .1266;.1266;.1266;.1266    120e-6    -16000  1049.29    RH;RC
+#basic   MCd5_C    soft   MCd5_C   C1;C2;C3;C4  .1425;.1425;.1425;.1425    140e-6    -16000  1049.29    RH;RC
+#basic   MCd6_C    soft   MCd6_C   C1;C2;C3;C4  .1573;.1573;.1573;.1573    140e-6    -16000  1049.29    RH;RC
+
+
+#Trot:
+#basic   Trot_H    soft   Z7_TrotH   M           .152                         500e-6     -3000  1570.8   RH;RC
+#basic   Trot_C    soft   Z7_TrotC   C1;C2;C3;C4 .152;.152;.152;.152          500e-6    -16000  923.99   RH;RC
+
+#basic   Trot_H    soft   Z7_TrotH_2fix7   M           .152                         500e-6     -3000  1570.8   RH;RC
+#basic   Trot_C    soft   Z7_TrotC_2fix7   C1;C2;C3;C4 .152;.152;.152;.152          500e-6    -16000  923.99   RH;RC
+
+
+

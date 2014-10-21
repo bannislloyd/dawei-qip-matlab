@@ -1,0 +1,269 @@
+clear;
+
+%% Initial State
+Ini_coh2(1) = 0.9615; %Z1Z2
+Ini_coh2(2) = 1.0116; %Z6
+% Ini_coh2(3) = 0.9632; %Z5
+% Ini_coh2(4) = 0.9927; %Z4
+% Ini_coh2(5) = 1.0522; %Z3
+
+
+Ini_coh2 = Ini_coh2/max(Ini_coh2);
+mean(Ini_coh2)
+std(Ini_coh2)
+%% Final State
+Decoherence = 0.586;
+
+% Z1Z2Z3Z4Z7
+Fin_coh7(1) = 0.4927; 
+Fin_coh7(2) = 0.5574;
+Fin_coh7(3) = 0.4769;
+Fin_coh7(4) = 0.5831; 
+Fin_coh7(5) = 0.4858;
+Fin_coh7(6) = 0.5007;
+Fin_coh7(7) = 0.5611; 
+Fin_coh7(8) = 0.5844; 
+Fin_coh7(9) = 0.4927;
+Fin_coh7(10) = 0.5158;
+Fin_coh7(11) = 0.5869;
+Fin_coh7(12) = 0.6013;
+Fin_coh7(13) = 0.5071;
+
+Fin_coh7(14) = 0.6068;
+Fin_coh7(15) = 0.5853; 
+Fin_coh7(16) = 0.5096;
+Fin_coh7(17) = 0.5491;
+Fin_coh7(18) = 0.4946;
+Fin_coh7(19) = 0.4769;
+Fin_coh7(20) = 0.5507;
+Fin_coh7(21) = 0.5146; 
+Fin_coh7(22) = 0.4950; 
+Fin_coh7(23) = 0.5398;
+
+Fin_coh7(24) = 0.6205;
+Fin_coh7(25) = 0.6037; 
+Fin_coh7(26) = 0.4553;
+Fin_coh7(27) = 0.5618;
+Fin_coh7(28) = 0.4425; 
+Fin_coh7(29) = 0.4701;
+Fin_coh7(30) = 0.6094;
+Fin_coh7(31) = 0.4585; 
+Fin_coh7(32) = 0.5102;
+Fin_coh7(33) = 0.6097;
+
+Fin_coh7(34) = 0.5552; 
+Fin_coh7(35) = 0.4046; 
+Fin_coh7(36) = 0.4432;
+Fin_coh7(37) = 0.4438;
+Fin_coh7(38) = 0.4912;
+Fin_coh7(39) = 0.4419;
+Fin_coh7(40) = 0.4319;
+Fin_coh7(41) = 0.5471;
+Fin_coh7(42) = 0.5068; 
+Fin_coh7(43) = 0.4888;
+
+Fin_coh7(44) = 0.5684;
+Fin_coh7(45) = 0.5199; 
+Fin_coh7(46) = 0.5016;
+Fin_coh7(47) = 0.5549;
+Fin_coh7(48) = 0.5604; 
+Fin_coh7(49) = 0.4953; 
+Fin_coh7(50) = 0.5006;
+Fin_coh7(51) = 0.5544;
+Fin_coh7(52) = 0.5281; 
+Fin_coh7(53) = 0.5296;
+
+Fin_coh7(54) = 0.5747;
+Fin_coh7(55) = 0.5518; 
+Fin_coh7(56) = 0.5229;
+Fin_coh7(57) = 0.5728;
+Fin_coh7(58) = 0.5578; 
+Fin_coh7(59) = 0.5101;
+Fin_coh7(60) = 0.5346;
+Fin_coh7(61) = 0.5195; 
+Fin_coh7(62) = 0.5258; 
+Fin_coh7(63) = 0.5143;
+
+Fin_coh7(64) = 0.5489;
+Fin_coh7(65) = 0.5245; 
+Fin_coh7(66) = 0.5657;
+Fin_coh7(67) = 0.5721;
+Fin_coh7(68) = 0.5347; 
+Fin_coh7(69) = 0.5849; 
+Fin_coh7(70) = 0.5442;
+Fin_coh7(71) = 0.5598;
+Fin_coh7(72) = 0.5984; 
+Fin_coh7(73) = 0.5724;
+
+Fin_coh7(74) = 0.5654;
+Fin_coh7(75) = 0.5182; 
+Fin_coh7(76) = 0.4952; 
+Fin_coh7(77) = 0.5438;
+Fin_coh7(78) = 0.5175;
+Fin_coh7(79) = 0.5202; 
+Fin_coh7(80) = 0.4904;
+Fin_coh7(81) = 0.5432;
+Fin_coh7(82) = 0.5300;
+Fin_coh7(83) = 0.5289;
+
+Fin_coh7(84) = 0.4843;
+Fin_coh7(85) = 0.5225;
+Fin_coh7(86) = 0.5161;
+Fin_coh7(87) = 0.5061; 
+Fin_coh7(88) = 0.5257; 
+Fin_coh7(89) = 0.5111;
+Fin_coh7(90) = 0.4984;
+Fin_coh7(91) = 0.5273;
+Fin_coh7(92) = 0.5113;
+Fin_coh7(93) = 0.5099;
+
+Fin_coh7(94) = 0.4894;
+Fin_coh7(95) = 0.5159; 
+Fin_coh7(96) = 0.5001;
+Fin_coh7(97) = 0.5359;
+Fin_coh7(98) = 0.4832; 
+Fin_coh7(99) = 0.5458;
+Fin_coh7(100) = 0.5198;
+Fin_coh7(101) = 0.5018; 
+Fin_coh7(102) = 0.4900; 
+Fin_coh7(103) = 0.5398;
+
+Fin_coh7(104) = 0.5023;
+Fin_coh7(105) = 0.4929; 
+Fin_coh7(106) = 0.5240;
+Fin_coh7(107) = 0.5120;
+Fin_coh7(108) = 0.5087;
+Fin_coh7(109) = 0.5522;
+Fin_coh7(110) = 0.5422;
+Fin_coh7(111) = 0.5300;
+Fin_coh7(112) = 0.4896;
+Fin_coh7(113) = 0.5253;
+
+Fin_coh7(114) = 0.5114; 
+Fin_coh7(115) = 0.5139; 
+Fin_coh7(116) = 0.5691;
+Fin_coh7(117) = 0.5405;
+Fin_coh7(118) = 0.5057;
+Fin_coh7(119) = 0.5287;
+Fin_coh7(120) = 0.5145;
+Fin_coh7(121) = 0.5718;
+Fin_coh7(122) = 0.5151; 
+Fin_coh7(123) = 0.4818;
+
+Fin_coh7(124) = 0.5229;
+Fin_coh7(125) = 0.5837; 
+Fin_coh7(126) = 0.5541;
+Fin_coh7(127) = 0.5930;
+Fin_coh7(128) = 0.5598; 
+Fin_coh7(129) = 0.5047; 
+Fin_coh7(130) = 0.5496;
+Fin_coh7(131) = 0.5439;
+Fin_coh7(132) = 0.5188; 
+Fin_coh7(133) = 0.5007;
+
+Fin_coh7(134) = 0.5141;
+Fin_coh7(135) = 0.5384; 
+Fin_coh7(136) = 0.5277;
+Fin_coh7(137) = 0.5221;
+Fin_coh7(138) = 0.5116; 
+Fin_coh7(139) = 0.5180;
+Fin_coh7(140) = 0.5426;
+Fin_coh7(141) = 0.5205; 
+Fin_coh7(142) = 0.4995;
+Fin_coh7(143) = 0.4914;
+
+Fin_coh7(144) = 0.5102;
+Fin_coh7(145) = 0.5106;
+Fin_coh7(146) = 0.508 ;
+Fin_coh7(147) = 0.4973;
+Fin_coh7(148) = 0.5271;
+Fin_coh7(149) = 0.4938; 
+Fin_coh7(150) = 0.5285;
+Fin_coh7(151) = 0.5104;
+Fin_coh7(152) = 0.5230; 
+Fin_coh7(153) = 0.5608;
+
+Fin_coh7(154) = 0.5698;
+Fin_coh7(155) = 0.5468;
+Fin_coh7(156) = 0.5591;
+Fin_coh7(157) = 0.5686;
+Fin_coh7(158) = 0.5531;
+Fin_coh7(159) = 0.5549;
+Fin_coh7(160) = 0.5871;
+Fin_coh7(161) = 0.5455;
+Fin_coh7(162) = 0.5293;
+Fin_coh7(163) = 0.4972;
+
+Fin_coh7(164) = 0.5113; 
+Fin_coh7(165) = 0.5349;
+Fin_coh7(166) = 0.5413;
+Fin_coh7(167) = 0.5356; 
+Fin_coh7(168) = 0.5122; 
+Fin_coh7(169) = 0.5224;
+Fin_coh7(170) = 0.5822;
+Fin_coh7(171) = 0.5183; 
+Fin_coh7(172) = 0.5321;
+Fin_coh7(173) = 0.491 ;
+
+Fin_coh7(174) = 0.5126; 
+Fin_coh7(175) = 0.5379;
+Fin_coh7(176) = 0.5394;
+Fin_coh7(177) = 0.5478;
+Fin_coh7(178) = 0.5577;
+Fin_coh7(179) = 0.5332;
+Fin_coh7(180) = 0.5607;
+Fin_coh7(181) = 0.5844; 
+Fin_coh7(182) = 0.5419; 
+Fin_coh7(183) = 0.5615;
+                
+Fin_coh7(184) = 0.5565;
+Fin_coh7(185) = 0.5756; 
+Fin_coh7(186) = 0.4980;
+Fin_coh7(187) = 0.5060;
+Fin_coh7(188) = 0.5311; 
+Fin_coh7(189) = 0.5260;
+Fin_coh7(190) = 0.5178;
+Fin_coh7(191) = 0.4967; 
+Fin_coh7(192) = 0.5100;
+Fin_coh7(193) = 0.5524;
+
+Fin_coh7(194) = 0.5740; 
+Fin_coh7(195) = 0.5206; 
+Fin_coh7(196) = 0.5059;
+Fin_coh7(197) = 0.5662;
+Fin_coh7(198) = 0.5389; 
+Fin_coh7(199) = 0.545 ;
+Fin_coh7(200) = 0.5123;
+Fin_coh7(201) = 0.5824; 
+Fin_coh7(202) = 0.5049;
+Fin_coh7(203) = 0.5662;
+
+Fin_coh7(204) = 0.5140;
+Fin_coh7(205) = 0.5036;
+
+
+
+
+
+
+
+current_length = 205;
+         
+for ii = 1:current_length
+    Fin_coh7(ii) =  Fin_coh7(ii)/0.61;
+end
+
+
+jj = 1;
+for ii = 1:current_length
+    if Fin_coh7(ii)>0.75 && Fin_coh7(ii)<1
+        Exp_coh7(jj) = Fin_coh7(ii);
+        jj = jj+1;
+    end
+end
+
+length(Exp_coh7)
+lamda_7 = mean(Exp_coh7)
+delta_7 = std(Exp_coh7)
+
+%Pr_1 = 2*exp(-0.05^2*1600/2)
