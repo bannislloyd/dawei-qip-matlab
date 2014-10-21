@@ -1,0 +1,15 @@
+ Goodness |  Improvement/step |  Step Size  |  Iterations  |  CPU Time
+  0.0165         1.001e+00       8.000e-04          1          0.04 
+  0.0242         6.012e-01       2.048e-01          9          0.33 
+  0.3726         4.686e-01       1.909e-01         12          0.42 
+Had to reset conjugate gradients!
+  0.7833         3.892e-01       2.692e-01         14          0.49 
+  0.8748         3.437e-01       2.343e-01         15          0.52 
+  0.8991         2.950e-01       4.686e-01         16          0.57 
+  0.9386         2.469e-01       5.091e-01         17          0.61 
+  0.9732         1.987e-01       3.288e-01         18          0.64 
+  0.9856         1.493e-01       2.570e-01         19          0.68 
+  0.9905         9.952e-02       2.258e-01         20          0.72 
+Failed to find pulse because no longer improving by params.improvechk.
+
+Found pulse of desired fidelity!

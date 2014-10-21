@@ -1,0 +1,175 @@
+clear;
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(3);
+%% Initialize
+% system qubit
+psi_i = cell(1,100);
+jj = 1;
+for theta = (0):(pi/40):(pi/2)
+psi_i{jj} = cos(theta)*[1;0]+sin(theta)*[0;1];
+
+
+% measuring device
+md_i = 1/sqrt(2)*([1;0]+[0;1]);
+% ancilla
+ancilla = 0.5*I;
+
+temp = psi_i{jj};
+
+rho_ini = kron(temp*temp',kron(md_i*md_i',ancilla));
+
+%% Weak Measurement
+
+
+g = 0.1;
+
+%measure_operator = 2*(cos(pi/4)*Iz+sin(pi/4)*Ix);
+measure_operator = 2*Ix;
+u_weak = expm(-i*2*g*kron(measure_operator,kron(I,I))*KIz{2});
+rho_weak = u_weak*rho_ini*u_weak';
+
+%% Post Selection
+psi_f = [1;0]; % the post selection state of system is |0>
+
+Toffoli = kron(I,kron(I,I))-kron(ST1,kron(I,ST1))+kron(ST1,kron(sigma_z,ST1));
+ % projective measurement operator
+rho_final = Toffoli*rho_weak*Toffoli'; % the final state after the projective measurement
+
+weak_value(jj) = psi_f'*measure_operator*temp/(psi_f'*temp); % weak value by theoretical definition
+sigma_y_md = trace(rho_final*2*KIy{2});
+sigma_z_s = trace(rho_final*2*KIz{1});
+Re_weak_value(jj) = sigma_y_md/(sigma_z_s+1)/g; % Re of the weak value by measuring sigma_y on the device
+
+jj = jj+1;
+end
+
+theta = (0):(pi/40):(pi/2);
+plot(theta,Re_weak_value,'b-','Color',[0.4 0.4 1],'Linewidth',2)
+hold on
+
+%% theta = pi/2~pi
+clear;
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(3);
+%% Initialize
+% system qubit
+psi_i = cell(1,100);
+jj = 1;
+for theta = (pi/2):(pi/40):(pi)
+psi_i{jj} = cos(theta)*[1;0]+sin(theta)*[0;1];
+
+
+% measuring device
+md_i = 1/sqrt(2)*([1;0]+[0;1]);
+% ancilla
+ancilla = 0.5*I;
+
+temp = psi_i{jj};
+
+rho_ini = kron(temp*temp',kron(md_i*md_i',ancilla));
+
+%% Weak Measurement
+
+
+g = 0.1;
+
+%measure_operator = 2*(cos(pi/4)*Iz+sin(pi/4)*Ix);
+measure_operator = 2*Ix;
+u_weak = expm(-i*2*g*kron(measure_operator,kron(I,I))*KIz{2});
+rho_weak = u_weak*rho_ini*u_weak';
+
+%% Post Selection
+psi_f = [1;0]; % the post selection state of system is |0>
+
+Toffoli = kron(I,kron(I,I))-kron(ST1,kron(I,ST1))+kron(ST1,kron(sigma_z,ST1));
+ % projective measurement operator
+rho_final = Toffoli*rho_weak*Toffoli'; % the final state after the projective measurement
+
+weak_value(jj) = psi_f'*measure_operator*temp/(psi_f'*temp); % weak value by theoretical definition
+sigma_y_md = trace(rho_final*2*KIy{2});
+sigma_z_s = trace(rho_final*2*KIz{1});
+Re_weak_value(jj) = sigma_y_md/(sigma_z_s+1)/g; % Re of the weak value by measuring sigma_y on the device
+
+jj = jj+1;
+end
+
+B = cell(8,1);
+B{1}= [0.0832 0.0953 0.3936 -0.2083];
+B{2} = [0.2821 0.2754 -0.0785 -0.0104];
+B{3} = [0.6737 0.3903 0.6028 0.1282];
+B{4} = [0.6934 0.8916 0.4033 0.4454];
+B{5} = [1.0293 0.5707 0.7515 1.0970];
+B{6} = [0.8264 1.1748 1.2510 1.5232];
+B{7} = [2.6963 2.1570 1.8048 2.1642];
+B{8} = [3.5395 4.0858 4.4718 4.3399];
+
+
+for jj = 1:8
+    exp_weak2(jj) = mean(B{jj});
+    bound2(jj) = std(B{jj});
+end
+exp_theta = 0:0.2:1.4;
+errorbar(exp_theta,exp_weak2,bound2,'MarkerSize',5.5,...
+    'Marker','o',...
+    'LineWidth',1.2,...
+    'LineStyle','none','Color',[1 0.4 0.4]);
+
+
+hold on
+
+theta = (pi/2):(pi/40):(pi);
+plot(theta,Re_weak_value,'b-','Color',[0.4 0.4 1],'Linewidth',2)
+hold on
+
+
+
+
+A = cell(8,1);
+A{1}= [-4.0692 -3.7174 -3.3257 -4.5648];
+A{2} = [-1.9171 -2.0274 -2.8811 -2.1869];
+A{3} = [-2.0458 -1.5912 -1.3453 -1.0490];
+A{4} = [-0.7990 -1.1586 -0.7169 -0.9136];
+A{5} = [-0.8568 -0.8014 -0.5218 -0.4998];
+A{6} = [-0.5843 -0.2471 -0.4328 -0.1577];
+A{7} = [-0.1676 -0.1748 -0.3231 -0.6567];
+A{8} = [-0.0649 -0.0878 0.2569 0.2941];
+
+
+for jj = 1:8
+    exp_weak3(jj) = mean(A{jj});
+    bound3(jj) = std(A{jj});
+end
+exp_theta3 = 1.74:0.2:3.14;
+errorbar(exp_theta3,exp_weak3,bound3,'MarkerSize',5.5,...
+    'Marker','o',...
+    'LineWidth',1.2,...
+    'LineStyle','none','Color',[1 0.4 0.4]);
+
+hold on
+
+plot(0:0.01:3.15, 0, 'k--','Linewidth',1.5,'Color',[0.8 0.8 0.8])
+hold on
+plot(pi/2, -5:0.04:5, 'k--','Linewidth',1.5,'Color',[0.8 0.8 0.8])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%set label and title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+xlabel({'\theta (g=0.1)'},'FontWeight','normal','FontSize',24,...
+    'FontName','Calibri');
+
+ylabel({'weak value <\sigma_x>'},'FontWeight','normal','FontSize',24,...
+    'FontName','Calibri');
+
+title({'Initial State cos\theta|0>+sin\theta|1>'},'FontWeight','normal','FontSize',24,...
+   'FontName','Calibri',...
+   'FontAngle','normal');
+
+set(gca,'FontName','Calibri','FontSize',24);
+
+set(gca,'xlim',[-0.1 3.24])
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%set legend
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+legend('simulation','experiment');
+
+set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],...
+    'LineWidth',2,...
+    'FontWeight','normal','FontSize',22);
