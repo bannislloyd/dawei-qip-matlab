@@ -1,0 +1,10 @@
+Encode_sim.m : check the pulse sequence by Matlab, on Jan. 03, 09, Encode_exp_check7_b.m is used.  
+
+Pusle sequence for encoding: encode_b.frag. Total time is about 0.270s, much less than encode.frag, where time is more than 0.5s. 
+
+Jan. 11, 2010: check pulse sequence for encoding: Check_encode_b.m 
+
+Compliler program: encode_c.frag, where 45 pulses are applied by X90'-Z45-X90,
+ Run Encode_sim.m, the fidelity between theory is 0.91, for identical superposition of C2, C3 
+ 
+

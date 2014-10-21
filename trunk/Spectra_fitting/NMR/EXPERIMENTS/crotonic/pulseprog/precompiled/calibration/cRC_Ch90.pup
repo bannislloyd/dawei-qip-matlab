@@ -1,0 +1,38 @@
+#define RCobs
+#define calib
+#include "defs.h"
+
+
+;>
+; pulse	noop @*:Z-
+;zz * * *
+;pulse RH_rf 0~RH
+;gradient grad1 0 0 29
+;<
+;!&clearPhases();
+
+
+;>
+  ;pulse noop @*:Z-
+
+  ;zz * * * 
+  ;pulse cCh90 .25~RC
+  ;zz * * * 
+ 
+  ;zz * * * 
+  ;pulse cCh90 .25~RC
+  ;zz * * * 
+
+ ;zz * * * 
+ ;pulse cCh90 .25~RC
+ ;zz * * * 
+
+ ;zz * * * 
+ ;pulse cCh90 .25~RC
+ ;zz * * * 
+
+;<
+
+
+#include "defs.t"
+

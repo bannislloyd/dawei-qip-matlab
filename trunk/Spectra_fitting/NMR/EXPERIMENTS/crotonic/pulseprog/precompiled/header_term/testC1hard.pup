@@ -1,0 +1,14 @@
+#define experiment
+#define C1obs
+;#include "defs.h"
+#include "defsMy.h"
+
+;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+
+;pulse noop @*:Z+
+
+;pulse Ch90 0.25~C1
+
+;<
+
+#include "defs.t"
