@@ -1,0 +1,75 @@
+1.请把baseconvert.m和pauliform.m放到一起并添加进子函数调用库里。
+
+2.调用baseconvert时，请在调用的matlab的m文件中顶部添加
+  [H,U,HD]=baseconvert;  H,U,HD的变量名可换
+ 
+  其中，H代表我们现在确定的ZLI1132的哈密顿量
+        U代表两个基之间的变换矩阵
+        HD代表变换后的对角化哈密顿量
+
+  三者关系满足HD = U'*H*U; H = U*HD*U';
+
+  说明：一个矩阵对角化的方式有很多种，最后确定U为现在的形式是经过逻辑qubit标记的方便程度考虑的，如果有更好的逻辑比特标记方式请告诉我～～
+
+3.计算强调制脉冲时请在要计算的算子前后乘上U,U'；
+  
+  例如想计算逻辑比特1绕x轴转90度，那么写成以下形式即可：
+
+  targetU=U*expm(-i*Ix1*pi/2)*U';
+
+
+
+示例如下（以朱晶湿兄的grape.m为例）：
+
+% 批量计算文件
+clc
+clear
+addpath(genpath('sub'))
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%调用两个子函数
+[Hint,U,HD]=baseconvert;
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,Ix1,Iy1,Iz1,Ix2,Iy2,Iz2,Ix3,Iy3,Iz3]=pauliform(3);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%以下的参数不用变
+
+% 3 bit计算参数
+
+ TotalTime=600e-6;
+ dt=3e-6;
+ Step=round(TotalTime/dt);
+ eps=10000000;
+
+% Max Power Limit
+MaxPower=9100;
+
+% inHomogeneity 参数
+inHomo=[0.95 0.3;
+        1.00 0.4;
+        1.05 0.3];
+
+% 循环参数设定    
+StepLimit=1000; % 总循环次数
+StepReport=10;  % 循环输出报告次数
+
+ParaSYS=[TotalTime dt Step eps MaxPower StepLimit StepReport];
+
+% 目标保真度 注意,由于定义上的区别,SMP的F=GRAPE的F^2, Fsmp0.99=Fgrape0.995
+targetF=0.995;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+filename = '1x90.pp';
+targetU= U*expm(-i*Ix1*pi/2)*U';
+basicP(targetF,targetU,filename,Hint,ParaSYS,inHomo);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
