@@ -1,0 +1,61 @@
+;;; Template for the magic state
+
+;;Include header file for this experiment:
+;;---------------------------------------
+#define exp
+#define C2obs
+#include "defs.h"
+
+;;; If we are running an experiment then all the preparation steps
+
+;;; Perform r.f. selection
+;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+;pulse noop @*:Z-
+;zz * * *
+;pulse Hrfsel 0
+;zz * * *
+; gradient grad1 0 0 31 
+;zz * * *
+;zz end * *
+;<
+
+;;;Crush the polarization but on M:
+;>
+; pulse noop @*:Z-
+#include "Ccrush.frag"
+;zz * * *
+;zz end * *
+;<
+;!&clearPhases();
+
+;;Select the spin 1/2 subspace on the methyl group.
+;>
+;pulse noop @*:I-;M:Z-
+#include "Mhalf.frag"
+;<
+;!&clearPhases();
+
+;;;  Create the labeled pseudo pure on H2
+;>
+;pulse noop @*:I+;M:Z+
+#include "xxxxxxx.frag"
+;pulse noop @*:X+
+;zz * * *
+#include "dec_H1.frag"
+;;;Rotate H1 back up to Z
+;pulse H190 0.75~H1;0.75~C2 @H1:Z+
+
+;refocus H2180 0
+;refocus H1180 0
+; gradient grad1 0 0 34
+;pulse C290 0.25~C2 @H1:Z-
+
+;refocus C1180 0
+
+;refocus C2180 0
+;refocus C3180 0
+;<
+
+;;Terminal file:
+;;--------------
+#include "defs.t"

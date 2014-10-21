@@ -1,0 +1,93 @@
+#include <Avance.incl>
+#include <Grad.incl>
+
+;;Declarations:start
+define delay gon
+"gon = 2u"
+define delay goff
+"goff = 2u"
+define delay gwait
+"gwait = 0.2m"
+define delay grad1
+"grad1 = 2m"
+define delay grad2
+"grad2 = 3m"
+define pulse C190
+"C190 = 0.5m"
+
+;;Declarations:stop
+
+;;basic set-up:
+
+
+1 ze
+
+
+
+
+ 2 30m
+  d1
+  1u reset:f1
+  1u reset:f2
+  1u reset:f3
+  1m
+
+  50u UNBLKGRAD
+
+
+;;Pulses:start
+
+; Initial virtual 180s: (0,0,0,0,0,0,0,0,0,0,0,0)
+; State:C1:I;C2:I;C3:I;C4:I;C5:I;C6:I;C7:I;H1:I;H2:I;H3:I;H4:I;H5:I
+; ZZs:	C1&C2=0.008;		C1&H4=-0.001;		C2&C1=0.008;		H4&C1=-0.001;		
+
+
+3u
+( C190:sp1 ph5 ):f2 
+6u
+3u ipp5
+
+
+
+; ZZs:	C1&C2=0.009;		C1&H4=-0.001;		C2&C1=0.009;		C2&C3=0.008;		C2&C7=0.010;		C2&H4=0.034;		C3&C2=0.008;		C3&H2=0.037;		C3&H3=0.037;		C3&H4=-0.001;		C4&C5=0.008;		C4&C7=0.007;		C4&H1=0.042;		C4&H4=0.001;		C4&H5=0.002;		C5&C4=0.008;		C5&C6=0.008;		C5&C7=-0.005;		C6&C5=0.008;		C6&C7=0.009;		C6&H1=0.001;		C6&H4=0.001;		C6&H5=0.002;		C7&C2=0.010;		C7&C4=0.007;		C7&C5=-0.005;		C7&C6=0.009;		C7&H1=0.002;		C7&H5=0.038;		H1&C4=0.042;		H1&C6=0.001;		H1&C7=0.002;		H1&H5=0.002;		H2&C3=0.037;		H2&H3=-0.003;		H3&C3=0.037;		H3&H2=-0.003;		H3&H4=0.001;		H4&C1=-0.001;		H4&C2=0.034;		H4&C3=-0.001;		H4&C4=0.001;		H4&C6=0.001;		H4&H3=0.001;		H5&C4=0.002;		H5&C6=0.002;		H5&C7=0.038;		H5&H1=0.002;		
+; State:C1:I;C2:I;C3:I;C4:I;C5:I;C6:I;C7:I;H1:I;H2:I;H3:I;H4:I;H5:I
+
+ ;Terminal virtual 180s: 
+; (0,0,0,0,0,0,0,0,0,0,0,0)
+
+; Final phases (in reference frame): 
+; 0.126190, 0.248587, 0.948181, 0.040042, 0.809184, 0.385419, 0.855978, 0.658091, 0.225160, 0.067861, 0.341058, 0.830739
+
+; Final channel phases (in reference frame): 
+; 0.014219, 0.978219, 0.407549, 0.970238
+
+ ;Final State: 
+; I, I, I, I, I, I, I, I, I, I, I, I
+
+
+
+ ;----------------------------------
+; Total Time: 0.000512 seconds.
+ ;----------------------------------
+
+
+;;Pulses:stop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
+;;New set-up
+  50u BLKGRAD
+  ;;go=2 ph31:r ;; commented by JZ Dec08, 10
+  go=2 ph30 ph31:r ;; by JZ Dec08, 10
+  100m
+  wr #0
+  exit
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ph30 = (65536) 0

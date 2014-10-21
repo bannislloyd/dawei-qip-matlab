@@ -1,0 +1,102 @@
+# Nuclear types
+176.047829e6	C
+700.13e6	H
+# Nuclei: <frequency><tab><name><tab><type>
+ 30020.877	C1	C
+ 8778.95	C2	C
+ 6245.16675	C3	C
+ 10333.55	C4	C
+ 15745.42	C5	C
+ 34381.5934	C6	C
+ 11928.21998	C7	C
+ 3309.5366	H1	H
+ 2465.27875	H2	H
+ 2157.00095	H3	H
+ 2690.0988	H4	H
+ 3646.83055	H5	H
+# Reference frequencies:
+refFreq	C	C1;C2;C3;C4;C5;C6;C7
+refFreq	H	H1;H2;H3;H4;H5
+offsetFreq	C	0
+offsetFreq	H	0
+# Couplings:  <frequency><tab><name><tab><name> (must be in lex.order.)
+28.79	C1	C2
+-1.5019	C1	C3
+0.02	C1	C4
+-0.7177	C1	C5
+2.7981	C1	C6
+0.7177	C1	C7
+       0.02	C1	H1
+    2.0337	C1	H2
+    0.9336	C1	H3
+  -5.0477	C1	H4
+    3.5646	C1	H5
+   16.3531	C2	C3
+    0.15	C2	C4
+     1.31	C2	C5
+   -0.83	C2	C6
+   18.7132	C2	C7
+       0.7354	C2	H1
+    0.7354	C2	H2
+    1.2195	C2	H3
+   66.8	C2	H4
+   -2.4319	C2	H5
+       0	C3	C4
+    0.555	C3	C5
+       0	C3	C6
+    0.47	C3	C7
+    1.015	C3	H1
+   73.14	C3	H2
+   73.14	C3	H3
+   -3.485	C3	H4
+    1.57	C3	H5
+   16.58	C4	C5
+   -1.765	C4	C6
+   14.51	C4	C7
+   83.3	C4	H1
+    1.13	C4	H2
+    0.02	C4	H3
+    3.11	C4	H4
+    4.07	C4	H5
+   16.58	C5	C6
+  -10.875	C5	C7
+    2.03	C5	H1
+       0	C5	H2
+       0	C5	H3
+       0	C5	H4
+    1.18	C5	H5
+   17.285	C6	C7
+    2.695	C6	H1
+       0	C6	H2
+       0	C6	H3
+    2.695	C6	H4
+    4.26	C6	H5
+    4.305	C7	H1
+       0	C7	H2
+       0	C7	H3
+    1.47	C7	H4
+   74.23	C7	H5
+       0.1	H1	H2
+    0.1	H1	H3
+   -0.34	H1	H4
+    4.23	H1	H5
+  -6.205	H2	H3
+    0.64	H2	H4
+   -0.53	H2	H5
+    3.00	H3	H4
+   -0.18	H3	H5
+    0.65	H4	H5
+# T2 error rates:
+1.611	C1
+2	C2
+1.122	C3
+0.792	C4
+1.143	C5
+1.912	C6
+0.531	C7
+0.337	H1
+2	H2
+2	H3
+0.318	H4
+0.276	H5
+# End data.

@@ -1,0 +1,23 @@
+#define exp
+#define H1obs
+#include "defs.h"
+
+;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+;<
+
+;;00 State
+;>
+;pulse noop @*:Z-
+#include "00.frag"
+;<
+
+;!&clearPhases();
+
+;>
+;pulse Hh90 0.25~H1
+;<
+
+
+;;Terminal file:
+;;--------------
+#include "defs.t"
