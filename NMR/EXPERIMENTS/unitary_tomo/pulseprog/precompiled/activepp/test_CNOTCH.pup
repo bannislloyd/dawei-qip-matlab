@@ -1,0 +1,22 @@
+#define exp
+#define C1obs
+#include "defs.h"
+
+;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+;<
+
+;;cnot12
+;>
+#include "CNOTCH.frag"
+;<
+
+;!&clearPhases();
+
+;>
+;;pulse Ch90 0.25~C1
+;<
+
+
+;;Terminal file:
+;;--------------
+#include "defs.t"

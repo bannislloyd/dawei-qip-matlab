@@ -1,0 +1,198 @@
+/* This AU program tries to fix the strongly modulating pulses through a feedback mechanism.  */
+
+/*Written by Colm Ryan 9-16 January, 2006 */
+
+/* Updated by Colm Ryan 5 Feb, 2008 to set aq for pulse length rather than td (correctly handles different
+dw's */
+
+/* Variable declarations */
+
+int nbloops=4;
+char origpname[128] = "12spin_7PPS_U_90_1234567.txt";
+float pulselength = 100;
+char shpnum[128] = "spnam1";
+char pnum[128] = "p1";
+char tmpCmd[128];
+char message[128];
+char tmpstr[128];
+
+/*char matlabhost[128] = "g5feng@ordi2.uwaterloo.ca";*/
+/*char matlabhost[128] = "dganglof@ordi2.uwaterloo.ca";*/
+/*char matlabhost[128] = "pulsefixer@ordi2.uwaterloo.ca"; */
+/*char matlabhost[128] = "a4desouz@ordi2.uwaterloo.ca"; */
+/*char matlabhost[128] = "j87zhang@ordi2.uwaterloo.ca";*/
+/* char matlabhost[128] = "glpassan@ordi2.uwaterloo.ca";*/
+//char matlabhost[128] = "kpark@ordi2.uwaterloo.ca"; 
+char matlabhost[128] = "d29lu@ordi2.uwaterloo.ca";
+
+char hostdir[128] = "~/fixpulse";
+char localdir[128] = "/home/mditty/";
+char refscalingstr[128];
+char refanglestr[128];
+int loopct,tmpint;
+/* File pointers */
+FILE *startupPtr;
+FILE *refresultsPtr;
+
+
+/* Start the program */
+
+GETCURDATA
+//Grab the info from the command line
+
+if(strlen(cmd) == 0)
+{
+	GETSTRING("Please enter the name of the pulse you want to fix.",origpname);
+	GETFLOAT("Please enter the length of the pulse in microseconds \n(must be multiple of DW*2).",pulselength);
+	GETINT("Please enter the number of feedback loops to perform.",nbloops);
+}
+else
+{
+	tmpint =  sscanf(cmd,"%s%f%d",origpname,&pulselength,&nbloops);
+
+	if(tmpint != 3)
+	{
+	STOPMSG("Incorrect input!");
+	}
+}
+
+
+//Run the reference pulse to get the reference power and phase
+sprintf(message,"Running reference pulse");
+Show_status(message);
+ssleep(2);
+sprintf(tmpstr,"%s shaperef",shpnum);
+XCMD(tmpstr);
+sprintf(tmpstr,"%s 100u",pnum);
+XCMD(tmpstr);
+XCMD("aq 250u");
+ZG
+
+
+//Copy the fid file over to ssnmr1
+sprintf(tmpCmd,"scp /opt/topspin/data/%s/nmr/%s/%i/fid %s:%s/curfid",user,name,expno,matlabhost,hostdir);
+system(tmpCmd);
+
+
+//Copy over the pulse
+sprintf(tmpCmd,"scp /opt/topspin/exp/stan/nmr/lists/wave/shaperef %s:%s/pulsefiles/.",matlabhost,hostdir);
+system(tmpCmd);
+
+
+//Write the temporary matlab startup file
+sprintf(tmpstr,"%s/tmpstartup.m",localdir);
+startupPtr = fopen(tmpstr,"w");
+fprintf(startupPtr,"cd ~/fixpulse;\n");
+fprintf(startupPtr,"fitref;\n");
+fclose(startupPtr);
+
+//Run matlab to fit the reference 
+sprintf(tmpCmd,"scp %s/tmpstartup.m %s:~/startup.m",localdir,matlabhost);
+system(tmpCmd);
+sprintf(tmpCmd,"ssh -X %s 'matlab -nodesktop -nosplash'",matlabhost);
+system(tmpCmd);
+
+//Copy back the reference fitting results and read them in
+sprintf(tmpCmd,"scp %s:%s/fitref_results.dat %s/.",matlabhost,hostdir,localdir);
+system(tmpCmd);
+sprintf(tmpstr,"%s/fitref_results.dat",localdir);
+refresultsPtr = fopen(tmpstr,"r");
+fgets(refscalingstr,128,refresultsPtr);
+fgets(refanglestr,128,refresultsPtr);
+fclose(refresultsPtr);
+
+
+//Run the orginal pulse
+sprintf(message,"Running original pulse");
+Show_status(message);
+ssleep(2);
+sprintf(tmpstr,"%s %s",shpnum,origpname);
+XCMD(tmpstr);
+sprintf(tmpstr,"%s %fu",pnum,pulselength);
+XCMD(tmpstr);
+sprintf(tmpstr,"aq %fu",pulselength+150);
+XCMD(tmpstr);
+ZG
+
+//Copy the fid file over to ssnmr1
+sprintf(tmpCmd,"scp /opt/topspin/data/%s/nmr/%s/%i/fid %s:%s/curfid",user,name,expno,matlabhost,hostdir);
+system(tmpCmd);
+
+//Copy over the pulse
+sprintf(tmpCmd,"scp /opt/topspin/exp/stan/nmr/lists/wave/%s %s:%s/pulsefiles/.",origpname,matlabhost,hostdir);
+system(tmpCmd);
+
+//Write the temporary matlab startup file
+sprintf(tmpstr,"%s/tmpstartup.m",localdir);
+startupPtr = fopen(tmpstr,"w");
+fprintf(startupPtr,"cd ~/fixpulse;\n");
+fprintf(startupPtr,"params.idealpulsestr = '%s';\n",origpname);
+fprintf(startupPtr,"params.triedpulsestr = '%s';\n",origpname);
+fprintf(startupPtr,"params.newshpfilename = '%sfix1';\n",origpname);
+fprintf(startupPtr,"params.loopnb = 1;\n");
+fprintf(startupPtr,"params.pulselength = %f/1e6;\n",pulselength);
+fprintf(startupPtr,"%s",refscalingstr);
+fprintf(startupPtr,"%s",refanglestr);
+fprintf(startupPtr,"pulsefixer_grape(params);\n");
+fclose(startupPtr);
+
+//Run matlab to get the first corrected pulse
+sprintf(tmpCmd,"scp %s/tmpstartup.m %s:~/startup.m",localdir,matlabhost);
+system(tmpCmd);
+sprintf(tmpCmd,"ssh -X %s 'matlab -nodesktop -nosplash'",matlabhost);
+system(tmpCmd);
+
+//Now start the main loop 
+for(loopct=1;loopct<nbloops;loopct++)
+{
+//Display a message
+sprintf(message,"Trying fix #%i",loopct);
+Show_status(message);
+ssleep(2);
+
+//Get the new pulse
+sprintf(tmpCmd,"scp %s:%s/pulsefiles/%sfix%i /opt/topspin/exp/stan/nmr/lists/wave/.",matlabhost,hostdir,origpname,loopct);
+system(tmpCmd);
+
+//Set the shape name
+sprintf(tmpstr,"%s %sfix%i",shpnum,origpname,loopct);
+XCMD(tmpstr);
+
+//Run the new pulse
+ZG
+
+//Copy the fid file over to ssnmr1
+sprintf(tmpCmd,"scp /opt/topspin/data/%s/nmr/%s/%i/fid %s:%s/curfid",user,name,expno,matlabhost,hostdir);
+system(tmpCmd);
+
+//Setup the new matlab startup file
+sprintf(tmpstr,"%s/tmpstartup.m",localdir);
+startupPtr = fopen(tmpstr,"w");
+fprintf(startupPtr,"cd ~/fixpulse;\n");
+fprintf(startupPtr,"params.idealpulsestr = '%s';\n",origpname);
+fprintf(startupPtr,"params.triedpulsestr = '%sfix%i';\n",origpname,loopct);
+fprintf(startupPtr,"params.newshpfilename = '%sfix%i';\n",origpname,loopct+1);
+fprintf(startupPtr,"params.loopnb = %i;\n",loopct+1);
+fprintf(startupPtr,"params.pulselength = %f/1e6;\n",pulselength);
+fprintf(startupPtr,"%s",refscalingstr);
+fprintf(startupPtr,"%s",refanglestr);
+fprintf(startupPtr,"pulsefixer_grape(params);\n");
+fclose(startupPtr);
+
+//Run matlab to create the next corrected pulse
+sprintf(tmpCmd,"scp %s/tmpstartup.m %s:~/startup.m",localdir,matlabhost);
+system(tmpCmd);
+sprintf(tmpCmd,"ssh -X %s 'matlab -nodesktop -nosplash'",matlabhost);
+system(tmpCmd);
+
+}
+
+//Clean up the temporary files
+sprintf(tmpCmd,"rm %s/tmpstartup.m",localdir);
+system(tmpCmd);
+sprintf(tmpCmd,"rm %s/fitref_results.dat",localdir);
+system(tmpCmd);
+sprintf(tmpCmd,"ssh -X %s 'rm ~/startup.m'",matlabhost);
+system(tmpCmd);
+
+QUIT

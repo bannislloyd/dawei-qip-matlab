@@ -1,0 +1,27 @@
+;;; Template for the magic state
+
+;;Include header file for this experiment:
+;;---------------------------------------
+#define exp
+#define C1obs
+#include "defs.h"
+
+;;; If we are running an experiment then all the preparation steps
+
+;;; Perform r.f. selection
+;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+;<
+
+;;;Crush the polarization but on M:
+;>
+;pulse noop @*:Z-
+;pulse C190 0.25~C1
+;;refocus Ch180 0.5~C1
+;pulse C190 0.25~C1
+;;refocus Ch180 0.5~C1
+;<
+;;!&clearPhases();
+
+;;Terminal file:
+;;--------------
+#include "defs.t"

@@ -1,0 +1,32 @@
+;;;Declarations:start
+
+define pulse p1
+"p1 = 1000u"
+
+define pulse pops
+"pops = 1600u"
+
+;;;Declarations:stop
+
+;;;Pulses:start
+
+0.2u
+;;( p1:sp1 ph0 ):f1
+
+;;( 6u pops:sp2 ph0 6u ):f1
+
+;;;Pulses:stop
+
+;;;Phases:start
+ph0 = (65536) 0
+ph1 = (65536) 16384
+ph2 = (65536) 32768
+ph3 = (65536) 49152
+ph4 = (65536) 8192
+ph5 = (65536) 24576
+ph6 = (65536) 40960
+ph7 = (65536) 57344
+ph10 = (65536) 0
+ph11 = (65536) 16384
+ph31 = (65536) 0
+;;;Phases:stop
