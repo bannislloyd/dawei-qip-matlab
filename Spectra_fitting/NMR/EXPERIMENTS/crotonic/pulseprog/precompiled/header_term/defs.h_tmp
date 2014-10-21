@@ -1,0 +1,138 @@
+#define DEFER(x) x
+ DEFER(#include <Avance.incl>)
+ DEFER(#include <Grad.incl>)
+>>>
+;;Declarations:start
+<<<
+
+Delay      gon(1e-6);
+Delay      goff(1e-6);
+Delay      gwait(1e-6);
+Delay      grad1(0.001);
+PhaseStack ps0([1...4]);
+PhaseStack ps1([5...9]);
+PhaseStack ps2([10...14]);
+PhaseStack ps3([15...19]);
+PhaseStack ps4([20...24]);
+PhaseStack ps5([25...29]);
+
+Channel Hch(      'f2', -3000 , H, 1, ps0, ps1);
+Channel Cch(      'f3', -16000, C, 1, ps2, ps3);
+Channel C1obsch(  'f1', C1.frequency , C, 0, ps4, ps5); 
+Channel C3obsch(  'f1', C3.frequency , C, 0, ps4, ps5); 
+Channel H2obsch(  'f1', H2.frequency , H, 0, ps4, ps5); 
+Channel H1obsch(  'f1', H1.frequency , H, 0, ps4, ps5); 
+
+DEFINECYCLEN 1; 
+PhaseCycle cyc1([0,0.25,0.5,1  ]); 
+PhaseCycle cyc2([0,0.5 ,0  ,0.5]); 
+
+
+
+
+#if defined(C1obs)
+ACTIVATECHANNELS [Hch,Cch,C1obsch];
+OBSERVATION       C1obsch 31 65536 C1;
+#elif defined(C3obs)
+ACTIVATECHANNELS [Hch,Cch,C3obsch];
+OBSERVATION       C3obsch 31 65536 C3;
+#elif defined(H2obs)
+ACTIVATECHANNELS [Hch,Cch,H2obsch];
+OBSERVATION       H2obsch 31 65536 H2;
+#elif defined(H1obs)
+ACTIVATECHANNELS [Hch,Cch,H1obsch];
+OBSERVATION       H1obsch 31 65536 H1;
+#else
+ACTIVATECHANNELS [Hch,Cch,C1obsch];
+OBSERVATION       C1obsch 31 65536 C1;
+#endif
+
+
+//90s
+USEBASIC 'Hh90'  -1 1;
+USEBASIC 'M90'    1 1;
+USEBASIC 'H190'   2 1;
+USEBASIC 'H290'   3 1;
+
+
+USEBASIC 'C190'   4 2;
+USEBASIC 'C290'   5 2;
+USEBASIC 'C390'   6 2;
+USEBASIC 'C490'   7 2;
+
+
+//180s
+USEBASIC    'Hhc180' 8 1;
+USEBASIC    'M180'   9 1;
+USEBASIC    'H1181' 10 1;
+USEBASIC    'H1182' 11 2;
+
+USEBASIC    'C1180'   12 2;
+USEBASIC    'C2180'   13 2;
+USEBASIC    'C3180'   14 2;
+USEBASIC    'C4180'   15 2;
+
+//variables
+USEBASIC    'MCs21' 16 1;
+USEBASIC    'MCs31' 17 1;
+USEBASIC    'MCs41' 18 1;
+USEBASIC    'MCs51' 19 1;
+USEBASIC    'MCs22' 20 2;
+USEBASIC    'MCs32' 21 2;
+USEBASIC    'MCs42' 22 2;
+USEBASIC    'MCs52' 23 2;
+
+
+//Specifics
+USEBASIC    'Tro1' 24 1;
+USEBASIC    'Tro2' 25 2;
+
+
+//parallels
+USEPARALLEL 'MC190'; 
+USEPARALLEL 'MC490'; 
+USEPARALLEL 'MC1180'; 
+
+USEPARALLEL 'HhcC1180'; 
+USEPARALLEL 'HhcC2180'; 
+USEPARALLEL 'HhcC3180'; 
+USEPARALLEL 'HhcC4180'; 
+
+USEPARALLEL 'H1180'; 
+
+USEPARALLEL 'MCall2'; 
+USEPARALLEL 'MCall3'; 
+USEPARALLEL 'MCall4'; 
+USEPARALLEL 'MCall5'; 
+
+USEPARALLEL 'Trot'; 
+
+
+
+ 
+ 
+>>>
+;;Declarations:stop
+
+;;basic set-up:
+#if defined(simulation)
+#else
+1 ze
+#endif
+#if  defined nograd
+2 d1
+#else
+ 2 30m
+  d1
+  1u reset:f1
+  1u reset:f2
+  1u reset:f3
+  1m
+ 
+  50u UNBLKGRAD
+#endif
+
+;;Pulses:start
+<<<
+
+;;;;;;;;;;;;;;INCLUDE THE PULSE SEQUENCE HERE;;;;;;;;;;;;

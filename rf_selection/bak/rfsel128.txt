@@ -1,0 +1,1200 @@
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3001/pdata/1/integrals.txt
+     1      8.231      8.157          2.21904 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3002/pdata/1/integrals.txt
+     1      8.231      8.157          2.54432 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3003/pdata/1/integrals.txt
+     1      8.231      8.157          2.95762 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3004/pdata/1/integrals.txt
+     1      8.231      8.157          2.92992 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3005/pdata/1/integrals.txt
+     1      8.231      8.157          2.58418 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3006/pdata/1/integrals.txt
+     1      8.231      8.157          2.16073 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3007/pdata/1/integrals.txt
+     1      8.231      8.157          2.11682 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3008/pdata/1/integrals.txt
+     1      8.231      8.157          2.05121 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3009/pdata/1/integrals.txt
+     1      8.231      8.157          2.50468 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3010/pdata/1/integrals.txt
+     1      8.231      8.157          2.94204 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3011/pdata/1/integrals.txt
+     1      8.231      8.157          3.01618 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3012/pdata/1/integrals.txt
+     1      8.231      8.157          2.87029 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3013/pdata/1/integrals.txt
+     1      8.231      8.157           2.5333 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3014/pdata/1/integrals.txt
+     1      8.231      8.157          2.07305 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3015/pdata/1/integrals.txt
+     1      8.231      8.157          1.71106 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3016/pdata/1/integrals.txt
+     1      8.231      8.157          2.29846 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3017/pdata/1/integrals.txt
+     1      8.231      8.157          2.73331 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3018/pdata/1/integrals.txt
+     1      8.231      8.157          2.96363 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3019/pdata/1/integrals.txt
+     1      8.231      8.157          2.96418 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3020/pdata/1/integrals.txt
+     1      8.231      8.157          2.70734 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3021/pdata/1/integrals.txt
+     1      8.231      8.157          2.30761 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3022/pdata/1/integrals.txt
+     1      8.231      8.157          1.96854 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3023/pdata/1/integrals.txt
+     1      8.231      8.157          2.12873 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3024/pdata/1/integrals.txt
+     1      8.231      8.157          2.49284 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3025/pdata/1/integrals.txt
+     1      8.231      8.157          2.85497 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3026/pdata/1/integrals.txt
+     1      8.231      8.157          2.98914 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3027/pdata/1/integrals.txt
+     1      8.231      8.157          2.78724 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3028/pdata/1/integrals.txt
+     1      8.231      8.157          2.35764 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3029/pdata/1/integrals.txt
+     1      8.231      8.157          1.94681 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3030/pdata/1/integrals.txt
+     1      8.231      8.157          2.05157 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3031/pdata/1/integrals.txt
+     1      8.231      8.157          2.25972 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3032/pdata/1/integrals.txt
+     1      8.231      8.157          2.66198 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3033/pdata/1/integrals.txt
+     1      8.231      8.157           2.8681 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3034/pdata/1/integrals.txt
+     1      8.231      8.157          2.74632 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3035/pdata/1/integrals.txt
+     1      8.231      8.157          2.45561 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3036/pdata/1/integrals.txt
+     1      8.231      8.157          1.97078 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3037/pdata/1/integrals.txt
+     1      8.231      8.157          1.79944 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3038/pdata/1/integrals.txt
+     1      8.231      8.157          2.05256 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3039/pdata/1/integrals.txt
+     1      8.231      8.157          2.46196 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3040/pdata/1/integrals.txt
+     1      8.231      8.157          2.83395 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3041/pdata/1/integrals.txt
+     1      8.231      8.157          2.85437 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3042/pdata/1/integrals.txt
+     1      8.231      8.157          2.61487 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3043/pdata/1/integrals.txt
+     1      8.231      8.157           2.2964 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3044/pdata/1/integrals.txt
+     1      8.231      8.157          1.83497 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3045/pdata/1/integrals.txt
+     1      8.231      8.157          2.08781 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3046/pdata/1/integrals.txt
+     1      8.231      8.157          2.43007 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3047/pdata/1/integrals.txt
+     1      8.231      8.157          2.76509 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3048/pdata/1/integrals.txt
+     1      8.231      8.157          2.90881 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3049/pdata/1/integrals.txt
+     1      8.231      8.157          2.64033 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3050/pdata/1/integrals.txt
+     1      8.231      8.157          2.25156 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3051/pdata/1/integrals.txt
+     1      8.231      8.157          1.83064 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3052/pdata/1/integrals.txt
+     1      8.231      8.157          1.75272 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3053/pdata/1/integrals.txt
+     1      8.231      8.157           1.9486 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3054/pdata/1/integrals.txt
+     1      8.231      8.157          2.61941 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3055/pdata/1/integrals.txt
+     1      8.231      8.157          2.84637 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3056/pdata/1/integrals.txt
+     1      8.231      8.157          2.82652 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3057/pdata/1/integrals.txt
+     1      8.231      8.157          2.55057 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3058/pdata/1/integrals.txt
+     1      8.231      8.157          2.14922 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3059/pdata/1/integrals.txt
+     1      8.231      8.157          1.88629 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3060/pdata/1/integrals.txt
+     1      8.231      8.157          2.06174 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3061/pdata/1/integrals.txt
+     1      8.231      8.157          2.44391 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3062/pdata/1/integrals.txt
+     1      8.231      8.157          2.86542 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3063/pdata/1/integrals.txt
+     1      8.231      8.157          2.84164 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3064/pdata/1/integrals.txt
+     1      8.231      8.157          2.56008 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3065/pdata/1/integrals.txt
+     1      8.231      8.157          2.01728 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3066/pdata/1/integrals.txt
+     1      8.231      8.157          1.72888 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3067/pdata/1/integrals.txt
+     1      8.231      8.157          1.80017 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3068/pdata/1/integrals.txt
+     1      8.231      8.157          2.11766 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3069/pdata/1/integrals.txt
+     1      8.231      8.157          2.63328 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3070/pdata/1/integrals.txt
+     1      8.231      8.157          2.86419 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3071/pdata/1/integrals.txt
+     1      8.231      8.157          2.72193 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3072/pdata/1/integrals.txt
+     1      8.231      8.157          2.44226 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3073/pdata/1/integrals.txt
+     1      8.231      8.157          2.10277 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3074/pdata/1/integrals.txt
+     1      8.231      8.157          2.04759 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3075/pdata/1/integrals.txt
+     1      8.231      8.157          2.34783 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3076/pdata/1/integrals.txt
+     1      8.231      8.157          2.67771 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3077/pdata/1/integrals.txt
+     1      8.231      8.157          2.83231 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3078/pdata/1/integrals.txt
+     1      8.231      8.157           2.7266 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3079/pdata/1/integrals.txt
+     1      8.231      8.157          2.31686 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3080/pdata/1/integrals.txt
+     1      8.231      8.157          1.83363 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3081/pdata/1/integrals.txt
+     1      8.231      8.157          1.49311 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3082/pdata/1/integrals.txt
+     1      8.231      8.157          1.74322 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3083/pdata/1/integrals.txt
+     1      8.231      8.157          2.21137 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3084/pdata/1/integrals.txt
+     1      8.231      8.157          2.57033 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3085/pdata/1/integrals.txt
+     1      8.231      8.157          2.81661 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3086/pdata/1/integrals.txt
+     1      8.231      8.157          2.64468 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3087/pdata/1/integrals.txt
+     1      8.231      8.157          2.22957 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3088/pdata/1/integrals.txt
+     1      8.231      8.157           2.0369 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3089/pdata/1/integrals.txt
+     1      8.231      8.157          2.15163 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3090/pdata/1/integrals.txt
+     1      8.231      8.157          2.15298 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3091/pdata/1/integrals.txt
+     1      8.231      8.157          2.69535 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3092/pdata/1/integrals.txt
+     1      8.231      8.157           2.6994 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3093/pdata/1/integrals.txt
+     1      8.231      8.157          2.53966 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3094/pdata/1/integrals.txt
+     1      8.231      8.157          2.16969 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3095/pdata/1/integrals.txt
+     1      8.231      8.157          1.75227 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3096/pdata/1/integrals.txt
+     1      8.231      8.157          1.52557 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3097/pdata/1/integrals.txt
+     1      8.231      8.157          1.83543 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3098/pdata/1/integrals.txt
+     1      8.231      8.157          2.25497 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3099/pdata/1/integrals.txt
+     1      8.231      8.157          2.71052 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3100/pdata/1/integrals.txt
+     1      8.231      8.157          2.66419 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3101/pdata/1/integrals.txt
+     1      8.231      8.157           2.4852 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3102/pdata/1/integrals.txt
+     1      8.231      8.157          2.15804 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3103/pdata/1/integrals.txt
+     1      8.231      8.157          1.98641 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3104/pdata/1/integrals.txt
+     1      8.231      8.157          2.12749 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3105/pdata/1/integrals.txt
+     1      8.231      8.157          2.45772 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3106/pdata/1/integrals.txt
+     1      8.231      8.157          2.55731 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3107/pdata/1/integrals.txt
+     1      8.231      8.157          2.70881 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3108/pdata/1/integrals.txt
+     1      8.231      8.157          2.31786 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3109/pdata/1/integrals.txt
+     1      8.231      8.157          1.96878 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3110/pdata/1/integrals.txt
+     1      8.231      8.157          1.59761 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3111/pdata/1/integrals.txt
+     1      8.231      8.157          1.54353 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3112/pdata/1/integrals.txt
+     1      8.231      8.157          1.95141 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3113/pdata/1/integrals.txt
+     1      8.231      8.157           2.4284 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3114/pdata/1/integrals.txt
+     1      8.231      8.157          2.63443 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3115/pdata/1/integrals.txt
+     1      8.231      8.157           2.5078 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3116/pdata/1/integrals.txt
+     1      8.231      8.157          2.36136 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3117/pdata/1/integrals.txt
+     1      8.231      8.157           2.0505 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3118/pdata/1/integrals.txt
+     1      8.231      8.157           1.9485 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3119/pdata/1/integrals.txt
+     1      8.231      8.157          1.99822 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3120/pdata/1/integrals.txt
+     1      8.231      8.157          2.42218 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3121/pdata/1/integrals.txt
+     1      8.231      8.157          2.59645 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3122/pdata/1/integrals.txt
+     1      8.231      8.157           2.6531 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3123/pdata/1/integrals.txt
+     1      8.231      8.157          2.36092 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3124/pdata/1/integrals.txt
+     1      8.231      8.157          1.87403 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3125/pdata/1/integrals.txt
+     1      8.231      8.157          1.56595 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3126/pdata/1/integrals.txt
+     1      8.231      8.157          1.73629 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3127/pdata/1/integrals.txt
+     1      8.231      8.157          2.09399 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3128/pdata/1/integrals.txt
+     1      8.231      8.157          2.41186 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3129/pdata/1/integrals.txt
+     1      8.231      8.157          2.53836 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3130/pdata/1/integrals.txt
+     1      8.231      8.157          2.49265 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3131/pdata/1/integrals.txt
+     1      8.231      8.157          2.27971 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3132/pdata/1/integrals.txt
+     1      8.231      8.157          1.87064 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3133/pdata/1/integrals.txt
+     1      8.231      8.157           1.8903 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3134/pdata/1/integrals.txt
+     1      8.231      8.157          2.11919 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3135/pdata/1/integrals.txt
+     1      8.231      8.157          2.55866 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3136/pdata/1/integrals.txt
+     1      8.231      8.157           2.5255 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3137/pdata/1/integrals.txt
+     1      8.231      8.157          2.33999 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3138/pdata/1/integrals.txt
+     1      8.231      8.157          2.07122 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3139/pdata/1/integrals.txt
+     1      8.231      8.157          1.60329 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3140/pdata/1/integrals.txt
+     1      8.231      8.157          1.31153 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3141/pdata/1/integrals.txt
+     1      8.231      8.157          1.68502 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3142/pdata/1/integrals.txt
+     1      8.231      8.157          1.93577 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3143/pdata/1/integrals.txt
+     1      8.231      8.157           2.3026 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3144/pdata/1/integrals.txt
+     1      8.231      8.157          2.45309 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3145/pdata/1/integrals.txt
+     1      8.231      8.157          2.31638 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3146/pdata/1/integrals.txt
+     1      8.231      8.157          2.04088 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3147/pdata/1/integrals.txt
+     1      8.231      8.157          1.66511 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3148/pdata/1/integrals.txt
+     1      8.231      8.157          1.88119 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3149/pdata/1/integrals.txt
+     1      8.231      8.157           1.9639 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3150/pdata/1/integrals.txt
+     1      8.231      8.157          2.26313 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3151/pdata/1/integrals.txt
+     1      8.231      8.157          2.38951 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3152/pdata/1/integrals.txt
+     1      8.231      8.157          2.31413 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3153/pdata/1/integrals.txt
+     1      8.231      8.157          1.74625 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3154/pdata/1/integrals.txt
+     1      8.231      8.157          1.31207 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3155/pdata/1/integrals.txt
+     1      8.231      8.157           1.1966 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3156/pdata/1/integrals.txt
+     1      8.231      8.157          1.63073 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3157/pdata/1/integrals.txt
+     1      8.231      8.157           2.0341 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3158/pdata/1/integrals.txt
+     1      8.231      8.157          2.31226 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3159/pdata/1/integrals.txt
+     1      8.231      8.157          2.25011 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3160/pdata/1/integrals.txt
+     1      8.231      8.157          2.13931 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3161/pdata/1/integrals.txt
+     1      8.231      8.157          1.71912 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3162/pdata/1/integrals.txt
+     1      8.231      8.157          1.69647 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3163/pdata/1/integrals.txt
+     1      8.231      8.157          1.87607 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3164/pdata/1/integrals.txt
+     1      8.231      8.157          2.23318 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3165/pdata/1/integrals.txt
+     1      8.231      8.157          2.22717 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3166/pdata/1/integrals.txt
+     1      8.231      8.157           2.3177 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3167/pdata/1/integrals.txt
+     1      8.231      8.157          1.98897 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3168/pdata/1/integrals.txt
+     1      8.231      8.157          1.55062 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3169/pdata/1/integrals.txt
+     1      8.231      8.157          1.31655 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3170/pdata/1/integrals.txt
+     1      8.231      8.157          1.34537 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3171/pdata/1/integrals.txt
+     1      8.231      8.157          1.84288 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3172/pdata/1/integrals.txt
+     1      8.231      8.157           2.0638 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3173/pdata/1/integrals.txt
+     1      8.231      8.157           2.3819 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3174/pdata/1/integrals.txt
+     1      8.231      8.157          2.21769 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3175/pdata/1/integrals.txt
+     1      8.231      8.157          1.91026 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3176/pdata/1/integrals.txt
+     1      8.231      8.157          1.66724 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3177/pdata/1/integrals.txt
+     1      8.231      8.157          1.67859 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3178/pdata/1/integrals.txt
+     1      8.231      8.157          1.68312 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3179/pdata/1/integrals.txt
+     1      8.231      8.157          2.18418 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3180/pdata/1/integrals.txt
+     1      8.231      8.157          2.21802 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3181/pdata/1/integrals.txt
+     1      8.231      8.157          2.05505 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3182/pdata/1/integrals.txt
+     1      8.231      8.157          1.73356 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3183/pdata/1/integrals.txt
+     1      8.231      8.157          1.28703 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3184/pdata/1/integrals.txt
+     1      8.231      8.157          1.10982 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3185/pdata/1/integrals.txt
+     1      8.231      8.157          1.44861 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3186/pdata/1/integrals.txt
+     1      8.231      8.157          1.74785 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3187/pdata/1/integrals.txt
+     1      8.231      8.157          2.07856 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3188/pdata/1/integrals.txt
+     1      8.231      8.157          2.25701 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3189/pdata/1/integrals.txt
+     1      8.231      8.157          2.07624 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3190/pdata/1/integrals.txt
+     1      8.231      8.157           1.6338 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3191/pdata/1/integrals.txt
+     1      8.231      8.157          1.55511 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3192/pdata/1/integrals.txt
+     1      8.231      8.157          1.66359 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3193/pdata/1/integrals.txt
+     1      8.231      8.157          1.88951 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3194/pdata/1/integrals.txt
+     1      8.231      8.157          2.01768 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3195/pdata/1/integrals.txt
+     1      8.231      8.157          2.13611 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3196/pdata/1/integrals.txt
+     1      8.231      8.157           1.8644 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3197/pdata/1/integrals.txt
+     1      8.231      8.157          1.49074 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3198/pdata/1/integrals.txt
+     1      8.231      8.157          1.11698 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3199/pdata/1/integrals.txt
+     1      8.231      8.157          1.02246 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3200/pdata/1/integrals.txt
+     1      8.231      8.157          1.48344 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3201/pdata/1/integrals.txt
+     1      8.231      8.157          1.88715 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3202/pdata/1/integrals.txt
+     1      8.231      8.157          2.18482 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3203/pdata/1/integrals.txt
+     1      8.231      8.157          2.15874 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3204/pdata/1/integrals.txt
+     1      8.231      8.157          1.79945 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3205/pdata/1/integrals.txt
+     1      8.231      8.157          1.73173 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3206/pdata/1/integrals.txt
+     1      8.231      8.157          1.74512 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3207/pdata/1/integrals.txt
+     1      8.231      8.157            1.765 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3208/pdata/1/integrals.txt
+     1      8.231      8.157          1.82743 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3209/pdata/1/integrals.txt
+     1      8.231      8.157           2.0548 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3210/pdata/1/integrals.txt
+     1      8.231      8.157           1.9583 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3211/pdata/1/integrals.txt
+     1      8.231      8.157          1.52238 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3212/pdata/1/integrals.txt
+     1      8.231      8.157          1.21657 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3213/pdata/1/integrals.txt
+     1      8.231      8.157         0.870788 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3214/pdata/1/integrals.txt
+     1      8.231      8.157          1.18555 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3215/pdata/1/integrals.txt
+     1      8.231      8.157          1.38268 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3216/pdata/1/integrals.txt
+     1      8.231      8.157          1.92355 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3217/pdata/1/integrals.txt
+     1      8.231      8.157          1.93747 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3218/pdata/1/integrals.txt
+     1      8.231      8.157          2.16245 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3219/pdata/1/integrals.txt
+     1      8.231      8.157          1.58749 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3220/pdata/1/integrals.txt
+     1      8.231      8.157          1.75496 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3221/pdata/1/integrals.txt
+     1      8.231      8.157          1.88965 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3222/pdata/1/integrals.txt
+     1      8.231      8.157          1.82036 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3223/pdata/1/integrals.txt
+     1      8.231      8.157          2.00306 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3224/pdata/1/integrals.txt
+     1      8.231      8.157           1.9328 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3225/pdata/1/integrals.txt
+     1      8.231      8.157          1.77698 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3226/pdata/1/integrals.txt
+     1      8.231      8.157          1.22523 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3227/pdata/1/integrals.txt
+     1      8.231      8.157         0.832322 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3228/pdata/1/integrals.txt
+     1      8.231      8.157         0.798102 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3229/pdata/1/integrals.txt
+     1      8.231      8.157          1.15396 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3230/pdata/1/integrals.txt
+     1      8.231      8.157          1.72477 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3231/pdata/1/integrals.txt
+     1      8.231      8.157          2.03955 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3232/pdata/1/integrals.txt
+     1      8.231      8.157          2.01857 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3233/pdata/1/integrals.txt
+     1      8.231      8.157          1.87531 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3234/pdata/1/integrals.txt
+     1      8.231      8.157          1.64371 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3235/pdata/1/integrals.txt
+     1      8.231      8.157          1.73335 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3236/pdata/1/integrals.txt
+     1      8.231      8.157          1.64419 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3237/pdata/1/integrals.txt
+     1      8.231      8.157          1.67259 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3238/pdata/1/integrals.txt
+     1      8.231      8.157          1.88398 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3239/pdata/1/integrals.txt
+     1      8.231      8.157          1.88995 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3240/pdata/1/integrals.txt
+     1      8.231      8.157          1.36594 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3241/pdata/1/integrals.txt
+     1      8.231      8.157         0.950381 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3242/pdata/1/integrals.txt
+     1      8.231      8.157         0.826703 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3243/pdata/1/integrals.txt
+     1      8.231      8.157         0.731214 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3244/pdata/1/integrals.txt
+     1      8.231      8.157          1.35338 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3245/pdata/1/integrals.txt
+     1      8.231      8.157          1.64771 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3246/pdata/1/integrals.txt
+     1      8.231      8.157          1.79622 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3247/pdata/1/integrals.txt
+     1      8.231      8.157          1.96433 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3248/pdata/1/integrals.txt
+     1      8.231      8.157          1.66429 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3249/pdata/1/integrals.txt
+     1      8.231      8.157          1.77652 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3250/pdata/1/integrals.txt
+     1      8.231      8.157          1.61625 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3251/pdata/1/integrals.txt
+     1      8.231      8.157          1.72673 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3252/pdata/1/integrals.txt
+     1      8.231      8.157          1.73788 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3253/pdata/1/integrals.txt
+     1      8.231      8.157          2.04251 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3254/pdata/1/integrals.txt
+     1      8.231      8.157          1.47897 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3255/pdata/1/integrals.txt
+     1      8.231      8.157          1.20622 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3256/pdata/1/integrals.txt
+     1      8.231      8.157          0.80227 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3257/pdata/1/integrals.txt
+     1      8.231      8.157          0.60502 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3258/pdata/1/integrals.txt
+     1      8.231      8.157          1.08333 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3259/pdata/1/integrals.txt
+     1      8.231      8.157          1.37704 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3260/pdata/1/integrals.txt
+     1      8.231      8.157          1.70118 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3261/pdata/1/integrals.txt
+     1      8.231      8.157          1.88689 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3262/pdata/1/integrals.txt
+     1      8.231      8.157          1.71911 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3263/pdata/1/integrals.txt
+     1      8.231      8.157          1.52052 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3264/pdata/1/integrals.txt
+     1      8.231      8.157          1.75626 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3265/pdata/1/integrals.txt
+     1      8.231      8.157           1.5636 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3266/pdata/1/integrals.txt
+     1      8.231      8.157          1.90009 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3267/pdata/1/integrals.txt
+     1      8.231      8.157          1.74681 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3268/pdata/1/integrals.txt
+     1      8.231      8.157          1.54894 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3269/pdata/1/integrals.txt
+     1      8.231      8.157          1.37516 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3270/pdata/1/integrals.txt
+     1      8.231      8.157         0.818083 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3271/pdata/1/integrals.txt
+     1      8.231      8.157          0.66046 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3272/pdata/1/integrals.txt
+     1      8.231      8.157         0.783821 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3273/pdata/1/integrals.txt
+     1      8.231      8.157          1.22688 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3274/pdata/1/integrals.txt
+     1      8.231      8.157          1.60579 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3275/pdata/1/integrals.txt
+     1      8.231      8.157          1.72203 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3276/pdata/1/integrals.txt
+     1      8.231      8.157          1.74195 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3277/pdata/1/integrals.txt
+     1      8.231      8.157          1.70823 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3278/pdata/1/integrals.txt
+     1      8.231      8.157          1.58628 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3279/pdata/1/integrals.txt
+     1      8.231      8.157           1.6292 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3280/pdata/1/integrals.txt
+     1      8.231      8.157          1.74536 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3281/pdata/1/integrals.txt
+     1      8.231      8.157          1.79317 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3282/pdata/1/integrals.txt
+     1      8.231      8.157          1.76165 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3283/pdata/1/integrals.txt
+     1      8.231      8.157          1.58237 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3284/pdata/1/integrals.txt
+     1      8.231      8.157          1.06298 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3285/pdata/1/integrals.txt
+     1      8.231      8.157         0.526901 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3286/pdata/1/integrals.txt
+     1      8.231      8.157         0.423217 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3287/pdata/1/integrals.txt
+     1      8.231      8.157         0.886073 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3288/pdata/1/integrals.txt
+     1      8.231      8.157          1.37898 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3289/pdata/1/integrals.txt
+     1      8.231      8.157            1.665 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3290/pdata/1/integrals.txt
+     1      8.231      8.157          1.75308 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3291/pdata/1/integrals.txt
+     1      8.231      8.157          1.58912 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3292/pdata/1/integrals.txt
+     1      8.231      8.157          1.63466 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3293/pdata/1/integrals.txt
+     1      8.231      8.157          1.64412 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3294/pdata/1/integrals.txt
+     1      8.231      8.157           1.6882 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3295/pdata/1/integrals.txt
+     1      8.231      8.157          1.85809 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3296/pdata/1/integrals.txt
+     1      8.231      8.157          1.53183 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3297/pdata/1/integrals.txt
+     1      8.231      8.157          1.50433 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3298/pdata/1/integrals.txt
+     1      8.231      8.157          1.26373 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3299/pdata/1/integrals.txt
+     1      8.231      8.157         0.686683 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3300/pdata/1/integrals.txt
+     1      8.231      8.157         0.315053 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3301/pdata/1/integrals.txt
+     1      8.231      8.157         0.755232 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3302/pdata/1/integrals.txt
+     1      8.231      8.157          1.21613 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3303/pdata/1/integrals.txt
+     1      8.231      8.157          1.64363 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3304/pdata/1/integrals.txt
+     1      8.231      8.157          1.78678 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3305/pdata/1/integrals.txt
+     1      8.231      8.157          1.62077 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3306/pdata/1/integrals.txt
+     1      8.231      8.157          1.78892 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3307/pdata/1/integrals.txt
+     1      8.231      8.157            1.536 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3308/pdata/1/integrals.txt
+     1      8.231      8.157          1.72151 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3309/pdata/1/integrals.txt
+     1      8.231      8.157          1.72754 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3310/pdata/1/integrals.txt
+     1      8.231      8.157          1.76695 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3311/pdata/1/integrals.txt
+     1      8.231      8.157          1.63273 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3312/pdata/1/integrals.txt
+     1      8.231      8.157          1.29242 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3313/pdata/1/integrals.txt
+     1      8.231      8.157         0.814675 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3314/pdata/1/integrals.txt
+     1      8.231      8.157         0.524559 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3315/pdata/1/integrals.txt
+     1      8.231      8.157         0.574583 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3316/pdata/1/integrals.txt
+     1      8.231      8.157         0.902513 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3317/pdata/1/integrals.txt
+     1      8.231      8.157          1.52291 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3318/pdata/1/integrals.txt
+     1      8.231      8.157          1.74151 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3319/pdata/1/integrals.txt
+     1      8.231      8.157          1.82179 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3320/pdata/1/integrals.txt
+     1      8.231      8.157          1.81228 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3321/pdata/1/integrals.txt
+     1      8.231      8.157          1.62798 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3322/pdata/1/integrals.txt
+     1      8.231      8.157          1.58851 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3323/pdata/1/integrals.txt
+     1      8.231      8.157          1.83867 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3324/pdata/1/integrals.txt
+     1      8.231      8.157          1.92436 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3325/pdata/1/integrals.txt
+     1      8.231      8.157          1.72365 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3326/pdata/1/integrals.txt
+     1      8.231      8.157          1.53496 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3327/pdata/1/integrals.txt
+     1      8.231      8.157          1.08842 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3328/pdata/1/integrals.txt
+     1      8.231      8.157         0.635566 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3329/pdata/1/integrals.txt
+     1      8.231      8.157         0.299442 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3330/pdata/1/integrals.txt
+     1      8.231      8.157         0.831548 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3331/pdata/1/integrals.txt
+     1      8.231      8.157          1.33009 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3332/pdata/1/integrals.txt
+     1      8.231      8.157          1.57206 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3333/pdata/1/integrals.txt
+     1      8.231      8.157          1.66255 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3334/pdata/1/integrals.txt
+     1      8.231      8.157          1.81111 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3335/pdata/1/integrals.txt
+     1      8.231      8.157          1.68661 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3336/pdata/1/integrals.txt
+     1      8.231      8.157          1.53026 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3337/pdata/1/integrals.txt
+     1      8.231      8.157          1.57336 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3338/pdata/1/integrals.txt
+     1      8.231      8.157          1.72894 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3339/pdata/1/integrals.txt
+     1      8.231      8.157          1.84519 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3340/pdata/1/integrals.txt
+     1      8.231      8.157          1.62966 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3341/pdata/1/integrals.txt
+     1      8.231      8.157          1.35738 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3342/pdata/1/integrals.txt
+     1      8.231      8.157         0.930997 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3343/pdata/1/integrals.txt
+     1      8.231      8.157         0.465262 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3344/pdata/1/integrals.txt
+     1      8.231      8.157         0.609122 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3345/pdata/1/integrals.txt
+     1      8.231      8.157          1.06687 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3346/pdata/1/integrals.txt
+     1      8.231      8.157          1.51125 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3347/pdata/1/integrals.txt
+     1      8.231      8.157          1.87635 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3348/pdata/1/integrals.txt
+     1      8.231      8.157          1.94598 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3349/pdata/1/integrals.txt
+     1      8.231      8.157          1.85378 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3350/pdata/1/integrals.txt
+     1      8.231      8.157          1.53853 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3351/pdata/1/integrals.txt
+     1      8.231      8.157          1.66833 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3352/pdata/1/integrals.txt
+     1      8.231      8.157          1.95502 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3353/pdata/1/integrals.txt
+     1      8.231      8.157          1.98752 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3354/pdata/1/integrals.txt
+     1      8.231      8.157          1.75092 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3355/pdata/1/integrals.txt
+     1      8.231      8.157          1.55564 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3356/pdata/1/integrals.txt
+     1      8.231      8.157         0.948296 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3357/pdata/1/integrals.txt
+     1      8.231      8.157         0.561041 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3358/pdata/1/integrals.txt
+     1      8.231      8.157         0.443711 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3359/pdata/1/integrals.txt
+     1      8.231      8.157         0.983993 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3360/pdata/1/integrals.txt
+     1      8.231      8.157          1.39022 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3361/pdata/1/integrals.txt
+     1      8.231      8.157          1.72025 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3362/pdata/1/integrals.txt
+     1      8.231      8.157          1.86431 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3363/pdata/1/integrals.txt
+     1      8.231      8.157          1.84972 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3364/pdata/1/integrals.txt
+     1      8.231      8.157            1.805 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3365/pdata/1/integrals.txt
+     1      8.231      8.157          1.83542 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3366/pdata/1/integrals.txt
+     1      8.231      8.157          1.74943 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3367/pdata/1/integrals.txt
+     1      8.231      8.157          1.77165 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3368/pdata/1/integrals.txt
+     1      8.231      8.157          1.91654 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3369/pdata/1/integrals.txt
+     1      8.231      8.157          1.85821 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3370/pdata/1/integrals.txt
+     1      8.231      8.157          1.34974 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3371/pdata/1/integrals.txt
+     1      8.231      8.157         0.730614 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3372/pdata/1/integrals.txt
+     1      8.231      8.157         0.412369 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3373/pdata/1/integrals.txt
+     1      8.231      8.157         0.894958 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3374/pdata/1/integrals.txt
+     1      8.231      8.157          1.22691 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3375/pdata/1/integrals.txt
+     1      8.231      8.157          1.80882 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3376/pdata/1/integrals.txt
+     1      8.231      8.157          2.09579 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3377/pdata/1/integrals.txt
+     1      8.231      8.157          1.94722 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3378/pdata/1/integrals.txt
+     1      8.231      8.157          2.01632 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3379/pdata/1/integrals.txt
+     1      8.231      8.157            1.808 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3380/pdata/1/integrals.txt
+     1      8.231      8.157          1.92904 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3381/pdata/1/integrals.txt
+     1      8.231      8.157          2.00983 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3382/pdata/1/integrals.txt
+     1      8.231      8.157           2.0484 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3383/pdata/1/integrals.txt
+     1      8.231      8.157          2.20079 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3384/pdata/1/integrals.txt
+     1      8.231      8.157          1.56162 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3385/pdata/1/integrals.txt
+     1      8.231      8.157          1.11296 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3386/pdata/1/integrals.txt
+     1      8.231      8.157         0.519205 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3387/pdata/1/integrals.txt
+     1      8.231      8.157         0.409709 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3388/pdata/1/integrals.txt
+     1      8.231      8.157          1.07943 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3389/pdata/1/integrals.txt
+     1      8.231      8.157          1.76335 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3390/pdata/1/integrals.txt
+     1      8.231      8.157          1.95066 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3391/pdata/1/integrals.txt
+     1      8.231      8.157          2.19613 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3392/pdata/1/integrals.txt
+     1      8.231      8.157          2.16084 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3393/pdata/1/integrals.txt
+     1      8.231      8.157          2.13328 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3394/pdata/1/integrals.txt
+     1      8.231      8.157           2.1041 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3395/pdata/1/integrals.txt
+     1      8.231      8.157          2.10443 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3396/pdata/1/integrals.txt
+     1      8.231      8.157          2.21023 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3397/pdata/1/integrals.txt
+     1      8.231      8.157          2.19194 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3398/pdata/1/integrals.txt
+     1      8.231      8.157          2.06435 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3399/pdata/1/integrals.txt
+     1      8.231      8.157           1.5162 
+
+/opt/topspin/data/dawei/nmr/CHCL3_H _YC/3400/pdata/1/integrals.txt
+     1      8.231      8.157         0.916563 

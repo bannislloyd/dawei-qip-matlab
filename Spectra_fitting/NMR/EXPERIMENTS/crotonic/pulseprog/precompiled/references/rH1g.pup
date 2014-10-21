@@ -1,0 +1,22 @@
+#define reference
+#define nograd
+#define H1obs
+#include "defs.h"
+
+
+	;>
+		
+	; pulse noop @*:Z-
+	; pulse Hh90 0.25~H1
+	; zz end * * 
+
+	;<
+
+#include "defs.t"
+
+
+
+
+
+
+

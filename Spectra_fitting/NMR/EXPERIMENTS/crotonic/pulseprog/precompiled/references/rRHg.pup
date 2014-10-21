@@ -1,0 +1,24 @@
+#define reference
+;;#define nograd
+#define RHobs
+#include "defs.h"
+
+
+
+
+	;>
+	
+	; pulse noop @*:Z-
+	; pulse Hh90 0.25
+	; zz end * * 
+
+	;<
+
+#include "defs.t"
+
+
+
+
+
+
+

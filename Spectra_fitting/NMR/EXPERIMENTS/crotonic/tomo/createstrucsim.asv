@@ -1,0 +1,11 @@
+
+function struc = createstrucsim(nomestruc)
+% function struc = createstrucsim(nomestruc,cc);
+cc = 'C:\Users\pc4\Documents\MATLAB\NMR\EXPERIMENTS\ErrorC\results';
+dd='simdata';
+
+%for k=1:length(nomestruc)
+    f=eval(nomestruc(1));
+   eval(['load ' cc '\' num2str(f) '\' dd]) 
+   struc{k} =  spec;
+%end

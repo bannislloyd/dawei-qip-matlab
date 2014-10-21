@@ -1,0 +1,23 @@
+#define RCobs
+#define calib
+#include "defs.h"
+
+
+
+;>
+;pulse noop @*:Z-
+  ;zz * * * 
+  ;pulse RC_C390g .25~RC
+  ;zz * * * 
+  ;pulse RC_C390g .25~RC
+  ;zz * * * 
+  ;pulse RC_C390g .25~RC
+  ;zz * * * 
+  ;pulse RC_C390g .25~RC
+  ;zz * * * 
+
+;<
+
+
+#include "defs.t"
+

@@ -1,0 +1,18 @@
+#define RCobs
+#define calib
+#include "defs.h"
+
+
+
+
+;>
+;pulse noop @*:Z-
+  ;zz * * * 
+  ;pulse RCC3180g .25~RC
+  ;zz * * * 
+
+;<
+
+
+#include "defs.t"
+
