@@ -1,0 +1,31 @@
+clc;
+
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(7);
+
+U = eye(128);
+
+for ii = 1:6
+    U = expm(i*KIx{ii}*pi/2)*expm(-i*pi*KIz{ii}*KIz{ii+1})*expm(-i*KIy{ii}*pi/2)*U;
+end
+
+for mm = 1:6
+    U = expm(i*KIx{8-ii}*pi/2)*expm(-i*pi*KIz{8-ii}*KIz{ii+1})*expm(-i*KIy{ii}*pi/2)
+
+U = expm(i*KIx{7}*pi/2)*expm(-i*pi*KIz{7}*KIz{1})*expm(-i*KIy{7}*pi/2)*U;
+U = expm(i*KIx{6}*pi/2)*expm(-i*pi*KIz{6}*KIz{7})*expm(-i*KIy{6}*pi/2)*U;
+
+
+rou = zeros(128);
+
+for jj = 1:128
+    rou(jj,jj) = jj;
+end
+
+
+% A(1) = rou(1,1);
+% 
+% for kk  = 1:150
+%     rou = U*rou*U';
+%     A(kk+1) = rou(1,1);
+% end
+
