@@ -1,0 +1,344 @@
+#include <Avance.incl>
+#include <Grad.incl>
+
+;;Declarations:start
+define delay gon
+"gon = 2u"
+define delay goff
+"goff = 2u"
+define delay gwait
+"gwait = 0.2m"
+define delay grad1
+"grad1 = 2m"
+define delay grad2
+"grad2 = 3m"
+define delay grad3
+"grad3 = 3m"
+define delay grad4
+"grad4 = 3m"
+define delay grad5
+"grad5 = 3m"
+define pulse C190_pre
+"C190_pre = 1m"
+define pulse C290_pre
+"C290_pre = 1m"
+define pulse C390_pre
+"C390_pre = 1m"
+define pulse C490_pre
+"C490_pre = 1m"
+define pulse C590_pre
+"C590_pre = 1m"
+define pulse C690_pre
+"C690_pre = 1m"
+define pulse C790_pre
+"C790_pre = 1m"
+define pulse C190_post
+"C190_post = 1m"
+define pulse C290_post
+"C290_post = 1m"
+define pulse C390_post
+"C390_post = 1m"
+define pulse C490_post
+"C490_post = 1m"
+define pulse C590_post
+"C590_post = 1m"
+define pulse C690_post
+"C690_post = 1m"
+define pulse C790_post
+"C790_post = 1m"
+define pulse C1180
+"C1180 = 2m"
+define pulse C2180
+"C2180 = 2m"
+define pulse C3180
+"C3180 = 2m"
+define pulse C4180
+"C4180 = 2m"
+define pulse C5180
+"C5180 = 2m"
+define pulse C6180
+"C6180 = 2m"
+define pulse C7180
+"C7180 = 2m"
+define pulse C13456790
+"C13456790 = 1m"
+
+;;Declarations:stop
+
+;;basic set-up:
+
+
+
+1 ze
+d11 pl12:f2
+
+
+
+
+
+ 2 30m do:f2
+  d11 cpd2:f2
+  d1
+  1u reset:f1
+
+  1u reset:f3
+  1m
+
+  50u UNBLKGRAD
+
+
+;;Pulses:start
+
+; Initial virtual 180s: (0,0,0,0,0,0,0)
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+; noop
+
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	C1&C2=0.017;		C1&C6=0.001;		C2&C1=0.017;		C2&C3=0.009;		C2&C7=0.009;		C3&C2=0.009;		C4&C5=0.007;		C4&C7=0.006;		C5&C4=0.007;		C5&C6=0.008;		C5&C7=0.005;		C6&C1=0.001;		C6&C5=0.008;		C6&C7=0.008;		C7&C2=0.009;		C7&C4=0.006;		C7&C5=0.005;		C7&C6=0.008;		
+
+
+3u
+( C13456790:sp30 ph15 ):f3 
+6u
+3u ipp15
+
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+
+gon:ngrad
+grad1
+goff:ngrad
+gwait
+
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	C1&C2=0.034;		C2&C1=0.034;		C2&C3=0.019;		C2&C5=0.002;		C2&C7=0.021;		C3&C2=0.019;		C5&C2=0.002;		C7&C2=0.021;		
+
+
+3u
+( C290_pre:sp2 ph16 ):f3 
+6u
+3u ipp16
+
+
+2.69647m
+
+; State:C1:Z;C2:X;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+3u
+( C1180:sp21 ph17 ):f3 
+6u
+3u ipp17
+
+
+0.337161m
+
+; State:C1:Z;C2:X;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+3u
+( C7180:sp27 ph18 ):f3 
+6u
+3u ipp18
+
+
+0.964552m
+
+; State:C1:Z;C2:X;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+3u
+( C2180:sp22 ph19 ):f3 
+6u
+3u ipp19
+
+
+; State:C1:Z;C2:X;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+3u
+( C3180:sp23 ph15 ):f3 
+6u
+3u ipp15
+
+
+6.09238m
+
+; State:C1:Z;C2:X;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	C1&C2=0.250:0.250++; 	C2&C1=0.250:0.250++; 	C2&C3=0.250:0.250++; 	C2&C4=-0.000:0.000+-; 	C2&C5=0.000:0.000+-; 	C2&C6=0.000:0.000--; 	C2&C7=0.250:0.250++; 	C3&C2=0.250:0.250++; 	C4&C2=-0.000:0.000+-; 	C5&C2=0.000:0.000+-; 	C6&C2=0.000:0.000--; 	C7&C2=0.250:0.250++; 	
+
+
+3u
+( C290_post:sp12 ph16 ):f3 
+6u
+3u ipp16
+
+
+2.02917m
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+
+gon:ngrad
+grad2
+goff:ngrad
+gwait
+
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	C1&C7=-0.012;		C2&C7=-0.060;		C3&C7=0.006;		C4&C7=-0.118;		C5&C7=-0.089;		C6&C7=-0.141;		C7&C1=-0.012;		C7&C2=-0.060;		C7&C3=0.006;		C7&C4=-0.118;		C7&C5=-0.089;		C7&C6=-0.141;		
+
+
+3u
+( C790_pre:sp7 ph17 ):f3 
+6u
+3u ipp17
+
+
+7.12344m
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:X
+; ZZs:	
+
+
+3u
+( C4180:sp24 ph18 ):f3 
+6u
+3u ipp18
+
+
+0.827944m
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:X
+; ZZs:	
+
+
+3u
+( C5180:sp25 ph19 ):f3 
+6u
+3u ipp19
+
+
+0.288796u
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:X
+; ZZs:	
+
+
+3u
+( C7180:sp27 ph15 ):f3 
+6u
+3u ipp15
+
+
+4.24801m
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:X
+; ZZs:	
+
+
+3u
+( C6180:sp26 ph16 ):f3 
+6u
+3u ipp16
+
+
+5.58537m
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:X
+; ZZs:	C1&C7=0.000:0.000-+; 	C2&C7=0.000:0.000+-; 	C3&C7=-0.000:0.000++; 	C4&C7=0.250:0.250++; 	C5&C7=0.250:0.250++; 	C6&C7=0.250:0.250++; 	C7&C1=0.000:0.000-+; 	C7&C2=0.000:0.000+-; 	C7&C3=-0.000:0.000++; 	C7&C4=0.250:0.250++; 	C7&C5=0.250:0.250++; 	C7&C6=0.250:0.250++; 	
+
+
+3u
+( C790_post:sp17 ph17 ):f3 
+6u
+3u ipp17
+
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+
+gon:ngrad
+grad3
+goff:ngrad
+gwait
+
+
+
+; ZZs:	C1&C2=-0.875;		C1&C3=-0.036;		C1&C5=-0.005;		C1&C6=-0.070;		C2&C1=-0.875;		C2&C3=-0.498;		C2&C5=-0.001;		C2&C6=-0.012;		C2&C7=0.011;		C3&C1=-0.036;		C3&C2=-0.498;		C3&C5=-0.004;		C4&C5=0.740;		C4&C6=-0.050;		C4&C7=-0.008;		C5&C1=-0.005;		C5&C2=-0.001;		C5&C3=-0.004;		C5&C4=0.740;		C5&C6=0.564;		C5&C7=-0.006;		C6&C1=-0.070;		C6&C2=-0.012;		C6&C4=-0.050;		C6&C5=0.564;		C6&C7=-0.010;		C7&C2=0.011;		C7&C4=-0.008;		C7&C5=-0.006;		C7&C6=-0.010;		
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+
+ ;Terminal virtual 180s: 
+; (.5@0.000000,0,.5@0.000000,.5@0.000000,.5@0.000000,.5@0.000000,0)
+
+; Final phases (in reference frame): 
+; 0.196967, 0.454922, 0.976959, 0.167342, 0.240273, 0.984685, 0.587191
+
+; Final channel phases (in reference frame): 
+; 0.500000, 0.981634, 0.011965, 0.011965
+
+ ;Final State: 
+; Z, Z, Z, Z, Z, Z, Z
+
+
+
+ ;----------------------------------
+; Total Time: 0.059673 seconds.
+ ;----------------------------------
+
+
+;if (l1==1)
+;{
+;(p21:sp28 ph0):f3
+;}
+;else
+;{
+;}
+;(4u p20:sp20 ph0 4u):f3
+;if (l2==1)
+;{
+;(p21:sp29 ph0):f3
+;}
+;else
+;{
+;}
+;;Pulses:stop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
+;;New set-up
+  ;50u BLKGRAD
+  ;;go=2 ph31:r ;; commented by JZ Dec08, 10
+  go=2 ph30 ph31:r ;; by JZ Dec08, 10
+
+30m do:f2
+wr #0
+  exit
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ph30 = (65536) 0
+   ph25 = 0
+ph0=0
+ph1=1

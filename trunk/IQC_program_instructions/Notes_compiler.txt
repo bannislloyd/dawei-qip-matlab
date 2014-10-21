@@ -1,0 +1,13 @@
+<1> Modify molecule.def
+1. The frequencies (chemical shifts) of all spins require "minus" signs before the normal (you observed on the spectrometer) values! Assuming  
+the chemical shift of C1 is 20000Hz, in molecule.def please write it as -20000.
+2. refFreq	C means the transmit frequency (O1). Also defined as the "minus" value of the real O1. You can write it as "C1;C2;C3", which means O1
+is now the average fidelity of these 3 chemical shifts.
+3. All the J-couplings should be divided by 2! If J = 100Hz, please write it as 50 in this file.
+
+<2> Modify sample.m
+1. Define the subsystem of spins. If you have 3 spins activated, write like this 
+"spins_sub{1} = [1]; 
+  spins_sub{2} = [2]; 
+  spins_sub{3} = [3];"
+2. Write the spins which will be ignored during the experiments "spins.ignore = {'H1','H2','H3','H4','H5'}; ". If no spins ignored, delete this sentence.

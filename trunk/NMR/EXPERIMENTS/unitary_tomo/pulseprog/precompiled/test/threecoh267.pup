@@ -1,0 +1,33 @@
+#define exp
+#define C1obs
+#include "defs.h"
+
+;;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+;;<
+
+;>
+;pulse noop @*:Z-
+;pulse C12345690 0~C1;0~C2;0~C3;0~C4;0~C5;0~C6 @*:Z-
+;gradient grad1 0 0 23
+
+;pulse C790_pre 0.25~C7 @C1:I-;C2:I-;C3:I-;C4:I-;C5:I-;C6:I-;C7:Z-
+;zz 0.25 C2;C6 C7
+
+
+;refocus C6180 0~C6
+;refocus C7180 0~C7
+;refocus C2180 0~C2
+;refocus C6180 0~C6
+;refocus C2180 0~C2
+;refocus C7180 0~C7
+
+
+;pulse C790_post 0.25~C7 @C1:I-;C2:Z-;C3:I-;C4:I-;C5:I-;C6:Z-;C7:Z+
+;gradient grad2 0 0 37
+;<
+
+
+
+;;Terminal file:
+;;--------------
+#include "defs.t"

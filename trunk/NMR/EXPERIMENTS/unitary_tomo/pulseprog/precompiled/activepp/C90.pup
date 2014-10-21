@@ -1,0 +1,71 @@
+#define exp
+#define C1obs
+#include "defs.h"
+
+;;>$locRng = 5; $locStp = 3; $locStopOpt = 1e-8; $stopOpt = 1e-6
+;;<
+
+;>
+;pulse noop @*:Z-
+
+
+;;pulse Cdecoding 0~C1;0~C2;0~C3;0~C4;0~C5;0~C6;0~C7
+;;pulse Ch90 0~C1;0~C2;0~C3;0~C4;0~C5;0~C6;0~C7 @*:Z+
+;;pulse Ch90 0.5~C1;0.5~C2;0.5~C3;0.5~C4;0.5~C5;0.5~C6;0.5~C7 
+;;pulse C134690 0~C1;0~C3;0~C4;0~C6 @*:Z+;C2:X+;C5:X+;C7:X+
+#include "sv_xxxxxxx_pc.frag"
+;<
+
+;>
+;;pulse C134690 0~C1;0~C3;0~C4;0~C6 @C1:Z+;C3:Z+;C4:Z+;C6:Z+;C2:X+;C5:X+;C7:X+
+
+
+
+;pulse noop @C1:Z-;C3:Z-;C4:Z-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;;pulse C134690 0.75~C1;0.75~C3;0.75~C4;0.75~C6 @C1:Z-;C3:Z-;C4:Z-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;;zz 0.25 C2 C1
+;;zz 0.25 C2 C3
+;;zz 0.25 C5 C6
+;;zz 0.25 C5 C4
+;;refocus C1180 0~C1
+;;refocus C3180 0~C3
+;;refocus C2180 0~C2
+;;refocus C6180 0~C6
+;;refocus C5180 0~C5
+;;refocus C4180 0~C4
+;;refocus C3180 0
+;;refocus C2180 0
+;;refocus C1180 0
+;;refocus C6180 0
+;;pulse C134690 0~C1;0~C3;0~C4;0~C6 @C1:Z+;C3:Z+;C4:Z+;C6:Z+
+
+;pulse C190 0.75~C1 @C1:Z-;C3:Z-;C4:Z-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;pulse C390 0.75~C3 @C1:X-;C3:Z-;C4:Z-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;zz 0.25 C2 C1
+;zz 0.25 C2 C3
+;refocus C3180 0~C3 
+;refocus C2180 0~C2 
+;refocus C1180 0~C1 
+;pulse noop @C1:X-;C3:X-;C4:Z-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;pulse C190 0~C1 @C1:0+;C3:X-;C4:Z+;C6:Z+;C2:Z+;C5:Z+;C7:Z+
+;pulse C390 0~C3 @C1:0+;C3:0+;C4:Z+;C6:Z+;C2:Z+;C5:Z+;C7:Z+
+
+;pulse C490 0.75~C4 @C1:0-;C3:0-;C4:Z-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;pulse C690 0.75~C6 @C1:0-;C3:0-;C4:X-;C6:Z-;C2:Z-;C5:Z-;C7:Z-
+;zz 0.25 C5 C4
+;zz 0.25 C5 C6
+;refocus C4180 0~C4 
+;refocus C5180 0~C5 
+;refocus C6180 0~C6 
+;pulse noop @C1:0-;C3:0-;C4:X-;C6:X-;C2:Z-;C5:Z-;C7:Z-
+;pulse C490 0~C4 @C1:0+;C3:0+;C4:0+;C6:X-;C2:Z+;C5:Z+;C7:Z+
+;;pulse C690 0~C6 @C1:0+;C3:0+;C4:Z+;C6:Z+;C2:Z+;C5:Z+;C7:Z+
+
+;<
+
+
+
+
+;;Terminal file:
+;;--------------
+#include "defs.t"

@@ -1,0 +1,15 @@
+A. Get the data of the experimental spectrum
+
+1. Upload the experimenal data to the folder 'results'.
+2. Open 'exp_twqubit.m' and change the path 
+   specstruc = getspec('/home/dtrottie/NMR/EXPERIMENTS/twqubit/results/505',4);
+   For example, 505 is the EXPNO and 4 is the PRONO.
+3. Run 'exp_twqubit.m' and the data will be saved in exp.mat.
+4. Copy the exp.mat to your computer.
+
+B. Get the data of the simulated spectrum
+1. Open 'sample.m' and change the initial state. In usual case, it is the thermal equilibrium state.
+2. Open 'spectro.m' and change the necessary parameters. Note: swh and o1 shoule be set the same as the experimental spectrum. It will be convinient to make comparisions.
+3. Write the pulse program in '/pulseprog/compiled/name'(For example, '7coh' here).
+4. Run 'sim_twqubit.m' and the data will be saved in sim.mat.
+5. Copy the sim.mat to your computer.

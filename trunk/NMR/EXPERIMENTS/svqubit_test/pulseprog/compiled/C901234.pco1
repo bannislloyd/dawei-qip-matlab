@@ -1,0 +1,141 @@
+#include <Avance.incl>
+#include <Grad.incl>
+
+;;Declarations:start
+define delay gon
+"gon = 2u"
+define delay goff
+"goff = 2u"
+define delay gwait
+"gwait = 0.2m"
+define delay grad1
+"grad1 = 2m"
+define delay grad2
+"grad2 = 3m"
+define pulse Ch90
+"Ch90 = 0.01m"
+define pulse C190
+"C190 = 1m"
+define pulse C290
+"C290 = 1m"
+define pulse C390
+"C390 = 1m"
+define pulse C490
+"C490 = 1m"
+define pulse C590
+"C590 = 1m"
+define pulse C690
+"C690 = 1m"
+define pulse C790
+"C790 = 1m"
+define pulse C1180
+"C1180 = 2m"
+define pulse C2180
+"C2180 = 2m"
+define pulse C3180
+"C3180 = 2m"
+define pulse C4180
+"C4180 = 2m"
+define pulse C5180
+"C5180 = 2m"
+define pulse C6180
+"C6180 = 2m"
+define pulse C7180
+"C7180 = 2m"
+
+;;Declarations:stop
+
+;;basic set-up:
+
+
+1 ze
+
+
+
+
+ 2 30m
+  d1
+  1u reset:f1
+  1u reset:f2
+  1u reset:f3
+  1m
+
+  50u UNBLKGRAD
+
+
+;;Pulses:start
+
+; Initial virtual 180s: (0,0,0,0,0,0,0)
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+; noop
+
+
+; State:C1:Z;C2:Z;C3:Z;C4:Z;C5:Z;C6:Z;C7:Z
+; ZZs:	
+
+
+0.013m
+0.01m pl22:f3
+( Ch90 ph10 ):f3 
+6u
+0.01m pl3:f3
+3u ipp10
+
+
+
+; ZZs:	C1&C2=0.001:0.000++; 	C1&C3=-0.000:0.000-+; 	C1&C4=0.000:0.000++; 	C1&C5=-0.000:0.000-+; 	C1&C6=0.000:0.000++; 	C1&C7=0.000:0.000++; 	C2&C1=0.001:0.000++; 	C2&C3=0.001:0.000++; 	C2&C4=0.000:0.000++; 	C2&C5=0.000:0.000++; 	C2&C6=-0.000:0.000-+; 	C2&C7=0.000:0.000++; 	C3&C1=-0.000:0.000-+; 	C3&C2=0.001:0.000++; 	C3&C4=0.000:0.000-+; 	C3&C5=0.000:0.000++; 	C3&C6=0.000:0.000-+; 	C3&C7=0.000:0.000++; 	C4&C1=0.000:0.000++; 	C4&C2=0.000:0.000++; 	C4&C3=0.000:0.000-+; 	C4&C5=0.001:0.000++; 	C4&C6=-0.000:0.000-+; 	C4&C7=0.000:0.000++; 	C5&C1=-0.000:0.000-+; 	C5&C2=0.000:0.000++; 	C5&C3=0.000:0.000++; 	C5&C4=0.001:0.000++; 	C5&C6=0.001:0.000++; 	C5&C7=-0.000:0.000-+; 	C6&C1=0.000:0.000++; 	C6&C2=-0.000:0.000-+; 	C6&C3=0.000:0.000-+; 	C6&C4=-0.000:0.000-+; 	C6&C5=0.001:0.000++; 	C6&C7=0.000:0.000++; 	C7&C1=0.000:0.000++; 	C7&C2=0.000:0.000++; 	C7&C3=0.000:0.000++; 	C7&C4=0.000:0.000++; 	C7&C5=-0.000:0.000-+; 	C7&C6=0.000:0.000++; 	
+; State:C1:X;C2:X;C3:X;C4:X;C5:X;C6:X;C7:X
+; Net ZZ error: 0.001367, cos=0.999963
+
+ ;Terminal virtual 180s: 
+; (0,0,0,0,0,0,0)
+
+; Final phases (in reference frame): 
+; 0.267385, 0.804982, 0.868624, 0.765844, 0.629019, 0.157532, 0.725546
+
+; Final channel phases (in reference frame): 
+; 0.500000, 0.844000, 0.980104, 0.980104
+
+ ;Final State: 
+; X, X, X, X, X, X, X
+
+
+
+ ;----------------------------------
+; Total ZZ error: 0.001367, cos=0.999963
+; Total Time: 0.000052 seconds.
+ ;----------------------------------
+
+
+;;Pulses:stop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
+;;New set-up
+  50u BLKGRAD
+  ;;go=2 ph31:r ;; commented by JZ Dec08, 10
+  go=2 ph30 ph31:r ;; by JZ Dec08, 10
+  100m
+  wr #0
+  exit
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ph30 = (65536) 0
+
+;;Phases:start
+;;;;;;;;;;;;;;
+
+ph31 = (65536) 0
+ph10 = (65536) 63997 
+
+;;Phases:stop
+;;;;;;;;;;;;;

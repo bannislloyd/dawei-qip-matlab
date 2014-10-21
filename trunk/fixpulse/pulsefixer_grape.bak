@@ -1,0 +1,237 @@
+%The program iteratively fixes soft shape pulses on the spectrometer to
+%correct for amplitude and phase imperfections.  
+%
+%Written by Colm Ryan 6 January, 2006
+%Updated by Colm Ryan 24 March,2006 to handle a subtlety with the decimation
+%Updated by Colm Ryan 6 April, 2006 to handle smooth pulses
+%Updated by Colm Ryan 22 July,2006 to fit overlapping periods and
+%then average to smooth out discontinuities between fitting periods
+%Updated by Colm Ryan 18 October, 2006 to handle soft files which
+%are discretized below 1us
+
+function pulsefixer_grape(params)
+
+%First some parameters 
+user = 'c4ryan';
+
+pulselength = params.pulselength;
+
+dw = 0.5e-6;
+softdiscrt = 1e-6;
+damping = [1 0.5 0.4 0.3 0.2 0.2 0.2 0.1];
+damping = damping(params.loopnb);
+predelay = 59e-6;
+startpt = fix(predelay/(dw*2)+1);
+endpt = startpt-1+fix(pulselength/(dw*2));
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%Load the pulse fid
+fidfile = fopen(['curfid'],'r','ieee-be');
+if fidfile < 0; fprintf(2, 'Error opening FID.\n'); return; end;
+
+FID = fread(fidfile,inf,'int32');
+realFID = FID(1:2:end) - mean(FID(1:2:20));
+imagFID = FID(2:2:end) - mean(FID(2:2:20));
+
+FID = realFID(startpt:endpt) -i*imagFID(startpt:endpt);
+
+%Scale the FID and adjust the phase according to the reference
+FID = FID*(1/params.refscaling)*exp(-i*pi*params.refangle/180);
+
+realFID = real(FID);
+imagFID = imag(FID);
+
+%Filter the signal to reduce noise on the 700 
+%Apply a Butterworth lowpass filter 10th order
+
+%Sampling frequency
+f = 1e6;
+
+%Cutoff for the lowpass normalized to sampling frequency
+cutoff = 1e5/(f/2);
+
+%Filter design
+[b,a] = butter(10,cutoff,'low');
+
+%Apply the filter
+realFID = filtfilt(b,a,realFID);
+imagFID = filtfilt(b,a,imagFID);
+
+%Interpolate the measured pulse to get the same discretization as the soft file
+x = [0:dw*2:pulselength-dw*2]; 
+xnew = [0:softdiscrt:pulselength-softdiscrt];
+realFID = (interp1(x,realFID,xnew,'linear','extrap'))';
+imagFID = (interp1(x,imagFID,xnew,'linear','extrap'))';
+
+%Load the ideal soft file (first open and check for comments)
+idealfile = fopen(['pulsefiles/' params.idealpulsestr],'r');
+tmpidealfile = fopen('pulsefiles/tmpideal','w');
+line = fgets(idealfile);
+while(line ~= -1)
+    if(strfind(line,'##')); 
+    else
+        fprintf(tmpidealfile,line);
+    end
+    line = fgets(idealfile);
+end
+
+idealpulse = load('pulsefiles/tmpideal');
+
+%Load the tried pulse
+triedfile = fopen(['pulsefiles/' params.triedpulsestr]);
+tmptriedfile = fopen('pulsefiles/tmptried','w');
+line = fgets(triedfile);
+while(line ~= -1)
+    if(strfind(line,'##'));
+    else
+        fprintf(tmptriedfile,line);
+    end
+    line = fgets(triedfile);
+end
+triedpulse = load('pulsefiles/tmptried');
+
+%Convert them to quadrature components
+idealpulse_real = idealpulse(:,1).*cos(idealpulse(:,2)*pi/180);
+idealpulse_imag = idealpulse(:,1).*sin(idealpulse(:,2)*pi/180);
+triedpulse_real = triedpulse(:,1).*cos(triedpulse(:,2)*pi/180);
+triedpulse_imag = triedpulse(:,1).*sin(triedpulse(:,2)*pi/180);
+
+%TAKE OUT SOON! Ignore the first few points or last
+%realFID(1) = realFID(2);
+%realFID(end) = realFID(end-1);
+%imagFID(1) = imagFID(2);
+%imagFID(end) = imagFID(end-1);
+
+
+%Now fit every ten points with a cubic polynomial and update the pulse accordingly
+newpulse_real = zeros(size(idealpulse,1),1);
+newpulse_imag = zeros(size(idealpulse,1),1);
+
+updatect = zeros(size(idealpulse,1),1);
+
+cubicmodel = fittype('a*x^3+b*x^2+c*x+d','coeff',{'a','b','c','d'});
+
+%How many points per period to fit
+numpts = 20;
+%How much to move the fitting period each time
+ptsinc = 10;
+
+stper = 1-ptsinc; 
+keeploopingflag = 1;
+
+while(keeploopingflag)
+%Update the fitting period and kick out if necessary
+stper = stper+ptsinc;
+endper = min(stper+numpts-1,size(idealpulse,1));
+perlength = endper-stper+1;
+
+if(endper == size(idealpulse,1))
+  keeploopingflag = 0;
+end
+
+
+fitstpt = [0 0 0 mean(idealpulse_real(stper:endper))];
+fitdata_idealpulse_real = fit([1:1:perlength]',idealpulse_real(stper:endper),cubicmodel,'Startpoint',fitstpt);
+
+fitstpt = [0 0 0 mean(idealpulse_imag(stper:endper))];
+fitdata_idealpulse_imag = fit([1:1:perlength]',idealpulse_imag(stper:endper),cubicmodel,'Startpoint',fitstpt);
+
+fitstpt = [0 0 0 mean(triedpulse_real(stper:endper))];
+fitdata_triedpulse_real = fit([1:1:perlength]',triedpulse_real(stper:endper),cubicmodel,'Startpoint',fitstpt);    
+
+fitstpt = [0 0 0 mean(triedpulse_imag(stper:endper))];
+fitdata_triedpulse_imag = fit([1:1:perlength]',triedpulse_imag(stper:endper),cubicmodel,'Startpoint',fitstpt);    
+
+fitstpt = [0 0 0 mean(realFID(stper:endper))];
+fitdata_realFID = fit([1:1:perlength]',realFID(stper:endper),cubicmodel,'Startpoint',fitstpt);    
+
+fitstpt = [0 0 0 mean(imagFID(stper:endper))];
+fitdata_imagFID = fit([1:1:perlength]',imagFID(stper:endper),cubicmodel,'Startpoint',fitstpt);    
+
+newpulse_real(stper:endper) = newpulse_real(stper:endper) + triedpulse_real(stper:endper) +... 
+                                                damping*(fitdata_idealpulse_real.a - fitdata_realFID.a)*([1:1:perlength].^3)' + ...
+                                                damping*(fitdata_idealpulse_real.b - fitdata_realFID.b)*([1:1:perlength].^2)' + ...
+                                                damping*(fitdata_idealpulse_real.c - fitdata_realFID.c)*([1:1:perlength].^1)' + ...
+                                                damping*(fitdata_idealpulse_real.d - fitdata_realFID.d)*([1:1:perlength].^0)';  
+
+
+newpulse_imag(stper:endper) = newpulse_imag(stper:endper) + triedpulse_imag(stper:endper) +...
+                                                damping*(fitdata_idealpulse_imag.a - fitdata_imagFID.a)*([1:1:perlength].^3)' + ...
+                                                damping*(fitdata_idealpulse_imag.b - fitdata_imagFID.b)*([1:1:perlength].^2)' + ...
+                                                damping*(fitdata_idealpulse_imag.c - fitdata_imagFID.c)*([1:1:perlength].^1)' + ...
+                                                damping*(fitdata_idealpulse_imag.d - fitdata_imagFID.d)*([1:1:perlength].^0)';  
+
+
+
+%Update the update counter
+updatect(stper:endper) = updatect(stper:endper)+1;
+
+end
+
+%Average the newpulse
+newpulse_real = newpulse_real./updatect;
+newpulse_imag = newpulse_imag./updatect;
+
+%Filter the new pulse with same 100kHz low pass to get rid of discontinuties
+newpulse_real = filtfilt(b,a,newpulse_real);
+newpulse_imag = filtfilt(b,a,newpulse_imag);
+
+%Convert back to amplitude and phase for the new shape file
+newpulse_amp = abs(newpulse_real+i*newpulse_imag);
+newpulse_phase = (180/pi)*angle(newpulse_real+i*newpulse_imag);
+
+
+%Write the new shape file
+shpfile = fopen(['pulsefiles/' params.newshpfilename],'w');
+
+%First the starting stuff
+%Write the first few lines
+fprintf(shpfile,'##TITLE= %s\n',params.newshpfilename);
+fprintf(shpfile,'##JCAMP-DX= 5.00 Bruker JCAMP library\n');
+fprintf(shpfile,'##DATA TYPE= Shape Data\n');
+fprintf(shpfile,'##ORIGIN= Colm Fixed Pulses \n');
+fprintf(shpfile,'##OWNER= %s\n',user);
+fprintf(shpfile,'##DATE= %s\n',date);
+time = clock;
+fprintf(shpfile,'##TIME= %d:%d\n',fix(time(4)),fix(time(5)));
+fprintf(shpfile,'##MINX= %7.6e\n',min(newpulse_amp));
+fprintf(shpfile,'##MAXX= %7.6e\n',min(max(newpulse_amp),100));
+fprintf(shpfile,'##MINY= %7.6e\n',min(newpulse_phase));
+fprintf(shpfile,'##MAXY= %7.6e\n',max(newpulse_phase));
+fprintf(shpfile,'##$SHAPE_EXMODE= None\n');
+fprintf(shpfile,'##$SHAPE_TOTROT= %7.6e\n',90);
+fprintf(shpfile,'##$SHAPE_BWFAC= %7.6e\n',1);
+fprintf(shpfile,'##$SHAPE_INTEGFAC= %7.6e\n',1);
+fprintf(shpfile,'##$SHAPE_MODE= 1\n');
+fprintf(shpfile,'##NPOINTS= %d\n',length(newpulse_amp));
+fprintf(shpfile,'##XYPOINTS= (XY..XY)\n');
+
+
+%Now write out the pulse
+for lnct = 1:1:length(newpulse_amp)
+ 
+    %Make sure magnitude is between zero and 100
+    newmag = newpulse_amp(lnct);
+    newmag = min(newmag,100); newmag = max(newmag,0);
+    
+    newphase = newpulse_phase(lnct);
+    fprintf(shpfile,'  %7.6e,  %7.6e\n',newmag,newphase);
+end
+fprintf(shpfile,'##END=');
+
+%Plot the difference
+figure
+plot(realFID,'r'); hold on; plot(idealpulse_real); plot(triedpulse_real,'g');
+eval(sprintf('saveas(gcf,''figures/%s_real_%i.fig'')',params.idealpulsestr,params.loopnb))
+figure
+plot(imagFID,'r'); hold on; plot(idealpulse_imag); plot(triedpulse_imag,'g');
+eval(sprintf('saveas(gcf,''figures/%s_imag_%i.fig'')',params.idealpulsestr,params.loopnb))
+
+
+close all
+
+%Close the files
+fclose('all');
+
+return

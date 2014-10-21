@@ -1,0 +1,2 @@
+1. CCR with 4us
+6000Hz, 2ms, 100steps, 0.9887fidelity
