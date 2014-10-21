@@ -1,0 +1,35 @@
+% Test
+
+clear;
+
+load parameter.mat
+load Encoding_Bx; load Encoding_By;
+
+total_time=50280e-6; time_interval=5e-6;
+U_sim=U_sim_calculation(Encoding_Bx, Encoding_By, total_time, time_interval);
+
+rho1=gop(7,Z);
+rho2=gop(1,Z)*gop(2,Z)*gop(3,Z)*gop(4,Z)*gop(5,Z)*gop(6,Z)*gop(7,Z);
+trace(U_sim*rho1*U_sim'*rho2)/128
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Bx=pulse(:,1)*2500/100.*cos(pulse(:,2)*pi/180);
+
+
