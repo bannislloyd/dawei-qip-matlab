@@ -1,0 +1,73 @@
+Initial State: cos(theta)*|0>+sin(theta)*|1>. theta=1.4
+Ancilla:C1; Measuring Device:C2; System: H
+
+%%% PPS Spectrum as Reference %%%
+PPS:I|00>, (1.00)IXZ (1.00)IXI (1.00)IIZ (A Ry Rotation on C2)
+Four Peaks of C2: 1+0i, 1+0i, 0+0i, 0+0i, 
+Four Peaks of H:  0+0i, 0+0i, 0+0i, 0+0i, 
+
+%%% Experiment for Different g %%%
+Initial State is IX(cos1.4|0>+sin1.4|1>)
+g = 0.050 
+State after Weak Measument: (0.3333)IXX (-0.9422)IXZ (0.9950)IXI (0.0998)IYX (0.0334)IYI (0.0941)IZY (0.3350)IIX (-0.9375)IIZ 
+State after Post Selection: (0.1667)ZXX (0.0499)ZXY (-0.9686)ZXZ (0.9686)ZXI (0.0499)ZYX (-0.1667)ZYY (-0.0167)ZYZ (0.0167)ZYI (-0.1675)ZZX (0.0470)ZZY (0.1675)ZIX (-0.0470)ZIY (0.1667)IXX (-0.0499)IXY (0.0264)IXZ (0.0264)IXI (0.0499)IYX (0.1667)IYY (0.0167)IYZ (0.0167)IYI (0.1675)IZX (0.0470)IZY (0.1675)IIX (0.0470)IIY (-0.9375)IIZ 
+Four Peaks of C2 (Im part): -0.0264+0.0167i, -0.0264+0.0167i, -0.9686+0.0167i, 0.9686-0.0167i, 
+Four Peaks of H  (Re part): -0.4688-0.0470i, -0.4688-0.0470i, -0.4688+0.0470i, -0.4688-0.0470i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 5.3522
+ 
+g = 0.100 
+State after Weak Measument: (0.3283)IXX (-0.9422)IXZ (0.9801)IXI (0.1987)IYX (0.0666)IYI (0.1872)IZY (0.3350)IIX (-0.9234)IIZ 
+State after Post Selection: (0.1642)ZXX (0.0993)ZXY (-0.9611)ZXZ (0.9611)ZXI (0.0993)ZYX (-0.1642)ZYY (-0.0333)ZYZ (0.0333)ZYI (-0.1675)ZZX (0.0936)ZZY (0.1675)ZIX (-0.0936)ZIY (0.1642)IXX (-0.0993)IXY (0.0189)IXZ (0.0189)IXI (0.0993)IYX (0.1642)IYY (0.0333)IYZ (0.0333)IYI (0.1675)IZX (0.0936)IZY (0.1675)IIX (0.0936)IIY (-0.9234)IIZ 
+Four Peaks of C2 (Im part): -0.0189+0.0333i, -0.0189+0.0333i, -0.9611+0.0333i, 0.9611-0.0333i, 
+Four Peaks of H  (Re part): -0.4617-0.0936i, -0.4617-0.0936i, -0.4617+0.0936i, -0.4617-0.0936i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 4.3464
+ 
+g = 0.150 
+State after Weak Measument: (0.3200)IXX (-0.9422)IXZ (0.9553)IXI (0.2955)IYX (0.0990)IYI (0.2784)IZY (0.3350)IIX (-0.9001)IIZ 
+State after Post Selection: (0.1600)ZXX (0.1478)ZXY (-0.9488)ZXZ (0.9488)ZXI (0.1478)ZYX (-0.1600)ZYY (-0.0495)ZYZ (0.0495)ZYI (-0.1675)ZZX (0.1392)ZZY (0.1675)ZIX (-0.1392)ZIY (0.1600)IXX (-0.1478)IXY (0.0066)IXZ (0.0066)IXI (0.1478)IYX (0.1600)IYY (0.0495)IYZ (0.0495)IYI (0.1675)IZX (0.1392)IZY (0.1675)IIX (0.1392)IIY (-0.9001)IIZ 
+Four Peaks of C2 (Im part): -0.0066+0.0495i, -0.0066+0.0495i, -0.9488+0.0495i, 0.9488-0.0495i, 
+Four Peaks of H  (Re part): -0.4501-0.1392i, -0.4501-0.1392i, -0.4501+0.1392i, -0.4501-0.1392i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 3.3045
+ 
+g = 0.200 
+State after Weak Measument: (0.3085)IXX (-0.9422)IXZ (0.9211)IXI (0.3894)IYX (0.1305)IYI (0.3669)IZY (0.3350)IIX (-0.8678)IIZ 
+State after Post Selection: (0.1543)ZXX (0.1947)ZXY (-0.9316)ZXZ (0.9316)ZXI (0.1947)ZYX (-0.1543)ZYY (-0.0652)ZYZ (0.0652)ZYI (-0.1675)ZZX (0.1835)ZZY (0.1675)ZIX (-0.1835)ZIY (0.1543)IXX (-0.1947)IXY (-0.0106)IXZ (-0.0106)IXI (0.1947)IYX (0.1543)IYY (0.0652)IYZ (0.0652)IYI (0.1675)IZX (0.1835)IZY (0.1675)IIX (0.1835)IIY (-0.8678)IIZ 
+Four Peaks of C2 (Im part): 0.0106+0.0652i, 0.0106+0.0652i, -0.9316+0.0652i, 0.9316-0.0652i, 
+Four Peaks of H  (Re part): -0.4339-0.1835i, -0.4339-0.1835i, -0.4339+0.1835i, -0.4339-0.1835i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 2.4677
+ 
+g = 0.300 
+State after Weak Measument: (0.2765)IXX (-0.9422)IXZ (0.8253)IXI (0.5646)IYX (0.1891)IYI (0.5320)IZY (0.3350)IIX (-0.7776)IIZ 
+State after Post Selection: (0.1382)ZXX (0.2823)ZXY (-0.8838)ZXZ (0.8838)ZXI (0.2823)ZYX (-0.1382)ZYY (-0.0946)ZYZ (0.0946)ZYI (-0.1675)ZZX (0.2660)ZZY (0.1675)ZIX (-0.2660)ZIY (0.1382)IXX (-0.2823)IXY (-0.0584)IXZ (-0.0584)IXI (0.2823)IYX (0.1382)IYY (0.0946)IYZ (0.0946)IYI (0.1675)IZX (0.2660)IZY (0.1675)IIX (0.2660)IIY (-0.7776)IIZ 
+Four Peaks of C2 (Im part): 0.0584+0.0946i, 0.0584+0.0946i, -0.8838+0.0946i, 0.8838-0.0946i, 
+Four Peaks of H  (Re part): -0.3888-0.2660i, -0.3888-0.2660i, -0.3888+0.2660i, -0.3888-0.2660i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 1.4178
+ 
+g = 0.400 
+State after Weak Measument: (0.2334)IXX (-0.9422)IXZ (0.6967)IXI (0.7174)IYX (0.2403)IYI (0.6759)IZY (0.3350)IIX (-0.6565)IIZ 
+State after Post Selection: (0.1167)ZXX (0.3587)ZXY (-0.8195)ZXZ (0.8195)ZXI (0.3587)ZYX (-0.1167)ZYY (-0.1202)ZYZ (0.1202)ZYI (-0.1675)ZZX (0.3380)ZZY (0.1675)ZIX (-0.3380)ZIY (0.1167)IXX (-0.3587)IXY (-0.1228)IXZ (-0.1228)IXI (0.3587)IYX (0.1167)IYY (0.1202)IYZ (0.1202)IYI (0.1675)IZX (0.3380)IZY (0.1675)IIX (0.3380)IIY (-0.6565)IIZ 
+Four Peaks of C2 (Im part): 0.1228+0.1202i, 0.1228+0.1202i, -0.8195+0.1202i, 0.8195-0.1202i, 
+Four Peaks of H  (Re part): -0.3282-0.3380i, -0.3282-0.3380i, -0.3282+0.3380i, -0.3282-0.3380i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 0.8744
+ 
+g = 0.500 
+State after Weak Measument: (0.1810)IXX (-0.9422)IXZ (0.5403)IXI (0.8415)IYX (0.2819)IYI (0.7929)IZY (0.3350)IIX (-0.5091)IIZ 
+State after Post Selection: (0.0905)ZXX (0.4207)ZXY (-0.7413)ZXZ (0.7413)ZXI (0.4207)ZYX (-0.0905)ZYY (-0.1409)ZYZ (0.1409)ZYI (-0.1675)ZZX (0.3964)ZZY (0.1675)ZIX (-0.3964)ZIY (0.0905)IXX (-0.4207)IXY (-0.2010)IXZ (-0.2010)IXI (0.4207)IYX (0.0905)IYY (0.1409)IYZ (0.1409)IYI (0.1675)IZX (0.3964)IZY (0.1675)IIX (0.3964)IIY (-0.5091)IIZ 
+Four Peaks of C2 (Im part): 0.2010+0.1409i, 0.2010+0.1409i, -0.7413+0.1409i, 0.7413-0.1409i, 
+Four Peaks of H  (Re part): -0.2545-0.3964i, -0.2545-0.3964i, -0.2545+0.3964i, -0.2545-0.3964i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 0.5742
+ 
+g = 0.600 
+State after Weak Measument: (0.1214)IXX (-0.9422)IXZ (0.3624)IXI (0.9320)IYX (0.3122)IYI (0.8782)IZY (0.3350)IIX (-0.3414)IIZ 
+State after Post Selection: (0.0607)ZXX (0.4660)ZXY (-0.6523)ZXZ (0.6523)ZXI (0.4660)ZYX (-0.0607)ZYY (-0.1561)ZYZ (0.1561)ZYI (-0.1675)ZZX (0.4391)ZZY (0.1675)ZIX (-0.4391)ZIY (0.0607)IXX (-0.4660)IXY (-0.2899)IXZ (-0.2899)IXI (0.4660)IYX (0.0607)IYY (0.1561)IYZ (0.1561)IYI (0.1675)IZX (0.4391)IZY (0.1675)IIX (0.4391)IIY (-0.3414)IIZ 
+Four Peaks of C2 (Im part): 0.2899+0.1561i, 0.2899+0.1561i, -0.6523+0.1561i, 0.6523-0.1561i, 
+Four Peaks of H  (Re part): -0.1707-0.4391i, -0.1707-0.4391i, -0.1707+0.4391i, -0.1707-0.4391i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 0.3951
+ 
+g = 0.700 
+State after Weak Measument: (0.0569)IXX (-0.9422)IXZ (0.1700)IXI (0.9854)IYX (0.3301)IYI (0.9285)IZY (0.3350)IIX (-0.1601)IIZ 
+State after Post Selection: (0.0285)ZXX (0.4927)ZXY (-0.5561)ZXZ (0.5561)ZXI (0.4927)ZYX (-0.0285)ZYY (-0.1651)ZYZ (0.1651)ZYI (-0.1675)ZZX (0.4643)ZZY (0.1675)ZIX (-0.4643)ZIY (0.0285)IXX (-0.4927)IXY (-0.3861)IXZ (-0.3861)IXI (0.4927)IYX (0.0285)IYY (0.1651)IYZ (0.1651)IYI (0.1675)IZX (0.4643)IZY (0.1675)IIX (0.4643)IIY (-0.1601)IIZ 
+Four Peaks of C2 (Im part): 0.3861+0.1651i, 0.3861+0.1651i, -0.5561+0.1651i, 0.5561-0.1651i, 
+Four Peaks of H  (Re part): -0.0801-0.4643i, -0.0801-0.4643i, -0.0801+0.4643i, -0.0801-0.4643i, (After a Ry rotation to observe)
+Weak Value: 0.5*Im(C2)/g(0.5*Re(H)+1) = 0.2808
+ 

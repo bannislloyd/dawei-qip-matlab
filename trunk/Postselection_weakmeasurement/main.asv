@@ -1,0 +1,38 @@
+clear;
+
+[sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(3);
+[Para,H] = hamiltonian_TCE;
+%% initial state I|00>
+theta = 1.4;
+
+input = 2*KIz{3}+KIz{2};
+U_pps = rot(-KIy{3},pi/4)*rot(KIz{3}*KIz{2},pi)*rot(KIx{3},pi/4);
+pps = Gz(U_pps*input*U_pps')/4;
+save U_pps.mat U_pps
+rho_ini = rot(KIy{3},2*theta)*rot(KIy{2},pi/2)*pps*(rot(KIy{3},2*theta)*rot(KIy{2},pi/2))';
+ttt = rot(KIy{2},pi/2)*pps*(rot(KIy{2},pi/2))';
+% system qubit
+psi_i = cos(theta)*[1;0]+sin(theta)*[0;1];
+%% measure
+g = pi/4;
+T = g/pi/Para(2,3);
+ measure_operator = 2*Ix;
+ u_weak = expm(-i*2*pi*Para(2,3)*T*kron(I,kron(I,measure_operator))*KIz{2});
+ rho_weak = u_weak*rho_ini*u_weak';
+ 
+%% post selection
+ psi_f = [1;0]; % the post selection state of system is |0>
+
+Toffoli = kron(I,kron(I,I))-kron(ST1,kron(I,ST1))+kron(ST1,kron(sigma_z,ST1));
+save Toffoli.mat Toffoli 
+U_gpi4 = Toffoli*u_weak*rot(KIy{3},2*theta)*rot(KIy{2},pi/2);
+save U_gpi4.mat U_gpi4
+% projective measurement operator
+rho_final = Toffoli*rho_weak*Toffoli'; % the final state after the projective measurement
+
+ weak_value = psi_f'*measure_operator*psi_i/(psi_f'*psi_i) % weak value by theoretical definition
+ sigma_y_md = trace(rho_final*2*KIy{2});
+ sigma_z_s = trace(rho_final*2*KIz{3});
+ Re_weak_value = sigma_y_md/(sigma_z_s+1)/g % Re of the weak value by measuring sigma_y on the device
+% Toffoli = kron(I,kron(I,I))-kron(ST1,kron(I,ST1))+kron(ST1,kron(sigma_z,ST1));
+
