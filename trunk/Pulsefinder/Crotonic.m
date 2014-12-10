@@ -118,7 +118,7 @@ params.tstepflag = 0;
 params.tpulsemax = 10e-3;
 
 %Input and goal states for state to state
-params.rhoin = mkstate('+1IIIZ',1);
+params.rhoin = mkstate('+1IIIX',1);
 params.rhogoal = mkstate('+1IIIZ',1);
 
 %Allow Zfreedom or not
