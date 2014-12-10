@@ -1,0 +1,68 @@
+Follow the order of how pulsefinder works
+
+1. pulsefinder_main.m
+
+## Check if all necessary input are given. otherwise use default ##
+Line 41: 
+%Load the params file
+params = pulsefinder_loadparams(paramsfile);
+
+## Check spin information ##
+Line 44: 
+%Read the nucleus file and remove ignored spins
+spins = read_nucleus_file(params.nucleifile);
+
+spins = 
+
+    typeNames: {'C'}
+       larmor: 176047829
+        freqs: [-2.9957e+03 -2.5531e+04 -2.1584e+04 -2.9490e+04]
+     nucNames: {'C1'  'C2'  'C3'  'C4'}
+         nucs: [1 1 1 1]
+     refFreqs: -1.6243e+04
+       jfreqs: [4x4 double]
+           T2: [2 2 0.7910 0.6560 0.9160 0.8410]
+           nb: 4
+           
+There is no information about offsetFreq in .def file.
+
+## Update Spin Frequency ##
+Line 52:
+%Update the spins.freqs to the pulsing frequencies
+spins.freqs = spins.freqs - params.pulsefreq;
+
+The signs of the spin.freqs in molecule.def should be consistent with the params.pulsefreq in params file.
+
+## Create Hamiltonian ##
+Line 56:
+%Create the natural Hamiltonian in the pulsing reference frame
+params.HNAT = full(CreateHamiltonian(spins));
+
+In CreateHamiltonian.m I find H = pi*spins.freqs* Z + pi*spins.jfreqs*ZZ
+That is why in molecule define we should set J/2 as the coupling values.
+
+## Subsystem Creation ##
+Line 62:
+%Sort out the subsystems
+[Uwant_sub,rhoin_sub,rhogoal_sub,RFmatts_sub,HNAT_sub,params] = pulsefinder_subsystems(params,spins);
+
+In pulsefinder_subsystems, the way of tracing out Uwant to get the sub unitary is subtle.
+Also params will be updated with a sorted params.subsystem and normalized params.subsys_weight.
+
+## Initial Guess ##
+Line 79:
+%Create a new pulse guess or load the starting point from
+%params.pulseguess
+[pulse,zangles,params] = pulsefinder_newpulse(params);
+
+If Z freedom allowed, will generate zangles = rand(2,params.nbspins) for  random initial guess or 
+zangles = params.pulseguess.zangles from an existed pulseinfo as guess.
+
+## Evaluate Pulse ##
+Line 130 for Z freedom:
+[tmpgoodness,tmpderivs,tmpzderivs] = pulsefinder_evalpulse(pulse,HNAT_sub{ct},RFmatts_sub{ct},Uwant_sub{ct},rhoin_sub{ct},rhogoal_sub{ct},zangles(:,params.subsystem{ct}),params);
+Line 138 for NO Z freedom:
+[tmpgoodness,tmpderivs] = pulsefinder_evalpulse(pulse,HNAT_sub{ct},RFmatts_sub{ct},Uwant_sub{ct},rhoin_sub{ct},rhogoal_sub{ct},[],params);
+
+Fidelity is defined as sub_weight_1*F_sub1+sub_weight_2*F_sub2+... for subsystem GRAPE. Similar to other parameters.
+
