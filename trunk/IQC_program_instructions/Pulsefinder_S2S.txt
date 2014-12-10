@@ -1,0 +1,9 @@
+##¡¡For State to State GRAPE pulse in pulsefinder
+
+1. Open "pulsefinder_calcderivs.m". 
+    Check Line 3, "nbspins= log2(size(prop,1))" DO NOT use the default setting "nbspins = log2(size(Uwant,1))" (This is for unitary grape).
+    Check Line 69, should be "params.tstepflag", NOT "tstepflag". A silly mistake.
+    
+2. Open the GRAPE params setting file.
+     Line 112, set "params.searchtype = 2";
+     Line 121 and 122, set "params.rhoin" and "params.rhogoal".
