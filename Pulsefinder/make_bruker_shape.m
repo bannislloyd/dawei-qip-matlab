@@ -14,6 +14,7 @@ if(nargin<4)
 end
 
 pulse = pulsestrucin.pulse(:,2*channel:2*channel+1);
+total_time = pulsestrucin.params.plength*pulsestrucin.params.timestep*1e6;
 
 %Some additional paramaters
 %Bruker or soft flag
@@ -25,7 +26,7 @@ end
 ptsper = 1;
 
 %User name
-user = 'caryan';
+user = 'Dawei.Lu';
 
 shpfile = fopen(outputfile,'w');
 
@@ -52,6 +53,8 @@ if(brukerflag)
     fprintf(shpfile,'##$SHAPE_BWFAC= %7.6e\n',1);
     fprintf(shpfile,'##$SHAPE_INTEGFAC= %7.6e\n',1);
     fprintf(shpfile,'##$SHAPE_MODE= 1\n');
+    fprintf(shpfile, '##PULSE_WIDTH= %d\n',total_time);
+    fprintf(shpfile, '##Calibration_Power= %d\n',calib);
     fprintf(shpfile,'##NPOINTS= %d\n',length(amp));
     fprintf(shpfile,'##XYPOINTS= (XY..XY)\n');
 end

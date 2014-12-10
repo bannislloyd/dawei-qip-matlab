@@ -38,7 +38,7 @@ params.subsystem{1} = [1 2 3 4];
 params.subsys_weight = [1];
 
 %Desired fidelity for the unitary (this is the trace squared fidelity F = abs(Ugoal^dagger*Usim)^2/N^2)
-params.fidelity = 0.999;
+params.fidelity = 0.99;
 
 %RF distribution to optimize over (will slow down search and convergence dramatically)
 %Two dimensional array first column is percentage of sample; second
@@ -109,7 +109,7 @@ params.softpulsebuffer = 4e-6;
 params.pulseguess = [];
 %The type of pulse we are searching for (1 for unitary, 2 for state
 %to state)
-params.searchtype = 1;
+params.searchtype = 2;
 
 %Flag for whether you want to allow the time steps to vary
 params.tstepflag = 0;
@@ -118,8 +118,8 @@ params.tstepflag = 0;
 params.tpulsemax = 10e-3;
 
 %Input and goal states for state to state
-% params.rhoin = mkstate('+1IIIIIIZ',1);
-% params.rhogoal = mkstate('+1ZZZZZZZ',1);
+params.rhoin = mkstate('+1IIIZ',1);
+params.rhogoal = mkstate('+1IIIZ',1);
 
 %Allow Zfreedom or not
 params.Zfreedomflag = 0;
