@@ -1,4 +1,4 @@
-##¡¡For State to State GRAPE pulse in pulsefinder
+##¡¡For State to State GRAPE pulse in pulsefinder ##
 
 1. Open "pulsefinder_calcderivs.m". 
     Check Line 3, "nbspins= log2(size(prop,1))" DO NOT use the default setting "nbspins = log2(size(Uwant,1))" (This is for unitary grape).
@@ -7,3 +7,61 @@
 2. Open the GRAPE params setting file.
      Line 112, set "params.searchtype = 2";
      Line 121 and 122, set "params.rhoin" and "params.rhogoal".
+     
+##    GRAPE check for state to state ##
+
+<1> Calculate a GRAPE pulse for 4-qubit Crotonic. Test Zfreedom
+Operator: From IIIZ to IIIZ. Identity.
+Length: 500us
+Steps: 250
+Calibration: 25000Hz
+Zfreedom: forbidden
+
+Use check_grape.m in the folder pulseexam_7qubit
+Load Hamiltonian of 'Parameters_crotonic_plus.mat'. Chemical shifts Plus. Control Field X-Y.
+Fidelity_state = 0.9997. Perfect!
+
+Load Hamiltonian of 'Parameters_crotonic_minus.mat'. Chemical shifts Minus. Control Field X-Y.
+Fidelity_state = 0.8540. hmmm means internal Hamiltonian should have positve chemical shifts.
+
+<2> Calculate a GRAPE pulse for 4-qubit Crotonic. Test Zfreedom
+Operator: From IIIZ to IIIZ. Identity
+Length: 500us
+Steps: 250
+Calibration: 25000Hz
+Zfreedom: allowed
+
+Use check_grape.m in the folder pulseexam_7qubit
+Load Hamiltonian of 'Parameters_crotonic_plus.mat'. Chemical shifts Plus. Control Field X-Y.
+Fidelity_state = 0.9999. Perfect!
+
+Load Hamiltonian of 'Parameters_crotonic_minus.mat'. Chemical shifts Minus. Control Field X-Y.
+Fidelity_state = 0.4419. hmmm means internal Hamiltonian should have positve chemical shifts.
+
+Conclusion: 
+1. Chemical shift in molecule.def should be plus. 
+2. Zfreedom can be allowed if initial and final states are both Z terms.
+
+##    Test Z freedom in non Z states ##
+
+<1>  Test Zfreedom
+Operator: From IIIX to IIIZ. 
+Length: 500us
+Steps: 250
+Calibration: 25000Hz
+Zfreedom: forbidden
+
+Use check_grape.m in the folder pulseexam_7qubit
+Load Hamiltonian of 'Parameters_crotonic_plus.mat'. Chemical shifts Plus. Control Field X-Y.
+Fidelity_state = 0.9971. Perfect!
+
+<2>  Test Zfreedom
+Operator: From IIIX to IIIZ. 
+Length: 500us
+Steps: 250
+Calibration: 25000Hz
+Zfreedom: allowed
+
+Use check_grape.m in the folder pulseexam_7qubit
+Load Hamiltonian of 'Parameters_crotonic_plus.mat'. Chemical shifts Plus. Control Field X-Y.
+Fidelity_state = 0.3441. Wrong!

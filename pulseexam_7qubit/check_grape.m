@@ -2,7 +2,7 @@ clear;
 
 [sigma_x,sigma_y,sigma_z,I,Ix,Iy,Iz,ST0,ST1,KIx,KIy,KIz] = MultiPauli(4);
 
-load Parameters_crotonic_minus.mat
+load Parameters_crotonic_plus.mat
 Hint = H;
 
 %the matrix Para contains all the chemical shifts and J-couplings of
@@ -32,12 +32,12 @@ Hint = H;
 % 
 % Hint = 2*pi*H;
 %% Parameters for the GRAPE pulse
-Name = 'Ut2t0';
-Amplitude = 15000;
-Time = 65000e-6;
-Length = 6500;
+Name = 'Crotonic_S2S_X4toZ4_NoZfree';
+Amplitude = 25000;
+Time = 500e-6;
+Length = 250;
 dt = Time/Length;
-FirstLine = 19; % the first line which contains the information of power and phase 
+FirstLine = 21; % the first line which contains the information of power and phase 
 
 Output = 'test';
 
@@ -49,39 +49,20 @@ for jj = 1:4
     Y = Y + KIy{jj};
 end
 
-% U_encoding80ms = cell(4000,1);
-
 U = eye(2^4);
+
 U = U*expm(-i*Hint*4e-6);
 for ii = 1:Length
-    Hext = 2*pi*(Amplitude*power(ii)/100)*(X*cos(phase(ii)/360*2*pi)+Y*sin(phase(ii)/360*2*pi));
-% U_encoding80ms{ii} = expm(-i*(Hext+Hint)*dt);
-    U = expm(-i*(Hext+Hint)*dt)*U;
-   
+    Hext = 2*pi*(Amplitude*power(ii)/100)*(X*cos(phase(ii)/360*2*pi)-Y*sin(phase(ii)/360*2*pi));
+    U = expm(-i*(Hext+Hint)*dt)*U;  
 end
+U = expm(-i*Hint*4e-6)*U;
 
- U = expm(-i*Hint*4e-6)*U;
+% load Max_Us.mat
+% Utar = Ut2t0;
 
-load Max_Us.mat
-Utar = Ut2t0;
-% Utar = rot(KIx{4},pi/2);
-%%%% ground state %%%%%%%%%%
-% U0=CNOT(4,7,7)*CNOT(7,4,7);
-% U1=Hadamard(7,7)*Hadamard(2,7);
-% U2=CNOT(7,4,7)*CNOT(7,6,7)*CNOT(7,5,7);
-% U3=CNOT(2,7,7)*CNOT(2,1,7)*CNOT(2,3,7);
-% U_total=U3*U2*U1*U0;
-%%%%%%%%%%%%%%%%%%%%%
-
-
-% Utar = rot(Y,pi/2);
-rho_ini = 0.5628*KIx{1}+KIy{2}+KIz{4}+KIz{3};
+rho_ini = KIx{4};
 rho_fin = U*rho_ini*U';
-rho_tar = Utar*rho_ini*Utar';
- Fidelity = trace(rho_fin*rho_tar)/trace( rho_ini* rho_ini)
-Fidelity = abs(trace(U*Utar'))/2^4
-
-% save crotonic_rho90.mat rho_tar
-
-% Uencoding_grape_80Iterations = U;
-% save  Uencoding_grape_80Iterations.mat  Uencoding_grape_80Iterations
+rho_tar = KIz{4};
+Fidelity = trace(rho_fin*rho_tar)/trace( rho_ini* rho_ini)
+% Fidelity = abs(trace(U*Utar'))/2^4
