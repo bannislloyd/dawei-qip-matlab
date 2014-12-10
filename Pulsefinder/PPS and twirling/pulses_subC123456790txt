@@ -1,0 +1,42 @@
+ Goodness |  Improvement/step |  Step Size  |  Iterations  |  CPU Time
+  0.0000         1.000e+00       6.000e-03          1          0.10 
+  0.0000         7.500e-01       1.920e-01          6          0.60 
+  0.0076         5.004e-01       1.498e+00         11          1.00 
+Had to reset conjugate gradients!
+Had to reset conjugate gradients!
+  0.2359         3.118e-01       2.581e-01         15          1.29 
+  0.3932         2.697e-01       1.814e-01         16          1.36 
+  0.4254         2.127e-02       2.242e-01         21          1.71 
+  0.4256         2.128e-02       3.379e-01         26          2.08 
+Had to reset conjugate gradients!
+  0.4690         2.307e-02       1.220e-01         31          2.43 
+  0.6640         2.446e-02       4.973e-02         33          2.65 
+  0.7564         2.602e-02       1.843e-01         35          2.82 
+  0.8232         2.150e-02       1.609e-01         36          2.89 
+  0.8610         2.206e-02       1.849e-01         37          2.96 
+  0.9257         2.503e-02       1.910e-01         39          3.09 
+  0.9666         2.706e-02       1.497e-01         40          3.16 
+  0.9804         2.775e-02       1.547e-01         41          3.23 
+  0.9867         2.806e-02       1.735e-01         42          3.29 
+  0.9908         2.827e-02       1.606e-01         43          3.36 
+  0.9920         2.833e-02       1.603e-01         44          3.43 
+  0.9927         2.836e-02       1.581e-01         45          3.50 
+  0.9932         2.838e-02       1.528e-01         46          3.56 
+  0.9935         2.356e-02       1.736e-01         52          3.96 
+  0.9935         5.320e-03       1.630e-01         58          4.37 
+  0.9935         7.589e-05       1.852e-01         64          4.77 
+  0.9936         3.771e-06       2.270e-01         70          5.19 
+  0.9936         3.530e-06       2.559e-01         75          5.56 
+  0.9939         1.746e-05       1.586e-01         79          5.85 
+  0.9941         2.865e-05       2.070e-01         83          6.12 
+  0.9941         2.851e-05       1.189e-03         89          6.52 
+Had to reset conjugate gradients!
+Had to reset conjugate gradients!
+  0.9941         2.681e-05       1.252e-06         95          6.92 
+Had to reset conjugate gradients!
+Had to reset conjugate gradients!
+Had to reset conjugate gradients!
+Failed to find pulse because stepsize is less than params.minstepsize.
+Failed to find pulse because no longer improving by params.improvechk.
+
+Unable to find decent pulse.  Best one found is number 1 at a fidelity of 0.994132You might want to try fiddling with the timestep, number of points or the random guess paramaters.
