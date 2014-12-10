@@ -1,6 +1,7 @@
 function [derivs,goodness,zderivs] = pulsefinder_calcderivs(prop,Uwant,rhoin,rhogoal,RFmatts,pulse,HTOT,params,corrmat)
 
-nbspins = log2(size(Uwant,1));
+% nbspins = log2(size(Uwant,1)); default
+nbspins = log2(size(prop,1)); % changed by Annie on Dec 03 2014
 
 plength = size(pulse,1);
 
@@ -65,7 +66,7 @@ else %Do the same for state to state
             derivs(ct,RFmattct+1) = 2*pulse(ct,1)*imag(trace(lambdaj'*(RFmatts(:,:,RFmattct)*rhoj - rhoj*RFmatts(:,:,RFmattct)))*trace(rhon'*rhogoal));
         end %RFmattct loop
 
-        if(tstepflag)
+        if(params.tstepflag)
             derivs(ct,1) = 2*imag(trace(lambdaj'*(HTOT(:,:,ct)*rhoj - rhoj*HTOT(:,:,ct)))*trace(rhon'*rhogoal));
         end %tstepflag
 
