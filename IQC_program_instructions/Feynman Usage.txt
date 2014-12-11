@@ -1,0 +1,85 @@
+Address: feynman.math.uwaterloo.ca
+User: hkatiyar
+PassWord: HK123iqc
+
+## After Login ##
+ssh -X sun4600lcn01
+
+all the options
+    sun4600lcn01...03
+    sun6220bl01....10
+    sun4500mcn01..04
+    
+## Run Matlab ##
+/fsys2/projects/cluster/mathworks_r2009a/bin/matlab 
+
+In Matlab Command Window,
+cd ..
+cd hkatiyar
+and you will be in the user folder, where you can download or upload files via FTP client such as WinSCP.
+
+## Build Pulsefinder Project ##
+
+You need to use GUI display for Matlab, which is not direct in Windows.
+1. Download Xming and install. 
+2. Lauch Xming, and use the defaule settings. Choose Display as 0.
+3. Open Putty. Address is hkatiyar@feynman.math.uwaterloo.ca, Port is 22.
+4. Click SSH -> X11, enable X11 forwarding. X display location with 'localhost:0'.
+5. Click session again, save the settings.
+6. When connected to the server, use ssh -X to use X term display. 
+7. Matlab will have graphic display!
+
+Build up the Project. (Copied from Spinwiki)
+NOTE!!!! 
+Before building, open 'pulsefinder_main.m'. Go to Line 41, put 'params = pulsefinder_loadparams(paramsfile);' forward in the front of '%Load the output file or set to standard out'. i.e. SWAP these two parts.
+Then Change the output file to
+"
+if(nargin == 1)
+    outputFID = fopen(params.outputfile,'w');
+else
+    outputFID = fopen(outputfilename,'w');
+end
+"
+Go to Line 237,  change to 'save([params.outputfile '.mat'],'pulses');'
+
+Open the paramsfile, say 'Crotonic.m' here. Set a new line 
+'params.outputfile = 'Crotonic_project_test';'
+Can set it after params.Uwant in case forgot to change the outputfile name.
+
+Let us build the project! (really painful that everytime using a new paramsfile you have to upload it to the project and rebuilt....)
+
+1. Copy the pulsefinder and auxiliary_files over to feynman.
+2. The first time you do this you will need to initialize the matlab compiler.  Run 'mbuild -setup' at the matlab prompt and choose option 1. 
+3. Run "deploytool" (by typing "deploytool" on the MATLAB Command Window) to open a new docked window in the matlab desktop. 
+4. Since we can use the installed matlab shared libraries we do not need the several hundred megabyte MCR. Under settings uncheck "include MCR".
+5. Setup a new project. (File>New Deployment Project).
+6. Drag pulsefinder_main to "main function". In this step, instead of having the pulsefinder_main as the main function, one can use doitall.m (see attached file as an example) as the main function.
+7. Drag every other pulsefinder_ file (except the pulsefinder_cluster classdefs) to "other files". Note that the pulsefinding parameters file should also be included in the project.
+8. Drag every file in auxiliary files directory (make sure your CreateHamiltonian has the correct form) to "other files"
+9. Build the project. (Tools>Build). Whenever there is a change in the files that are included in the project, re-build the project.
+10.You will find the binary in the distrib directory of the project folder. 
+
+Note: You should see three files now in the distrib folder: pulsefinder, readme.txt, run_pulsefinder.sh. pulsefinder is the executable (unlike windows, executables in Linux do not necessarily have extensions).
+
+It is a good idea at this point to check your compiled program works.  You can do this with the handy shell program matlab writes for you in the distrib directory e.g. run_pulsefinder.sh.  The first argument for the shell program points it to the MCR.  We can simply use the matlab installation. Any subsequent arguments are inputs to your program.  In the case of the puslefinder, this is the path to the params file.  Make sure your params file and molecule file are copied over then run e.g.
+
+'./run_pulsefinder.sh /fsys2/projects/cluster/mathworks_r2009a/ /u/hkatiyar/pulsefinder_DL/Crotonic.m'
+
+It will be slow to start the first time as it unpacks the CTF archive but you should see the normal pulsefinder output.  
+The outout .mat file and procedure file will be stored in 'distrib' folder.
+
+## Screen Command ##
+
+If you want to run programs when you close Putty, you have to use 'screen'.
+
+screen -S yourprogramname
+
+to reattach it,
+
+screen -r yourprogramname
+
+to kill it (get the number by typing 'screen -ls')
+
+screen -X -S [session # you want to kill] kill
+
+
