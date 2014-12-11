@@ -2,7 +2,9 @@ function params = pulsefinder_loadparams(paramsfile)
 
 %Helper function to load the params file and to do some error checking
 %implement some default values
-params = feval(paramsfile);
+% params = feval(paramsfile);
+[pathstr,name,ext] = fileparts(paramsfile);
+params=feval(name);
 %Check for a molecule file and that the file exists
 if(isfield(params,'nucleifile'))
     if(~exist(params.nucleifile,'file'))

@@ -1,8 +1,2 @@
  Goodness |  Improvement/step |  Step Size  |  Iterations  |  CPU Time
-  0.0077         1.000e+00       8.000e-04          1          0.01 
-  0.3886         7.694e-01       1.303e-02          6          0.06 
-  0.8660         7.433e-01       1.560e-02          7          0.07 
-  0.9091         6.955e-01       2.374e-02          8          0.08 
-  0.9928         6.496e-01       2.734e-02          9          0.09 
-
-Found pulse of desired fidelity!
+  0.1103         1.006e+00       8.000e-04          1          0.01 
