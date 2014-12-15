@@ -4,11 +4,11 @@ classdef pulsefinder_cluster_sge < handle
         %IP address of the cluster with username (note need passwordless
         %ssh log in)
         clusterHost = 'feynman.math.uwaterloo.ca';
-        username = 'glpassan'
+        username = 'hkatiyar'
         %Directory on remote host to work out of
-        remotedata = '/u/glpassante/pulsefinder';
+        remotedata = '/u/hkatiyar/pulsefinder_DL';
         %Location of compiled puslefinder executable on cluster
-        pulsefinder_exec = '/u/glpassante/pulsefinder/pulsefinder_feynman/distrib/pulsefinder_feynman';
+        pulsefinder_exec = '/u/hkatiyar/pulsefinder_DL/pulsefinder_DL/distrib/';
         %Location of working directory on the local computer
         localdata = tempdir;
         %Array of pulse numbers

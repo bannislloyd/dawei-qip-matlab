@@ -63,13 +63,13 @@ Note: You should see three files now in the distrib folder: pulsefinder, readme.
 
 It is a good idea at this point to check your compiled program works.  You can do this with the handy shell program matlab writes for you in the distrib directory e.g. run_pulsefinder.sh.  The first argument for the shell program points it to the MCR.  We can simply use the matlab installation. Any subsequent arguments are inputs to your program.  In the case of the puslefinder, this is the path to the params file.  Make sure your params file and molecule file are copied over then run e.g.
 
-'./run_pulsefinder.sh /fsys2/projects/cluster/mathworks_r2009a/ /u/hkatiyar/pulsefinder_DL/Crotonic.m'
+'./run_pulsefinder_DL.sh /fsys2/projects/cluster/mathworks_r2009a/ /u/hkatiyar/pulsefinder_DL/Crotonic.m'
 
 It will be slow to start the first time as it unpacks the CTF archive but you should see the normal pulsefinder output.  
 The outout .mat file and procedure file will be stored in 'distrib' folder.
 
 ## Screen Command ##
-
+NOTE!!!! Feynman does not support screen in the background! It will kill your program after some time... But can still use the following commands in Ordi2.
 If you want to run programs when you close Putty, you have to use 'screen'.
 
 screen -S yourprogramname
@@ -82,4 +82,25 @@ to kill it (get the number by typing 'screen -ls')
 
 screen -X -S [session # you want to kill] kill
 
+detach screen
+'ctrl+a', then press 'd'
 
+## PassWordLess Login For Windows 7 ##
+PassWordLess login from Windows to Linux is not so straightforward as Linux to Linux....
+
+1. Download PuTTYgen which is a Putty key generator from the offical website.
+2. Right click PuTTYgen and choose as 'Run as administrator'.
+3. Hit the Generate button. During the generation, you have to move your mouse over and over to boost the generator....
+4. Once done, you will see a long key produced. Leave it there.
+
+5. Login to the server, and type
+
+mkdir -p .ssh
+chmod 700 .ssh 
+
+Then type 'gedit' to open the text editor.
+6. Copy and paste the key from PuTTYgen to the editor, save and close.
+7. Type 'chmod 644 .ssh/authorized_keys' in the command line.
+8. Exit Putty and go to PuTTYgen. Click 'save public key' and save as .txt file, then click 'save private key' as .ppk file.
+9. Open Putty, load the server information, go to SSH->Auth, and click browse to select the saved private key, which is the .ppk file.
+10. Go back and login as usual. You will find no password is needed.
