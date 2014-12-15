@@ -17,7 +17,6 @@ STP = 1/sqrt(2)*[1;1]; STM = 1/sqrt(2)*[1;-1];
 
 % initial state
 System = (cos(theta/2)*kron(STP,STP)+exp(i*phi)*sin(theta/2)*kron(STM,STM))* (cos(theta/2)*kron(STP,STP)+exp(i*phi)*sin(theta/2)*kron(STM,STM))';
-
 Input = MultiKron(3,ST0,System,ST0); 
 
 % detected jump channel
