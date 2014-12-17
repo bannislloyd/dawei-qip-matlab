@@ -2,7 +2,7 @@
 % Combine many small shape files into one big shape file
 
 clear;
-addpath C:\Work\matlab\Twqubit\C_rotations;
+addpath .\C_rotations;
 
 Length_90 = 100;
 Length_180 = 200;
@@ -12,6 +12,7 @@ Output2 = 'test';
 dt = 1e-5; % time step for the new big shapefile
 Calibration = 25000; % the calibration power used for the big shapefile
 Calibration_old = 25000; % the calibration power for the single rotations
+Amplitude = Calibration;
 
 for spin_number = 1:7
        Name1 = ['twqubit_C', num2str(spin_number), '90_C_25000.txt'];
@@ -29,6 +30,10 @@ for spin_number = 1:7
        [power2,phase2]=dataout(Name2,Output2,FirstLine,Length_180);
        eval(['power_C', num2str(spin_number), '180_C = power1;']); eval(['phase_C', num2str(spin_number), '180_C = phase1;']);
        eval(['power_H', num2str(spin_number), '180_H = power2;']); eval(['phase_H', num2str(spin_number), '180_H = phase2;']);
+              C_ratio(spin_number) = max(power1)
+C_hertz(spin_number) = Amplitude * C_ratio(spin_number)/100
+H_ratio(spin_number) = max(power2)
+H_hertz(spin_number) = Amplitude * H_ratio(spin_number)/100
 end
 
 load Para.mat
