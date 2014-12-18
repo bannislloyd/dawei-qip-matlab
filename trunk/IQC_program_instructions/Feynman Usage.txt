@@ -30,17 +30,17 @@ You need to use GUI display for Matlab, which is not direct in Windows.
 7. Matlab will have graphic display!
 
 Build up the Project. (Copied from Spinwiki)
-NOTE!!!! 
-Before building, open 'pulsefinder_main.m'. Go to Line 41, put 'params = pulsefinder_loadparams(paramsfile);' forward in the front of '%Load the output file or set to standard out'. i.e. SWAP these two parts.
-Then Change the output file to
-"
-if(nargin == 1)
-    outputFID = fopen(params.outputfile,'w');
-else
-    outputFID = fopen(outputfilename,'w');
-end
-"
-Go to Line 237,  change to 'save([params.outputfile '.mat'],'pulses');'
+NOTE!!!! Please skip the following steps if you want to use SGE submission on Ordi2!!!
+%%%%% Before building, open 'pulsefinder_main.m'. Go to Line 41, put 'params = pulsefinder_loadparams(paramsfile);' forward in the front of '%Load the output file or set to standard out'. i.e. SWAP these two parts.
+%%%%% Then Change the output file to
+%%%%% "
+%%%%% if(nargin == 1)
+%%%%%     outputFID = fopen(params.outputfile,'w');
+%%%%% else
+%%%%%     outputFID = fopen(outputfilename,'w');
+%%%%% end
+%%%%% "
+%%%%% Go to Line 237,  change to 'save([params.outputfile '.mat'],'pulses');'
 
 Open the paramsfile, say 'Crotonic.m' here. Set a new line 
 'params.outputfile = 'Crotonic_project_test';'
@@ -63,7 +63,7 @@ Note: You should see three files now in the distrib folder: pulsefinder, readme.
 
 It is a good idea at this point to check your compiled program works.  You can do this with the handy shell program matlab writes for you in the distrib directory e.g. run_pulsefinder.sh.  The first argument for the shell program points it to the MCR.  We can simply use the matlab installation. Any subsequent arguments are inputs to your program.  In the case of the puslefinder, this is the path to the params file.  Make sure your params file and molecule file are copied over then run e.g.
 
-'./run_pulsefinder_DL.sh /fsys2/projects/cluster/mathworks_r2009a/ /u/hkatiyar/pulsefinder_DL/Crotonic.m'
+'./run_pulsefinder.sh /fsys2/projects/cluster/mathworks_r2009a/ /u/hkatiyar/pulsefinder_DL/Crotonic.m'
 
 It will be slow to start the first time as it unpacks the CTF archive but you should see the normal pulsefinder output.  
 The outout .mat file and procedure file will be stored in 'distrib' folder.
@@ -104,3 +104,65 @@ Then type 'gedit' to open the text editor.
 8. Exit Putty and go to PuTTYgen. Click 'save public key' and save as .txt file, then click 'save private key' as .ppk file.
 9. Open Putty, load the server information, go to SSH->Auth, and click browse to select the saved private key, which is the .ppk file.
 10. Go back and login as usual. You will find no password is needed.
+
+## SGE submission for Windows System ##
+I cannot figure out how to use the written 
+'pulsefinder_cluster_sge.m'
+'cluster_sample.m'
+to communicate with Feynman in my Windows 7, even with the passwordless login.
+
+A silly way is first to connect your Windows 7 to Ordi2, which is a Linux Server, then set passwordless login there, and SGE to Feynman through Ordi2.
+
+For me, the Ordi2 folder is /home/d29lu/pulsefinder, and change 'pulsefinder_cluster_sge.m' to
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %IP address of the cluster with username (note need passwordless
+        %ssh log in)
+        clusterHost = 'feynman.math.uwaterloo.ca';
+        username = 'hkatiyar'
+        %Directory on remote host to work out of
+        remotedata = '/u/hkatiyar/pulsefinder_DL/pulsefinder';
+        %Location of compiled puslefinder executable on cluster
+        pulsefinder_exec = '/u/hkatiyar/pulsefinder_DL/pulsefinder/distrib/pulsefinder';
+        %Location of working directory on the local computer
+        localdata = tempdir;
+        %Array of pulse numbers
+        pulsenums = [];
+        %Array of pulsefinding task structures
+        tasks = [];
+        %Location of MCR on cluster
+        MCRROOT = '/fsys2/projects/cluster/mathworks_r2009a';
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Then open 'cluster_sample.m', use the following commands to submit your jobs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Sample script for submitting jobs to Debbie cluster
+pfobj = pulsefinder_cluster_sge;
+
+%Add three pulsefinding jobs with the same params file (could be different
+%for varying parameters)
+% for ct = 1:1:4
+    pfobj.addpulse('twqubit_sub_57_180.m',1);
+    pfobj.addpulse('twqubit_sub_23_180.m',2);
+    pfobj.addpulse('twqubit_sub_2347_90.m',3);
+    pfobj.addpulse('twqubit_sub_156_180.m',4);
+% end
+
+%Submit the jobs
+pfobj.submit(1:4);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To view the results, use
+'pfobj.dispresults;'
+For details, use
+'%Look at the details for pulses 1 and 3
+pfobj.displogfile([1 3]);'
+To get the pulse (.mat file),
+'%Get the current pulses for task number 2
+pulse2 = pfobj.getresults(2)'
+To kill some task,
+'%Kill pulsefinder 2
+%pfobj.kill([1 2 3 4]);'
+
+All of them can be found in cluster_sample.m.
+
+The results will be saved in Feynman '/u/hkatiyar/pulsefinder_DL/pulsefinder'
