@@ -3,12 +3,12 @@ pfobj = pulsefinder_cluster_sge;
 
 %Add three pulsefinding jobs with the same params file (could be different
 %for varying parameters)
-for ct = 1:1:3
+for ct = 1:1:1
     pfobj.addpulse('sampleparams1.m',ct);
 end
 
 %Submit the jobs
-pfobj.submit(1:3);
+pfobj.submit(1:1);
 
 %Check the results
 pfobj.dispresults;
