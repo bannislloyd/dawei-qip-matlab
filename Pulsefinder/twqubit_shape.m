@@ -14,6 +14,6 @@ end
 %pulses_full=pulsefinder_main('sevenbit_full','CCR_full');
 %save pulses_full.mat pulses_full
 
-load pulsefinder1.log.mat
-make_bruker_shape(pulses{1},25000,'twqubit_C57180_C_25000.txt',1);
-make_bruker_shape(pulses{1},25000,'twqubit_C57180_H_25000.txt',2);
+load twqubit_C1234690withPC.mat
+make_bruker_shape(pulses{1},25000,'twqubit_C1234690withPC_C_25000.txt',1);
+make_bruker_shape(pulses{1},25000,'twqubit_C1234690withPC_H_25000.txt',2);
