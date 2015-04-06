@@ -24,7 +24,7 @@ Input = MultiKron(2,ST0,System);
 A0 = [1,0;0,sqrt(1-r)]; A1 = [0,0;0,sqrt(r)];
 
 % unitary operator
-U = [1,0,0,0; 0, sqrt(1-r),0,sqrt(r);0,0,1,0;0,sqrt(r),0,sqrt(1-r)];
+U = [1,0,0,0; 0, sqrt(1-r),0,sqrt(r);0,0,-1,0;0,sqrt(r),0,-sqrt(1-r)];
 
 % state
 rho_channel = U*Input*U';
@@ -98,8 +98,8 @@ Input = MultiKron(3,ST0,System,ST0);
 A0 = [1,0;0,sqrt(1-r)]; A1 = [0,0;0,sqrt(r)];
 
 % unitary operator
-U12 = [1,0,0,0; 0, sqrt(1-r),0,sqrt(r);0,0,1,0;0,sqrt(r),0,sqrt(1-r)];
-U34 = [1,0,0,0; 0, 1,0,0;0,0,sqrt(1-r),sqrt(r);0,0,sqrt(r),sqrt(1-r)];
+U12 = [1,0,0,0; 0, sqrt(1-r),0,sqrt(r);0,0,-1,0;0,sqrt(r),0,-sqrt(1-r)];
+U34 = [1,0,0,0; 0, -1,0,0;0,0,sqrt(1-r),sqrt(r);0,0,sqrt(r),-sqrt(1-r)];
 %U34 = CNOT(1,2,2)*CNOT(2,1,2)*CNOT(1,2,2)*U12*CNOT(1,2,2)*CNOT(2,1,2)*CNOT(1,2,2);
 U = kron(U12,U34);
 
@@ -113,18 +113,22 @@ rho_projective00 = M00*rho_channel*M00'; % /trace(M0'*M0*rho_channel): normaliza
 % equal to  rho_echo = Gz_echo(rho_channel,2)
 rho_sys00 = ptrace(rho_projective00, [1 4], [2 2 2 2]);
 Fidelity00 = Fidelity00 + abs(trace(System*rho_sys00)); %/sqrt(trace(System*System)*trace(rho_sys*rho_sys));
+p0 = 1-r/2-0.25*(1-sqrt(1-r)).^2;
+pf = 0.25*(1-sqrt(1-r)).^2;
+p0^2;
+Fidelity00 = Fidelity00 + pf*p0;
 
 rho_projective01 = M01*rho_channel*M01'; % /trace(M0'*M0*rho_channel): normalization ignored.
 % equal to  rho_echo = Gz_echo(rho_channel,2)
-rho_sys01 = ptrace(rho_projective01, [1 4], [2 2 2 2]);
-rho_sys01 = kron(I,hada)*rho_sys01*kron(I,hada)';
-Fidelity01 = Fidelity01 + abs(trace(System*rho_sys01)); %/sqrt(trace(System*System)*trace(rho_sys*rho_sys));
+rho_sys01 = ptrace(rho_projective01, [1 3 4], [2 2 2 2]);
+Fidelity01 = Fidelity01 + abs(trace(STP*STP'*rho_sys01)) %/sqrt(trace(System*System)*trace(rho_sys*rho_sys));
+pe = r/2;
+p0*pe;
 
 rho_projective10 = M10*rho_channel*M10'; % /trace(M0'*M0*rho_channel): normalization ignored.
 % equal to  rho_echo = Gz_echo(rho_channel,2)
-rho_sys10 = ptrace(rho_projective10, [1 4], [2 2 2 2]);
-rho_sys10 = kron(hada,I)*rho_sys10*kron(hada,I)';
-Fidelity10 = Fidelity10 + abs(trace(System*rho_sys10)); %/sqrt(trace(System*System)*trace(rho_sys*rho_sys));
+rho_sys10 = ptrace(rho_projective10, [1 2 4], [2 2 2 2]);
+Fidelity10 = Fidelity10 + abs(trace(STP*STP'*rho_sys10)); %/sqrt(trace(System*System)*trace(rho_sys*rho_sys));
 
 rho_projective11 = M11*rho_channel*M11'; % /trace(M0'*M0*rho_channel): normalization ignored.
 % equal to  rho_echo = Gz_echo(rho_channel,2)
