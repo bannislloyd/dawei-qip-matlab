@@ -6,10 +6,10 @@ load Parameters_crotonic_plus.mat
 Hint = H;
 
 %% Parameters for the GRAPE pulse
-Name = 'Croton_90x1.txt';
+Name = 'Croton_90x4.txt';
 Amplitude = 6000;
 Time = 1000e-6;
-Length = 500;
+Length = 250;
 dt = Time/Length;
 FirstLine = 19; % the first line which contains the information of power and phase 
 
@@ -29,13 +29,13 @@ U = eye(2^4);
 
 U = U*expm(-i*Hint*4e-6);
 for ii = 1:Length
-    Hext = 2*pi*(Amplitude*power(ii)/100)*(X*cos(phase(ii)/360*2*pi)-Y*sin(phase(ii)/360*2*pi));
+    Hext = 2*pi*(Amplitude*power(ii)/100)*(X*cos(phase(ii)/360*2*pi)+Y*sin(phase(ii)/360*2*pi));
     U = expm(-i*(Hext+Hint)*dt)*U;  
 end
 U = expm(-i*Hint*4e-6)*U;
 
 % load Max_Us.mat
- Utar = expm(i*pi/2*KIz{1})*expm(-i*pi/2*KIx{1})*expm(-i*pi/2*KIz{1});
+ Utar = expm(i*pi/2*KIz{4})*expm(-i*pi/2*KIx{4})*expm(-i*pi/2*KIz{4});
 
 % rho_ini = KIx{4};
 % rho_fin = U*rho_ini*U';
