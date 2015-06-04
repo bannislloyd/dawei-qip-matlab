@@ -14,7 +14,7 @@ global srcpath sequencecompilerpath pulsecompilerpath pathl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Initialize machine dependant paths (to be addapted according to
 %the computer you are using):
-NMRPATH         = 'C:\Work\matlab\NMR';
+NMRPATH         = 'H:/Matlab/NMR';
 %%%%%
 
 %Some paths to be added:
