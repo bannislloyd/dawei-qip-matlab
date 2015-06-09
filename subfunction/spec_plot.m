@@ -23,6 +23,8 @@ function [ peak_position,  peak_intensity] = spec_plot( Para, rho, ob_spin, T2 )
 %   peak_intensity is the height of each peak corresponding to
 %   peak_position.
 
+Fig_name = input('Do you want to save spectra to Fig files and data to Mat files? \n\n If NO, type 0; \n If YES, type the name without extension. \n','s');
+
 N_qubits = length(Para); % number of qubits
 ob_qubits = length(ob_spin); % number of observed qubits
 
@@ -95,7 +97,7 @@ for ii = 1:ob_qubits
     
     tic
     cur_ob_qubit = ob_spin(ii);
-    fprintf('Trying to generate the spectrum of qubit %d \n \n',cur_ob_qubit);
+    fprintf('\n Trying to generate the spectrum of qubit %d \n \n',cur_ob_qubit);
     
     half_width = 1/pi/T2(cur_ob_qubit); % width at half height 
     stepsize = half_width/10; % resolution: 10 points over half-width
@@ -108,7 +110,7 @@ for ii = 1:ob_qubits
         for mm = 1:2^(N_qubits-1)
             peak_angle = angle(peak_intensity(ii,mm));
             
-            Y(kk) = Y(kk)+abs(peak_intensity(ii,mm))*(cos(peak_angle)-(X(kk)-peak_position(ii,mm))*2/half_width*sin(peak_angle))/(1+(X(kk)-peak_position(ii,mm))^2/(half_width/2)^2);
+            Y(kk) = Y(kk)+abs(peak_intensity(ii,mm))*(cos(peak_angle)+(X(kk)-peak_position(ii,mm))*2/half_width*sin(peak_angle))/(1+(X(kk)-peak_position(ii,mm))^2/(half_width/2)^2);
         end
     end
     
@@ -131,6 +133,16 @@ for ii = 1:ob_qubits
 
      ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,...
     'FontName','Calibri');
+
+     if str2num(Fig_name) == 0 
+     else
+         cur_Fig_name = [Fig_name, '_qubit', num2str(cur_ob_qubit)];
+         saveas(gca, cur_Fig_name, 'fig');
+         cur_Matfile = [Fig_name, '_qubit', num2str(cur_ob_qubit), '.mat'];
+         eval(['save ', cur_Matfile, ' X Y']);
+     end
+
+    clear X Y
         
 end
 
