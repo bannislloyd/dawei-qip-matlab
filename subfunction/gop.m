@@ -10,7 +10,7 @@
 
 function gop=gop(s,U)
 
-nqubits=7;
+nqubits=12;
 
 for position=1:(s-1)
     U=kron(eye(2),U);
