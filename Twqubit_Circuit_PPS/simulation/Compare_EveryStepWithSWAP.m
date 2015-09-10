@@ -1,0 +1,842 @@
+clear;
+
+% Position of the NMR Spectra
+addpath(genpath(pwd)) % add all subfolders 
+SpecPath = 'H:\Matlab\Twqubit_Circuit_PPS\simulation\Spectra_Data';
+
+% All Cases
+% Case 1: Thermal of C with H Coupled
+% Case 2: Thermal of C with H Decoupled
+% Case 3: Encoding1 of C with H Coupled
+% Case 4: Encoding1 of C with H Decoupled
+% Case 5: Encoding2 of C with H Coupled
+% Case 6: Encoding2 of C with H Decoupled
+% Case 7: Encoding3*2 of C with H Coupled
+% Case 8: Encoding3*2 of C with H Decoupled
+% Case 9: Decoding1new of C with H Coupled
+% Case 10: Decoding1new of C with H Decoupled
+% Case 11: Decoding2toEnd of C with H Coupled
+% Case 12: Decoding2toEnd of C with H Decoupled
+
+% If CaseNo = 0, Skip it; Else run.
+CaseNo = [0 0 0 0 0 0 0 0 0 0 1 0];
+% If SpecRead = 0, Read the Exp Spectrum; Else Load the saved mat file directly
+SpecRead = [1 1 1 1 1 1 1 1 1 1 1 1]; 
+
+% Plot Settings
+fontsize = 14;
+fontsize_legend = 12;
+LineWidth_legend = 2;
+Xlim_range = 90;
+
+scale_factor1 = 5.7510e+05; %% For H Coupled Case
+% scale_factor1 = 4.5873e+06; %% For H Decoupled Case
+
+% scale_factor
+% For C7 with SWAP and Hcouple: 5.7510e+05;
+% For C2 with NoSWAP and Hcouple: 1.3516e+05;
+% For C7 with SWAP and Hdecouple: 4.5873e+06
+% For C2 with NoSWAP and Hdecouple: 1.4957e+06 
+
+% Signal left after every step
+% SignalLoss_Encoding1_C7_Hcouple = 0.6974;
+% SignalLoss_Encoding1_C2_Hcouple = 0.3313;
+% SignalLoss_Encoding1_C7_Hdecouple = 0.6498;
+% SignalLoss_Encoding1_C2_Hdecouple = 0.6090;
+
+% SignalLoss_Encoding2_C7_Hcouple = 0.1133;
+% SignalLoss_Encoding2_C2_Hcouple = 0.1563;
+% SignalLoss_Encoding2_C7_Hdecouple = 0.4498;
+% SignalLoss_Encoding2_C2_Hdecouple = 0.4844;
+
+% SignalLoss_Encoding3_Twice_C7_Hcouple = 0.0864;
+% SignalLoss_Encoding3_Twice_C2_Hcouple = 0.1761
+% SignalLoss_Encoding3_Twice_C7_Hdecouple = 0.3148;
+% SignalLoss_Encoding3_Twice_C2_Hdecouple = 0.3443;
+
+% SignalLoss_Decoding1new_C7_Hcouple = 0.0683;
+% SignalLoss_Decoding1new_C2_Hcouple = 0.1538;
+% SignalLoss_Decoding1new_C7_Hdecouple = 0.2477;
+% SignalLoss_Decoding1new_C2_Hdecouple = 0.2786;
+
+% SignalLoss_Decoding2toEnd_C7_Hcouple = 0.0280;
+% SignalLoss_Decoding2toEnd_C2_Hcouple = 0.0585;
+% SignalLoss_Decoding2toEnd_C7_Hdecouple = 0.0805;
+% SignalLoss_Decoding2toEnd_C2_Hdecouple = 0.0816;
+
+
+%%%%%%%%%%% Case 1: Thermal of C with H Coupled %%%%%%%%%%%
+if (CaseNo(1))
+    
+    ExpNo1 = 2401;
+    ExpNo2 = 2402;
+    SaveName1 = 'Thermal_C7_SWAP_Hcouple';
+    SaveName2 = 'Thermal_C2_NoSWAP_Hcouple';
+    FigureTitle1 = 'Comparison of C7';
+    FigureTitle2 = 'Comparison of C2';
+    FigureName = 'Thermal_C7SWAPandC2NoSWAP_Hcouple';
+    
+    % plot C7
+    if (SpecRead(1) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load thermal_420ms_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(1) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load thermal_310ms_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 2: Thermal of C with H Decoupled %%%%%%%%%%%
+if (CaseNo(2))
+    
+    ExpNo1 = 2398;
+    ExpNo2 = 2399;
+    SaveName1 = 'Thermal_C7_SWAP_Hdecouple';
+    SaveName2 = 'Thermal_C2_NoSWAP_Hdecouple';
+    FigureTitle1 = 'Comparison of C7 with H Decouple';
+    FigureTitle2 = 'Comparison of C2 with H Decouple';
+    FigureName = 'Thermal_C7SWAPandC2NoSWAP_Hdecouple';
+    
+    % plot C7
+    if (SpecRead(2) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load thermal_420ms_Hdecouple_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+
+    subplot(2,1,2)
+
+    plot(X-0.2,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(2) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load thermal_600ms_Hdecouple_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 3: Encoding1 of C with H Coupled %%%%%%%%%%%
+if (CaseNo(3))
+    
+    ExpNo1 = 2403;
+    ExpNo2 = 2404;
+    SaveName1 = 'Encoding1_C7_SWAP_Hcouple';
+    SaveName2 = 'Encoding1_C2_SWAP_Hcouple';    
+    FigureTitle1 = 'Encoding1 IZIZZZZIIIII: Ob C7 with H Coupled';
+    FigureTitle2 = 'Encoding1 IZIZZZZIIIII: Ob C2 with H Coupled';
+    FigureName = 'Encoding1_C7andC2_SWAP_Hcouple';
+    
+    % plot C7
+    if (SpecRead(3) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding1_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding1_C7_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(3) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding1_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding1_C2_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,-Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 4: Encoding1 of C with H Decoupled %%%%%%%%%%%
+if (CaseNo(4))
+    
+    ExpNo1 = 2405;
+    ExpNo2 = 2406;
+    SaveName1 = 'Encoding1_C7_SWAP_Hdecouple';
+    SaveName2 = 'Encoding1_C2_SWAP_Hdecouple';    
+    FigureTitle1 = 'Encoding1 IZIZZZZIIIII: Ob C7 with H decoupled';
+    FigureTitle2 = 'Encoding1 IZIZZZZIIIII: Ob C2 with H decoupled';
+    FigureName = 'Encoding1_C7andC2_SWAP_Hdecouple';
+    
+    % plot C7
+    if (SpecRead(4) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding1_Hdecouple_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding1_C7_Hdecouple = scale_factor/scale_factor1/16;
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(4) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding1_Hdecouple_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding1_C2_Hdecouple = scale_factor/scale_factor1/16;
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 5: Encoding2 of C with H Coupled %%%%%%%%%%%
+if (CaseNo(5))
+    
+    ExpNo1 = 2407;
+    ExpNo2 = 2408;
+    SaveName1 = 'Encoding2_C7_SWAP_Hcouple';
+    SaveName2 = 'Encoding2_C2_SWAP_Hcouple';    
+    FigureTitle1 = 'Encoding2 ZZZZZZZIIIII: Ob C7 with H Coupled';
+    FigureTitle2 = 'Encoding2 ZZZZZZZIIIII: Ob C2 with H Coupled';
+    FigureName = 'Encoding2_C7andC2_SWAP_Hcouple';
+    
+    % plot C7
+    if (SpecRead(5) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding2_C7_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(5) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding2_C2_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 6: Encoding2 of C with H Decoupled %%%%%%%%%%%
+if (CaseNo(6))
+    
+    ExpNo1 = 2409;
+    ExpNo2 = 2410;
+    SaveName1 = 'Encoding2_C7_SWAP_Hdecouple';
+    SaveName2 = 'Encoding2_C2_SWAP_Hdecouple';    
+    FigureTitle1 = 'Encoding2 ZZZZZZZIIIII: Ob C7 with H decoupled';
+    FigureTitle2 = 'Encoding2 ZZZZZZZIIIII: Ob C2 with H decoupled';
+    FigureName = 'Encoding2_C7andC2_SWAP_Hdecouple';
+    
+    % plot C7
+    if (SpecRead(6) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_Hdecouple_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding2_C7_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,2)
+
+    plot(X-0.3,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(6) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_Hdecouple_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding2_C2_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,1)
+
+    plot(X-0.1,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,-Y_exp*1.2,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 7: Encoding3*2 of C with H Coupled %%%%%%%%%%%
+if (CaseNo(7))
+    
+    ExpNo1 = 2432;
+    ExpNo2 = 2433;
+    SaveName1 = 'Encoding3_Twice_C7_SWAP_Hcouple';
+    SaveName2 = 'Encoding3_Twice_C2_SWAP_Hcouple';    
+    FigureTitle1 = 'Encoding3*2 ZZZZZZZIIIII: Ob C7 with H Coupled';
+    FigureTitle2 = 'Encoding3*2 ZZZZZZZIIIII: Ob C2 with H Coupled';
+    FigureName = 'Encoding3_Twice_C7andC2_SWAP_Hcouple';
+    
+    % plot C7
+    if (SpecRead(7) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding3_Twice_C7_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(7) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding3_Twice_C2_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,Y_exp*1.2,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 8: Encoding3*2 of C with H Decoupled %%%%%%%%%%%
+if (CaseNo(8))
+    
+    ExpNo1 = 2434;
+    ExpNo2 = 2435;
+    SaveName1 = 'Encoding3_Twice_C7_SWAP_Hdecouple';
+    SaveName2 = 'Encoding3_Twice_C2_SWAP_Hdecouple';    
+    FigureTitle1 = 'Encoding3*2 ZZZZZZZIIIII: Ob C7 with H decoupled';
+    FigureTitle2 = 'Encoding3*2 ZZZZZZZIIIII: Ob C2 with H decoupled';
+    FigureName = 'Encoding3_Twice_C7andC2_SWAP_Hdecouple';
+    
+    % plot C7
+    if (SpecRead(8) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_Hdecouple_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding3_Twice_C7_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,2)
+
+    plot(X-0.3,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(8) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_Hdecouple_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Encoding3_Twice_C2_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,1)
+
+    plot(X-0.1,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,-Y_exp*1.2,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 9: Decoding1new of C with H Coupled %%%%%%%%%%%
+if (CaseNo(9))
+    
+    ExpNo1 = 2436;
+    ExpNo2 = 2437;
+    SaveName1 = 'Decoding1new_C7_SWAP_Hcouple';
+    SaveName2 = 'Decoding1new_C2_SWAP_Hcouple';    
+    FigureTitle1 = 'Decoding1new ZZZZZZZIIIII: Ob C7 with H Coupled';
+    FigureTitle2 = 'Decoding1new ZZZZZZZIIIII: Ob C2 with H Coupled';
+    FigureName = 'Decoding1new_C7andC2_SWAP_Hcouple';
+    
+    % plot C7
+    if (SpecRead(9) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding1new_C7_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp-0.15,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(9) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding1new_C2_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,Y_exp*1.2,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 10: Decoding1new of C with H Decoupled %%%%%%%%%%%
+if (CaseNo(10))
+    
+    ExpNo1 = 2438;
+    ExpNo2 = 2439;
+    SaveName1 = 'Decoding1new_C7_SWAP_Hdecouple';
+    SaveName2 = 'Decoding1new_C2_SWAP_Hdecouple';    
+    FigureTitle1 = 'Decoding1new ZZZZZZZIIIII: Ob C7 with H decoupled';
+    FigureTitle2 = 'Decoding1new ZZZZZZZIIIII: Ob C2 with H decoupled';
+    FigureName = 'Decoding1new_C7andC2_SWAP_Hdecouple';
+    
+    % plot C7
+    if (SpecRead(10) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_Hdecouple_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding1new_C7_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,2)
+
+    plot(X-0.3,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(10) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_Hdecouple_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding1new_C2_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,1)
+
+    plot(X-0.1,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,-Y_exp*1.2,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 11: Decoding2toEnd of C with H Coupled %%%%%%%%%%%
+if (CaseNo(11))
+    
+    ExpNo1 = 2444;
+    ExpNo2 = 2445;
+    SaveName1 = 'Decoding2toEnd_C7_SWAP_Hcouple';
+    SaveName2 = 'Decoding2toEnd_C2_SWAP_Hcouple';    
+    FigureTitle1 = 'Decoding2toEnd ZZZZZZZIIIII: Ob C7 with H Coupled';
+    FigureTitle2 = 'Decoding2toEnd ZZZZZZZIIIII: Ob C2 with H Coupled';
+    FigureName = 'Decoding2toEnd_C7andC2_SWAP_Hcouple';
+    
+    % plot C7
+    if (SpecRead(11) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding2toEnd_C7_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,2)
+
+    plot(X,scale_factor*Y,'r')
+    hold on
+    plot(X_exp-0.15,Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(11) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding2toEnd_C2_Hcouple = scale_factor/scale_factor1;
+
+    subplot(2,1,1)
+
+    plot(X,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,-Y_exp,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
+
+%%%%%%%%%%% Case 12: Decoding2toEnd of C with H Decoupled %%%%%%%%%%%
+if (CaseNo(12))
+    
+    ExpNo1 = 2446;
+    ExpNo2 = 2447;
+    SaveName1 = 'Decoding2toEnd_C7_SWAP_Hdecouple';
+    SaveName2 = 'Decoding2toEnd_C2_SWAP_Hdecouple';    
+    FigureTitle1 = 'Decoding2toEnd ZZZZZZZIIIII: Ob C7 with H decoupled';
+    FigureTitle2 = 'Decoding2toEnd ZZZZZZZIIIII: Ob C2 with H decoupled';
+    FigureName = 'Decoding2toEnd_C7andC2_SWAP_Hdecouple';
+    
+    % plot C7
+    if (SpecRead(12) == 0)
+        Spectra_Read( SpecPath,ExpNo1, 1, SaveName1 );
+    end
+    eval(['load ', SaveName1,'.mat'])
+    load encoding2_Hdecouple_qubit7.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding2toEnd_C7_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,2)
+
+    plot(X-0.3,scale_factor*Y,'r')
+    hold on
+    plot(X_exp,Y_exp*1.2,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle1;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+    
+    % plot C2
+    if (SpecRead(12) == 0)
+        Spectra_Read( SpecPath,ExpNo2, 1, SaveName2 );
+    end
+    eval(['load ', SaveName2,'.mat'])
+    load encoding2_Hdecouple_qubit2.mat
+    
+    scale_factor = max(Y_exp)/max(Y);
+    SignalLoss_Decoding2toEnd_C2_Hdecouple = scale_factor/scale_factor1/64;
+
+    subplot(2,1,1)
+
+    plot(X-0.1,scale_factor*Y,'r');
+    hold on
+    plot(X_exp,-Y_exp*1.4,'b');
+    
+    set(gca,'Xdir','reverse','Xlim', [min(X+Xlim_range) max(X-Xlim_range)]);    
+    title_string = FigureTitle2;
+    title({title_string},'FontWeight','normal','FontSize',fontsize, 'FontName','Calibri','FontAngle','normal');
+    xlabel({'Frequency (Hz)'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    ylabel({'Arb. Unit'},'FontWeight','normal','FontSize',fontsize,'FontName','Calibri');
+    legend('sim','exp');
+    set(legend,'EdgeColor',[1 0.8 0],'YColor',[1 0.8 0],'XColor',[1 0.8 0],'LineWidth',LineWidth_legend,'FontWeight','normal','FontSize',fontsize_legend);
+     
+    % save the two figures of C7 and C2
+     figure_name=strcat(FigureName,'-',date);
+     saveas(gca, figure_name, 'fig');
+
+end
