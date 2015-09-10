@@ -3,6 +3,8 @@
 
 clear;
 
+addpath H:\Matlab\Twqubit\Pulses_NoBuffer\fixed_pulses
+
 Pulse_Name = cell(1,18);
 Output_C = cell(1,18);
 Output_H = cell(1,18);
@@ -33,8 +35,8 @@ Fix_Number_C = [5,7,5,5,5,5,4,8,8,8,4,6,6,9,5,7,7,9];
 Fix_Number_H = [5,6,7,7,9,7,8,7,9,4,8,4,4,5,9,5,4,4];
 
 for ii = 1:18
-    Output_C{ii} = [Pulse_Name{ii}, '_C_', num2str(Calibration_C), '_NoBuffer' ];
-    Output_H{ii} = [Pulse_Name{ii}, '_H_', num2str(Calibration_H), '_NoBuffer' ];
+    Output_C{ii} = [Pulse_Name{ii}, '_C_', num2str(Calibration_C), '_NoBufferfix', num2str(Fix_Number_C(ii))];
+    Output_H{ii} = [Pulse_Name{ii}, '_H_', num2str(Calibration_H), '_NoBufferfix', num2str(Fix_Number_H(ii))];
 end
 
 
@@ -53,35 +55,35 @@ FirstLine = 19; % for C57180
 
 load Para.mat
 %% From max coherence to PPS
-FirstLine = 21; % for C2347andH180
+%FirstLine = 19; % for C2347andH180
 [power_C2347andH180_C,phase_C2347andH180_C]=dataout(Output_C{16},Output1,FirstLine,Length_180);
 [power_C2347andH180_H,phase_C2347andH180_H]=dataout(Output_H{16},Output1,FirstLine,Length_180);
 
-FirstLine = 21; % for C134690andH90
+% FirstLine = 21; % for C134690andH90
 [power_C134690andH90_C,phase_C134690andH90_C]=dataout(Output_C{5},Output1,FirstLine,Length_90);
 [power_C134690andH90_H,phase_C134690andH90_H]=dataout(Output_H{5},Output1,FirstLine,Length_90);
 
-FirstLine = 21; % for C23456180
+% FirstLine = 21; % for C23456180
 [power_C23456180_C,phase_C23456180_C]=dataout(Output_C{17},Output1,FirstLine,Length_180);
 [power_C23456180_H,phase_C23456180_H]=dataout(Output_H{17},Output1,FirstLine,Length_180);
 
-FirstLine = 21; % for C1234690withPC
+% FirstLine = 21; % for C1234690withPC
 [power_C1234690withPC_C,phase_C1234690withPC_C]=dataout(Output_C{6},Output1,FirstLine,Length_90);
 [power_C1234690withPC_H,phase_C1234690withPC_H]=dataout(Output_H{6},Output1,FirstLine,Length_90);
 
-FirstLine = 21; % for C27180
+% FirstLine = 21; % for C27180
 [power_C27180_C,phase_C27180_C]=dataout(Output_C{18},Output1,FirstLine,Length_180);
 [power_C27180_H,phase_C27180_H]=dataout(Output_C{18},Output1,FirstLine,Length_180);
 
-FirstLine = 21; % for C2Y5X90
+% FirstLine = 21; % for C2Y5X90
 [power_C2Y5X90_C,phase_C2Y5X90_C]=dataout(Output_C{7},Output1,FirstLine,Length_90);
 [power_C2Y5X90_H,phase_C2Y5X90_H]=dataout(Output_H{7},Output1,FirstLine,Length_90);
 
-FirstLine = 21; % for C57180
+% FirstLine = 21; % for C57180
 [power_C57180_C,phase_C57180_C]=dataout(Output_C{12},Output1,FirstLine,Length_180);
 [power_C57180_H,phase_C57180_H]=dataout(Output_H{12},Output1,FirstLine,Length_180);
 
-FirstLine = 21; % for C590
+% FirstLine = 21; % for C590
 [power_C590_C,phase_C590_C]=dataout(Output_C{8},Output1,FirstLine,Length_90);
 [power_C590_H,phase_C590_H]=dataout(Output_H{8},Output1,FirstLine,Length_90);
 
