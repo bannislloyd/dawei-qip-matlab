@@ -1,8 +1,8 @@
 clear;
 
-addpath H:\Matlab\Twqubit_Circuit_PPS\simulation\Spectra_Data
+%addpath H:\Matlab\Twqubit_Circuit_PPS\simulation\Spectra_Data
 %specstruc = getspec('/home/dtrottie/NMR/EXPERIMENTS/twqubit/results/1',1);
-specstruc = getspec('H:\Matlab\Twqubit_Circuit_PPS\simulation\Spectra_Data\1409', 1);
+specstruc = getspec('\Spectra_Data\1893', 1);
 
 %load thermal.mat
 %load exp_thermal.mat
@@ -19,7 +19,7 @@ step = swh/(N-1);
  end
 
 
-save exp_encoding2_obC7_Hdecouple.mat X_exp Y_exp
+save PPS_7qubit_With_12qubit_EncodingAndPhaseCycling_obC7.mat X_exp Y_exp
 
 % plot(real(specstruc.spec));
 % %set(gca,'XDir','reverse');
