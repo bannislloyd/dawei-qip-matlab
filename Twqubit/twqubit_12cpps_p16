@@ -1,0 +1,78 @@
+#include <Avance.incl>
+#include <Grad.incl>
+"acqt0=-p1*2/3.1416"
+
+
+1 ze
+2 30m
+	d1
+
+
+;;C-H SWAP
+(4u p1:sp1 ph4 4u):f3  (4u p2:sp2 ph4 4u):f2
+
+50u UNBLKGRAD
+p30:gp5
+500u
+
+(4u p3:sp3 ph4 4u):f3  (4u p4:sp4 ph4 4u):f2
+
+50u UNBLKGRAD
+p30:gp6
+500u
+
+;;kill C1-C6 and H1-H5
+(4u p9:sp9 ph4 4u):f3  (4u p10:sp10 ph4 4u):f2
+
+50u UNBLKGRAD
+p30:gp1
+500u
+
+;;encoding1 to get Z24567
+(p11:sp11 ph4):f3  (p12:sp12 ph4):f2
+
+50u UNBLKGRAD
+p30:gp2
+500u
+
+;;encoding2 to get Z1234567
+(p13:sp13 ph4):f3  (p14:sp14 ph4):f2
+
+50u UNBLKGRAD
+p30:gp3
+500u
+
+;;encoding3 to get Z123456789101112
+(p15:sp15 ph4):f3  (p16:sp16 ph4):f2
+
+50u UNBLKGRAD
+p30:gp4
+500u
+
+;;Phase Cycling
+(4u p17:sp17 ph6 4u):f3  (4u p18:sp18 ph6 4u):f2
+
+;;Decoding
+(p19:sp19 ph4):f3  (p20:sp20 ph4):f2
+
+
+
+50u UNBLKGRAD
+p30:gp7
+500u
+
+(p21:sp21 ph4):f3  (p22:sp22 ph4):f2
+
+  go=2 ph31
+  30m mc #0 to 2 F0(zd)
+exit
+
+
+ph1=1
+ph2=2
+ph3=3
+ph4=0
+
+ph6=(24) 15
+
+ph31=2
